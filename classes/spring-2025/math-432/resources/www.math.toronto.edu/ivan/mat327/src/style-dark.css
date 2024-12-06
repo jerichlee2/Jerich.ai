@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css?family=Unica+One|Vollkorn');
+
+@font-face {
+    font-family: 'Conso';
+    src: url("https://www.math.toronto.edu/ivan/mat327/src/Conso.woff") format("woff"), url("Conso.ttf") format("truetype");
+    font-style: normal;
+    font-stretch: normal; 
+}
+
+h1,h3,h4{font-size:125%}
+h2{font-size:175%}
+h1,h3{margin:5px 0}
+h2{
+    margin: 10px 0;
+    text-align: center;
+}
+
+h4{
+    margin-bottom: -5px
+}
+h1,h2,h3,h4{
+    font-family: 'Unica One';
+    letter-spacing: 1px;
+}
+body{
+    font-family: "Vollkorn",  "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size:120%;
+    letter-spacing: 1px;
+    line-height:1.5;
+    color: #e0e0e0;
+    background-color: #000;
+}
+/*
+a {
+    color: #ec007c;
+    text-decoration: none; 
+}
+
+a:hover {
+    background-color: #0096c1;
+    color: #00303e;  
+}
+*/
+a {
+    color: #2bbae3;
+    text-decoration: none; 
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+b, strong { color: white; }
+
+pre {
+    font-family: 'Conso', monospace;
+    font-size: 100%;
+    color: #9e9;
+    width: 100%;
+    margin: auto;
+    padding: 6px 14px;
+    white-space: pre-wrap;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    padding:0.01em 6px;
+    overflow: hidden;
+    }
+
+.spaced_list li{
+    margin: 9px 0px;
+}
+
+.black {
+    color: #fff;
+    background-color: #444;
+}
+
+.topnav{
+    width:100%;
+    overflow:hidden;
+    margin-top: 10px;
+/*  border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;*/
+}
+
+.content {
+    font-size: 80%;
+}
+
+.navbar{
+    font-family:'Unica One',Verdana,Arial,sans-serif;
+    border:none;
+    background-color: #444;
+    float:left;
+    display:block;
+    outline:0;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    color:inherit;
+    text-align:left;
+    white-space:nowrap;
+    font-size: 100%;
+                                                }
+.navbar_button{
+    font-family:'Unica One',Verdana,Arial,sans-serif;
+    font-size: 125%;
+    letter-spacing: 2px;
+    border:none;
+    background-color: inherit;
+    float:left;
+    display:block;
+    outline:0;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    color:inherit;
+    text-align:left;
+    cursor:pointer;
+    white-space:nowrap;
+    font-size: 100%;
+}
+
+.navbar_button:hover{
+    color: #000;
+    background-color: #aaa;
+}
+
+.active {
+    color: #fff;
+    background-color: #0096c1;   
+}
+
+.icon{
+    float:right;
+    right: 0;
+    display: none;
+    padding-top: 5px;
+}
+
+/*.w3-bar-item{
+    padding:8px 16px;
+    float:left;
+    width:auto;
+    border:none;
+    outline:none;
+    display:block
+}*/
+
+.border_box{
+    /*border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;*/
+    background-color: #222;
+    /*padding: 6px 16px 4px 16px;*/
+    padding: 6px 16px;
+}
+
+ul,ol {
+    padding-left: -7px;
+    margin-left: -22px;
+}
+
+.outer_box {
+    margin:auto;
+}
+
+.logo {
+    display: block;
+    vertical-align: middle;
+    margin: auto;
+}
+
+@media screen and (min-width: 0px){
+    .outer_box {
+        width: 100% ;
+    }
+}
+@media screen and (min-width: 1024px){
+    .outer_box {
+        width: 90% ;
+    }
+}
+@media screen and (min-width: 1401px) {
+    .outer_box {
+        width: 1260px;
+   }
+}
+
+@media screen and (min-width: 940px) {
+    .large_hide {
+        display: none;
+    }
+    .logo {
+        display: inline-block;
+        margin: 0;
+    }
+    .title {
+        display: inline-block;
+    }
+}
+@media (max-width: 940px) {
+    .navbar_button:not(.active) {
+        display:none;
+    }
+    .navbar_button.icon {
+        display:inline-block;
+    }
+    .active{
+        background-color: inherit;
+    }
+    .navbar_button:hover{
+        color: inherit;
+        background-color: inherit;
+    }
+    h1 {
+        display:none;
+    }
+    .small_hide{
+        display: none;
+    }
+    .title{
+        display: block;
+        margin: auto;
+    }
+}
+
+@media (max-width: 940px) {
+    .topnav .responsive {
+        position: relative;
+    }
+    .responsive .navbar_button {
+        float: none;
+        display: block;
+        width:100%;
+    }
+    .responsive .icon {
+        display:none;
+    }
+}
+

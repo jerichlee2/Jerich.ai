@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converted Document</title>
+    <link rel="stylesheet" href="/Users/jerichlee/Documents/jerichlee.ai/blog/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <a href="../../index.html" class="home-button">Back</a>
+    <div id="main">
+        &lt;h1&gt;Proofs with structure&lt;/h1&gt;
+&lt;h3&gt;Jerich Lee&lt;/h3&gt;
+&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+We now are able to create our own hypotheses—check it out:
+<div class='problem'><strong>Problem.</strong><br> 
+    Let (a) and (b) be real numbers and suppose that (a-5b=4) and (b+2=3). Show that (a=9).  
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    <div class='proof'><strong>Proof.</strong>  Since (b+2=3), we have (b=1). Therefore:
+        $$\begin{align}
+
+           a&=(a-5b)+5b \\[10pt] 
+            &=4+5 \cdot1 \\[10pt] 
+            &=9
+        
+\end{align}$$
+    <div class='qed'>∎</div></div><br>
+</div>
+Writing this in Lean:
+<pre class='code-block'>
+example &#123;a b : \real&#125; (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 := by
+    have hb : b = 1 := by addarith &#91;h2&#93;
+    calc
+      a = a - 5 * b + 5 * b := by ring
+      _ = 4 + 5 * 1 := by rw &#91;h1, hb&#93;
+      _ = 9 := by ring
+</pre>
+Pay attention to the <em>have</em> command on line 2 of the above; we can create our own givens and use it in our proofs. Coolio.
+\vspace{.5cm} 
+We can use lemmas, or previously proved statements to help prove our current statement. Check it out:
+<div class='problem'><strong>Problem.</strong><br> 
+    Let (x) be a rational number, and suppose that (3x=2). Show that (x\neq 1).  
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    <div class='proof'><strong>Proof.</strong>  It suffices to prove that (x&lt;1): 
+        $$\begin{align}
+
+           x&=\frac{3x}{3} \\[10pt] 
+           &= \frac{2}{3}\\[10pt] 
+            &<1
+        
+\end{align}$$
+    <div class='qed'>∎</div></div><br>
+</div>
+Lean:
+<pre class='code-block'>
+example &#123;x : \rat&#125; (hx : 3 * x = 2) : x \neq 1 := by
+    apply ne_of_lt
+    calc
+      x = 3 * x / 3 := by ring
+      _ = 2 / 3 := by rw &#91;hx&#93;
+      _ &lt; 1 := by numbers
+</pre>
+    </div>
+</body>
+</html>
+    

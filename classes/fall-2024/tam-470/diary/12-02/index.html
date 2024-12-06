@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converted Document</title>
+    <link rel="stylesheet" href="/Users/jerichlee/Documents/jerichlee.ai/blog/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <a href="../../index.html" class="home-button">Back</a>
+    <div id="main">
+        &lt;h1&gt;Spectral Methods&lt;/h1&gt;
+&lt;h3&gt;Jerich Lee&lt;/h3&gt;
+&lt;h4&gt;2024-12-02&lt;/h4&gt;
+<h2>What?</h2>
+<ol>
+<li>high degree of accuracy</li>
+<li>combo of sines + cosines</li>
+<li>complex functions</li>
+<li>solving odes + pdes</li>
+<li>fluid dynamics + turbulence modeling :‑O</li>
+</ol>
+<h3>Fourier Series (Continuous)</h3>
+$$\begin{align}
+
+    f(x)= \sum_{k=-\infty}^{\infty} \hat{f}_{k}e^{ikx}  \\[10pt] 
+    \text{where } e^{ikx} = \cos kx + i\sin kx 
+
+\end{align}$$
+$k$ is the wave number such that $k\in \mathbb{\MakeUppercase{n}} $
+The derivative:
+$$\begin{align}
+
+    f^{^\prime}(x)= \sum_{k=-\infty }^{\infty }ik \hat{f_k}e^{ikx} 
+
+\end{align}$$
+<h3>Discrete Fourier Series</h3>
+$N-1$ points vs. $N$ points bc the end point is just $f_0$! bc of periodicity 
+$$\begin{align}
+
+    f_j = \sum_{k=1}{-\frac{N}{2}}^{\frac{N}{2}} \hat{f_k} e^{ikx_j}, \quad j=0,1,2, \ldots , N-1 
+
+\end{align}$$
+<strong>N is even</strong>
+<h3>Discrete Orthogonality Property</h3>
+$$\begin{align}
+
+    \sum_{j=0}^{N-1} e^{ikx_j}e^{-ik^{^\prime}x_j}= 
+    \begin{cases}
+        N, &\text{ if } k=k^\prime +mN, m=0,\pm 1, \pm 2, \ldots   ;\\
+        0, &\text{ if } else .
+    \end{cases}
+
+\end{align}$$
+<h3>Discrete Fourier Transform</h3>
+$$\begin{align}
+
+    \hat{f_k} \frac{1}{N}\sum_{i=0}^{N-1} f_j e^{-\left( ikx \right) }
+
+\end{align}$$
+    </div>
+</body>
+</html>
+    

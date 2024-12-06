@@ -1,0 +1,349 @@
+<!DOCTYPE html5>
+<html>
+<head>
+    <title>MAT327 - Summer 2019</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.math.toronto.edu/ivan/mat327/src/style-dark.css">
+    <link rel="stylesheet" href="https://www.math.toronto.edu/ivan/mat327/src/monokai.css">
+</head>
+
+<body>
+
+<div class='outer_box'>
+
+<div class="container">
+    <div class="logo">
+        <!--[if lte IE 8]><img height="50" src="src/logo.png" /><![endif]-->
+        <!--[if gt IE 8]><img height="50" src="src/logo.svg" /><![endif]-->
+        <!--[if !IE]> --><img height="50" src="https://www.math.toronto.edu/ivan/mat327/src/logo.svg" /><!-- <![endif]-->
+    </div>
+    <h2 class="title" style="vertical-align: middle">
+        MAT327 &bull; TOPOLOGY<br>
+    </h2>
+</div>
+<div class="container">
+    <p class="small_hide" style="font-size: 80%">
+    This is the official homepage for MAT327 at the University of Toronto for the summer 2019 term.
+    <br>
+    All course information other than grades will be posted here and only here.
+    </p>
+</div>
+
+<div class="container">
+    <div class="topnav black" id="TopNavbar">
+        <button id='nav_announcements' class='navbar_button tablink' onclick="navbar(event,'announcements')">ANNOUNCEMENTS</button>
+<button id='nav_courseinfo' class='navbar_button tablink' onclick="navbar(event,'courseinfo')">COURSE INFO</button>
+<button id='nav_resources' class='navbar_button tablink' onclick="navbar(event,'resources')">RESOURCES</button>
+<button id='nav_quiz' class='navbar_button tablink' onclick="navbar(event,'quiz')">QUIZZES</button>
+<button id='nav_test' class='navbar_button tablink' onclick="navbar(event,'test')">MIDTERM</button>
+<button id='nav_summaries' class='navbar_button tablink' onclick="navbar(event,'summaries')">LECTURE SUMMARIES</button>
+<button class='navbar_button icon' onclick="toggleNavMenu()">&#9776;</button>
+    </div>
+    
+    <div id='announcements' class='container border_box content'>
+<h1>ANNOUNCEMENTS</h1>
+
+<p>If you're here because you're curious about how I run this course, please visit <a href="http://ctrl-c.club/~ivan/327/">my &quot;generic&quot; version of this site</a> for further information.</p>
+
+<p>This website was statically generated from Markdown files by a <a href="http://www.math.toronto.edu/ivan/mat327/generator.py">simple python script I wrote some time ago</a>. It's not fancy, but it gets the job done. </p>
+
+<p>(All course announcements that were here have been moved to the <a href="https://www.math.toronto.edu/ivan/mat327/older.html">older announcements</a> page. All quizzes, tests, and their solutions are now hidden.)</p>
+
+</div>
+<div id='courseinfo' class='container border_box content'>
+<h1>COURSE INFO</h1>
+
+<p>This information is contained in <a href="https://www.math.toronto.edu/ivan/mat327/docs/syllabus.pdf">the syllabus</a>. It is reproduced here for your convenience.</p>
+
+<ul>
+<li><p><strong>Ivan Khatchatourian</strong> is the course coordinator.</p>
+
+<ul>
+<li>ivan [at] math [dot] toronto [dot] edu</li>
+</ul></li>
+<li><p>Lectures: <strong>W1-3</strong> and <strong>F12</strong> in <strong>MP137</strong>.</p></li>
+<li>Tutorials:
+<ul>
+<li>TUT0101 - <strong>F1</strong> in <strong>BA2195</strong></li>
+<li>TUT0201 - <strong>F2</strong> in <strong>BA2195</strong></li>
+</ul></li>
+<li><p>Office hours with Ivan: <strong>W4 and R1-3</strong></p>
+
+<p>All office hours will take place in <strong>HU1018</strong>. If you cannot make any of these times, contact me by email and arrange a meeting at a mutually convenient time.</p></li>
+</ul>
+
+</div>
+<div id='resources' class='container border_box content'>
+<h1>RESOURCES</h1>
+
+<ul>
+<li><p><a href="https://www.math.toronto.edu/ivan/mat327/docs/syllabus.pdf">Syllabus</a></p></li>
+<li><p><a href="https://www.math.toronto.edu/ivan/mat327/docs/biglist.pdf">Big List of Problems</a>
+<br></p></li>
+<li>Lecture notes
+<ul>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/01-intro.pdf">01: Introduction</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/02-bases.pdf">02: Bases of topologies</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/03-closed.pdf">03: Closed sets and closures</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/04-countability.pdf">04: Countability</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/05-sequences.pdf">05: Sequences, weak T-axioms, and first countability</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/06-continuity.pdf">06: Continuity and homeomorphisms</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/07-subspaces.pdf">07: Subspaces</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/08-products.pdf">08: Finite products</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/09-separation.pdf">09: Stronger separation axioms</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/10-orders.pdf">10: Orders and omega_1</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/11-choice.pdf">11: The Axiom of Choice and Zorn's Lemma</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/12-metric.pdf">12: Metric spaces and metrizability</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/13-urysohn.pdf">13: Urysohn's Lemma</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/14-arbitrary_products.pdf">14: Arbitrary products</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/15-umt.pdf">15: The Urysohn Metrization Theorem</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/16-compact.pdf">16: Compactness</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/17-tychonoff.pdf">17: Tychonoff's Theorem, and some properties related to compactness</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/18-connected.pdf">18: Connectedness</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/notes/19-compactifications.pdf">19: Compactifications</a>
+<br><br></li>
+</ul></li>
+<li>Supplementary notes
+<ul>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/other/nets.pdf">Nets and filters (are better than sequences)</a></li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/other/ccc_products.pdf">The countable chain condition in products</a>
+<br></li>
+</ul></li>
+<li><p><a href="https://www.math.toronto.edu/ivan/mat327/docs/reqs.pdf">Things You Should Know</a> <br />
+This document lists some of the basic concepts with which students entering this course are assumed to be familiar.
+<br></p></li>
+<li><p><a href="https://piazza.com/utoronto.ca/summer2019/mat327/home">Piazza page for our course</a></p></li>
+</ul>
+
+</div>
+<div id='quiz' class='container border_box content'>
+<h1>QUIZZES</h1>
+
+<ul>
+<li><strong>Quiz 1</strong> took place on Friday, 24 May.
+<ul>
+<li>Coverage: Up to about half way through section 4 (i.e., up to and including Friday 17 May's lecture).</li>
+<li>Tutorial T0101 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q1-t1.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q1-t1-sol.pdf">sample solutions</a>.</li>
+<li>Tutorial T0201 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q1-t2.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q1-t2-sol.pdf">sample solutions</a>.
+<br><br></li>
+</ul></li>
+<li><strong>Quiz 2</strong> will take place on Friday, 7 June.
+<ul>
+<li>Coverage: Up to the end of section 6. </li>
+<li>Tutorial T0101 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q2-t1.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q2-t1-sol.pdf">sample solutions</a>.</li>
+<li>Tutorial T0201 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q2-t2.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q2-t2-sol.pdf">sample solutions</a>.
+<br><br></li>
+</ul></li>
+<li><strong>Quiz 3</strong> will take place on Friday, 12 July.
+<ul>
+<li>Coverage: Section 10. </li>
+<li>Tutorial T0101 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q3-t1.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q3-t1-sol.pdf">sample solutions</a>.</li>
+<li>Tutorial T0201 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q3-t2.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q3-t2-sol.pdf">sample solutions</a>.
+<br><br></li>
+</ul></li>
+<li><strong>Quiz 4</strong> will take place on Friday, 2 August.
+<ul>
+<li><strong>Note that this quiz was moved one week later</strong></li>
+<li>Coverage: Up to the end of section 14.</li>
+<li>Tutorial T0101 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q4-t1.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q4-t1-sol.pdf">sample solutions</a>.</li>
+<li>Tutorial T0201 wrote <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q4-t2.pdf">this quiz</a>. Here are some <a href="https://www.math.toronto.edu/ivan/mat327/docs/quiz/q4-t2-sol.pdf">sample solutions</a>.</li>
+</ul></li>
+</ul>
+
+</div>
+<div id='test' class='container border_box content'>
+<h1>MIDTERM</h1>
+
+<ul>
+<li>The midterm test took place on Monday, 17 June, from 6:10-8pm.
+<ul>
+<li>Coverage: Up to the end of section 9, though not including any Big List problems after problem 9.7. </li>
+<li>Here is <a href="https://www.math.toronto.edu/ivan/mat327/docs/test/midterm.pdf">the test</a>. Here are <a href="https://www.math.toronto.edu/ivan/mat327/docs/test/midterm-sol.pdf">some sample solutions</a>.</li>
+</ul></li>
+</ul>
+
+</div>
+<div id='summaries' class='container border_box content'>
+<h1>LECTURE SUMMARIES</h1>
+
+<p>It was suggested that for each lecture I post a short summary of what chapters/sections of my notes are covered in each lecture. This is a great idea, so I'll start doing that here. I'll also be posting any in-class notes from students who wish to make them available for the benefit of other students. I have a tendency to say a lot of things that I don't write on the board in class, so in-class notes may be very valuable.</p>
+
+<p><strong>DISCLAIMER:</strong> The in-class notes made by students and published here are the work of students. I have not edited them in detail for mathematical accuracy or style.</p>
+
+<h3>DO YOU WANT TO MAKE YOUR IN-CLASS NOTES AVAILABLE HERE?</h3>
+
+<p>Any students who are willing to have their notes posted publicly should email them to me as a PDF (one PDF per lecture) and include the date of the lecture. Also mention if you're willing to have your name posted with them (you may post them anonymously). I am willing to post handwritten notes provided they are neat, legible, and scanned/photographed well. In particular, your notes do not have to be typed, but if they are typed it must be with LaTeX and your notation must agree with the notation of my notes (<code>\mathcal{T}</code> for a topology, etc.).</p>
+
+<h3>FIRST HALF</h3>
+
+<ul>
+<li><strong>WEEK 1</strong>
+<ul>
+<li><strong>Lecture 1</strong> - Wed, 8 May
+<ul>
+<li>Introductory remarks</li>
+<li>Coverage: Chapter 1, up to the end of section 3.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture1-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.</li>
+</ul></li>
+<li>Lecture 2 - Fri, 10 May
+<ul>
+<li>Coverage: Finished Chapter 1, and about the first four pages of Chapter 2.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture2-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 2</strong>
+<ul>
+<li><strong>Lecture 3</strong> - Wed, 15 May
+<ul>
+<li>Coverage: Finished Chapter 2, and all of Chapter 3.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture3-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.</li>
+</ul></li>
+<li><strong>Lecture 4</strong> - Fri, 10 May
+<ul>
+<li>Coverage: Approximately the first five sections of Chapter 4. </li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture4-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 3</strong>
+<ul>
+<li><strong>Lecture 5</strong> - Wed, 22 May
+<ul>
+<li>Coverage: Finished Chapter 4, and about the first four sections of Chapter 5.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture5-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.</li>
+</ul></li>
+<li><strong>Lecture 6</strong> - Fri, 24 May
+<ul>
+<li>Coverage: Finished Chapter 5. </li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture6-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 4</strong>
+<ul>
+<li><strong>Lecture 7</strong> - Wed, 29 May
+<ul>
+<li>Coverage: Approximately the first five sections of Chapter 6.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture7-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.</li>
+</ul></li>
+<li><strong>Lecture 8</strong> - Fri, 31 May
+<ul>
+<li>Coverage: Finished Chapter 6.</li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture8-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 5</strong>
+<ul>
+<li><strong>Lecture 9</strong> - Wed, 5 June
+<ul>
+<li>Coverage: All of Chapter 7. </li>
+<li><a href="https://www.math.toronto.edu/ivan/mat327/docs/lecturenotes/lecture9-AsadDurrani.pdf">In-class notes</a> by Asad Durrani.</li>
+</ul></li>
+<li><strong>Lecture 10</strong> - Fri, 7 June
+<ul>
+<li>Coverage: All of Chapter 8. 
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 6</strong>
+<ul>
+<li><strong>Lecture 11</strong> - Wed, 12 June
+<ul>
+<li>Coverage: Chapter 9, up the end of section 3. </li>
+</ul></li>
+<li><strong>Lecture 12</strong> - Fri, 14 June
+<ul>
+<li>Coverage: Section 4 of Chapter 9.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>SECOND HALF</h3>
+
+<ul>
+<li><strong>WEEK 7</strong>
+<ul>
+<li><strong>Lecture 13</strong> - Wed, 3 July
+<ul>
+<li>Coverage: Chapter 10, up to the definition of a well-order.</li>
+</ul></li>
+<li><strong>Lecture 14</strong> - Fri, 5 July
+<ul>
+<li>Coverage: Definition of omega_1
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 8</strong>
+<ul>
+<li><strong>Lecture 15</strong> - Wed, 10 July
+<ul>
+<li>Coverage: Finished Chapter 10, started Chapter 11.</li>
+</ul></li>
+<li><strong>Lecture 16</strong> - Fri, 12 July
+<ul>
+<li>Coverage: Finished Chapter 11.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 9</strong>
+<ul>
+<li><strong>Lecture 17</strong> - Wed, 17 July
+<ul>
+<li>Coverage: Chapter 12.</li>
+</ul></li>
+<li><strong>Lecture 18</strong> - Fri, 19 July
+<ul>
+<li>Coverage: Chapter 13 (slightly abridged, as I was delayed getting to class)
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 10</strong>
+<ul>
+<li><strong>Lecture 19</strong> - Wed, 24 July
+<ul>
+<li>Coverage: Chapter 14, roughly to the end of section 4.</li>
+</ul></li>
+<li><strong>Lecture 20</strong> - Fri, 26 July
+<ul>
+<li>Coverage: Chapter 14, up to about half way through section 7.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 11</strong>
+<ul>
+<li><strong>Lecture 21</strong> - Wed, 31 July
+<ul>
+<li>Coverage: Finished chapter 14 and 15.</li>
+</ul></li>
+<li><strong>Lecture 22</strong> - Fri, 2 August
+<ul>
+<li>Coverage: Chapter 16, almost to the end of section 3.
+<br><br></li>
+</ul></li>
+</ul></li>
+<li><strong>WEEK 12</strong>
+<ul>
+<li><strong>Lecture 23</strong> - Wed, 7 August
+<ul>
+<li>Coverage: (Hopefully) finish chapter 16 and chapter 17.</li>
+</ul></li>
+<li><strong>Lecture 24</strong> - Fri, 9 August 
+<ul>
+<li>Coverage: Chapter 18.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+<!-- ++++++++++++++ SCRIPT FOR TABS. DO NOT MODIFY ++++++++++++++++++ -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.math.toronto.edu/ivan/mat327/src/scripts.js"></script>
+
+</body>
+</html>

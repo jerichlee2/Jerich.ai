@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converted Document</title>
+    <link rel="stylesheet" href="/Users/jerichlee/Documents/jerichlee.ai/blog/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <a href="../../index.html" class="home-button">Back</a>
+    <div id="main">
+        &lt;h1&gt;Proofs By Calculation&lt;/h1&gt;
+&lt;h3&gt;Jerich Lee&lt;/h3&gt;
+&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+Cool, so I am starting from the beginning beginning. Let's run it (LRI)—
+
+<div class='problem'><strong>Problem.</strong><br> 
+   Let (a) and (b) be rational numbers and suppose that (a-b=4) and (ab=1). Show that ((a+b)^{2}=20). 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    <div class='proof'><strong>Proof.</strong> 
+        $$\begin{align}
+
+            (a+b)^{2}&=(a-b)^{2}+4ab \\[10pt]
+           &=4^{2}+4 \cdot 1 \\[10pt] 
+           &= 20 
+        
+\end{align}$$
+    <div class='qed'>∎</div></div><br>
+</div>
+Cool, now how do we do this in Lean? Check this out:
+<pre class='code-block'>
+example &#123;a b : \rat&#125; (h1 : a - b = 4) (h2 : a * b = 1) : (a + b) ^ 2 = 20 :=
+  calc
+    (a + b) ^ 2 = (a - b) ^ 2 + 4 * (a * b) := by ring
+    _ = 4 ^ 2 + 4 * 1 := by rw &#91;h1, h2&#93;
+    _ = 20 := by ring
+</pre>
+Ok let's do a new proof:
+<div class='proof'><strong>Proof.</strong> 
+    $$\begin{align}
+
+        d(af-be)&=(ad)f-dbe \\[10pt] 
+        &=(bc)f-dbe \\[10pt] 
+        &=b(cf)-dbe \\[10pt] 
+        &=b(de)-dbe \\[10pt] 
+        &=0
+    
+\end{align}$$
+<div class='qed'>∎</div></div><br>
+Woah. Let's do it in Lean!
+<pre class='code-block'>
+example &#123;a b c d e f : \int&#125; (h1 : a * d = b * c) (h2 : c * f = d * e) :
+    d * (a * f - b * e) = 0 :=
+  calc
+    d * (a * f - b * e)
+      = (a*d)*f-d*b*e := by ring
+    _ = (b*c)*f-d*b*e := by rw &#91;h1&#93;
+    _ = b*(c*f)-d*b*e := by ring
+    _ = b*(d*e)-d*b*e := by rw &#91;h2&#93;
+    _ = 0 := by ring
+</pre>
+Fire. Onward. Yuh.
+Last easy example: 
+<div class='problem'><strong>Problem.</strong><br> 
+    
+Let (a) and (b) be integers and suppose that (a=2b+5) and (b=3). Show that (a=11).
+</div>
+<div class='solution'><strong>Solution.</strong> 
+ <div class='proof'><strong>Proof.</strong> 
+    $$\begin{align}
+
+        a &= 2b+5 \\[10pt] 
+        &= 2 \cdot 3+ 5\\[10pt] 
+        &= 11
+    
+\end{align}$$
+<div class='qed'>∎</div></div><br>  
+</div>
+Lean:
+<pre class='code-block'>
+    example &#123;a b : \int&#125; (h1: a = 2 * b + 5) (h2 : b = 3) : a = 11:=
+    calc
+      a = 2 * b + 5 := h1
+      _ = 2 * 3 + 5 := by rw &#91;h2&#93;
+      _ = 11 := by ring 
+</pre>
+So I need to make sure to explicitly type in like <em>slash</em>int and such or it won't work...noted.
+    </div>
+</body>
+</html>
+    

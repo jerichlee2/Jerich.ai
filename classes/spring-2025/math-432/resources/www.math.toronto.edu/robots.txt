@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /ivrii/phpicalendar
+Disallow: /~ivrii/phpicalendar
+Disallow: /oz/phpicalendar
+Disallow: /mgsa/events
+Disallow: /ivrii/phpicalendar/*
+Disallow: /~ivrii/phpicalendar/*
+Disallow: /oz/phpicalendar/*
+Disallow: /mgsa/events/*
+Disallow: /leblanc/headers.cgi
+User-agent: 008
+Disallow: /

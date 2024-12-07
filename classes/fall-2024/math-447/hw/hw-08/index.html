@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Converted Document</title>
-    <link rel="stylesheet" href="/Users/jerichlee/Documents/jerichlee.ai/blog/style.css">
+    <link rel="stylesheet" href="https://jerichlee2.github.io/Jerich.ai/blog/style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
         MathJax = {
@@ -26,22 +26,23 @@
 <body>
     <a href="../../index.html" class="home-button">Back</a>
     <div id="main">
-        &lt;h1&gt;MATH 447: Real Variables - Homework #8&lt;/h1&gt;
-&lt;h3&gt;Jerich Lee&lt;/h3&gt;
-&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+        <h1>MATH 447: Real Variables - Homework \#8</h1>
+<h3>Jerich Lee</h3>
+<h4>December 07, 2024</h4>
+
 Throughout this homework, we assume that (reverse) trigonometric and exponential functions (such as exp, sin, cos, tan, or arctan) are continuous. Other common calculus facts about these functions can also be used.
 <div class='problem'><strong>Problem.</strong><br> [20.16]
     Suppose the limits ( L_1 = \lim_{x \to a^+} f_1(x) ) and ( L_2 = \lim_{x \to a^+} f_2(x) ) exist.
 
 <ol>
 <li>Show if ( f_1(x) \leq f_2(x) ) for all ( x ) in some interval ( (a, b) ), then ( L_1 \leq L_2 ).</li>
-<li>Suppose that, in fact, ( f_1(x) &lt; f_2(x) ) for all ( x ) in some interval ( (a, b) ). Can you conclude ( L_1 &lt; L_2 )?</li>
+<li>Suppose that, in fact, ( f_1(x) < f_2(x) ) for all ( x ) in some interval ( (a, b) ). Can you conclude ( L_1 < L_2 )?</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
 <ol>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
-    (\forall \varepsilon&amp;gt;0, \exists \delta &amp;gt;0  s.t.  \left\vert f_1(x)-L_1 \right\vert &amp;lt;\varepsilon_1) whenever (x\in (a- \delta, a+\delta)\cap S). Let (S \text{ be }  (a,b), b&amp;gt;a). (\forall \varepsilon&amp;gt;0, \exists \delta_2 &amp;gt;0  s.t.  \left\vert f_2(x)-L_2 \right\vert &amp;lt;\varepsilon_2). Choose (\delta = \text{min}\left{ \delta_1, \delta_2 \right}). Then,
+<li><div class='proof'><strong>Proof.</strong> 
+    (\forall \varepsilon>0, \exists \delta >0  s.t.  \left\vert f_1(x)-L_1 \right\vert <\varepsilon_1) whenever (x\in (a- \delta, a+\delta)\cap S). Let (S \text{ be }  (a,b), b>a). (\forall \varepsilon>0, \exists \delta_2 >0  s.t.  \left\vert f_2(x)-L_2 \right\vert <\varepsilon_2). Choose (\delta = \text{min}\left{ \delta_1, \delta_2 \right}). Then,
     $$$$\begin{align}
 
 
@@ -53,10 +54,10 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     
 
 \end{align}$$$$ 
-&lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
-    No, due to the proof of part a of this problem. We can say that (L_1=L2), which satisfies (L_1&amp;lt;L_{2}+\varepsilon) but not (L_1 &amp;lt; L_2). 
-&lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+<div class='qed'>∎</div></div><br></li>
+<li><div class='proof'><strong>Proof.</strong> 
+    No, due to the proof of part a of this problem. We can say that (L_1=L2), which satisfies (L_1<L_{2}+\varepsilon) but not (L_1 < L_2). 
+<div class='qed'>∎</div></div><br></li>
 </ol>    
 </div>
 <div class='problem'><strong>Problem.</strong><br> [20.17]
@@ -88,8 +89,8 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
 </div>
 <div class='solution'><strong>Solution.</strong> 
    <ol>
-<li>&lt;ol&gt;
-&lt;li&gt;$$$$$$\begin{align}
+<li><ol>
+<li>$$$$$$\begin{align}
 
 
 
@@ -99,8 +100,8 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
               
 
 
-\end{align}$$$$$$&lt;/li&gt;
-&lt;li&gt;$$$$$$\begin{align}
+\end{align}$$$$$$</li>
+<li>$$$$$$\begin{align}
 
 
 
@@ -109,8 +110,8 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
               
 
 
-\end{align}$$$$$$&lt;/li&gt;
-&lt;li&gt;$$$$$$\begin{align}
+\end{align}$$$$$$</li>
+<li>$$$$$$\begin{align}
 
 
 
@@ -124,8 +125,8 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     
 
 
-\end{align}$$$$$$&lt;/li&gt;
-&lt;li&gt;$$$$$$\begin{align}
+\end{align}$$$$$$</li>
+<li>$$$$$$\begin{align}
 
 
 
@@ -139,9 +140,9 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     
 
 
-\end{align}$$$$$$&lt;/li&gt;
-&lt;/ol&gt;</li>
-<li>These series do not converge; these do not pass the criteria of the Ratio and Root tests, i.e., either (\alpha = \limsup_{n \to \infty} \left\vert a_{n} \right\vert^{\frac{1}{n}}&gt;1 ) or (\limsup_{n \to \infty} \left\vert \frac{a_{n+1}}{a_{n}}  \right\vert&gt;1 ) imply that the series (\sum_{n=1}^{\infty} a_{n}) does not converge.</li>
+\end{align}$$$$$$</li>
+</ol></li>
+<li>These series do not converge; these do not pass the criteria of the Ratio and Root tests, i.e., either (\alpha = \limsup_{n \to \infty} \left\vert a_{n} \right\vert^{\frac{1}{n}}>1 ) or (\limsup_{n \to \infty} \left\vert \frac{a_{n+1}}{a_{n}}  \right\vert>1 ) imply that the series (\sum_{n=1}^{\infty} a_{n}) does not converge.</li>
 <li>$$$$\begin{align}
 
     
@@ -160,7 +161,7 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 <div class='problem'><strong>Problem.</strong><br> [23.5b]
     Consider a power series ( \sum a_n x^n ) with radius of convergence ( R ).
 <ol>
-<li>Prove that if ( \limsup |a_n| &gt; 0 ), then ( R \leq 1 ).</li>
+<li>Prove that if ( \limsup |a_n| > 0 ), then ( R \leq 1 ).</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
@@ -183,8 +184,8 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
-        (\forall \varepsilon&gt;0 \exists N_1  s.t.  N_1(\varepsilon)\in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert f_n(x)-f(x) \right\vert&lt;\varepsilon ) for (n\geq N_1, \forall x\in S), 
-    (\forall \varepsilon&gt;0 \exists N_2  s.t.  N_2(\varepsilon)\in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert g_n(x)-g(x) \right\vert&lt;\varepsilon ) for (n\geq N_2, \forall x\in S). Then,
+        (\forall \varepsilon>0 \exists N_1  s.t.  N_1(\varepsilon)\in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert f_n(x)-f(x) \right\vert<\varepsilon ) for (n\geq N_1, \forall x\in S), 
+    (\forall \varepsilon>0 \exists N_2  s.t.  N_2(\varepsilon)\in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert g_n(x)-g(x) \right\vert<\varepsilon ) for (n\geq N_2, \forall x\in S). Then,
     $$\begin{align}
 
         f(x)-\varepsilon<f_{n}(x)<f(x)+\varepsilon \\[10pt] 
@@ -207,9 +208,9 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 </div>
 <div class='solution'><strong>Solution.</strong> 
      <ol>
-<li>&lt;ol&gt;
-&lt;li&gt;(f_{n}\to f) is Lipschitz at (k=1), (x-y\leq k\left\vert x-y \right\vert ), so (f_{n}\to f) is uniformly continuous. We know that:&lt;/li&gt;
-&lt;li&gt;$$$$$$\begin{align}
+<li><ol>
+<li>(f_{n}\to f) is Lipschitz at (k=1), (x-y\leq k\left\vert x-y \right\vert ), so (f_{n}\to f) is uniformly continuous. We know that:</li>
+<li>$$$$$$\begin{align}
 
 
 
@@ -220,9 +221,9 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 
 
 \end{align}$$$$$$
-        Therefore, (g_{n}\to g) is uniformly convergent.&lt;/li&gt;
-&lt;/ol&gt;</li>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
+        Therefore, (g_{n}\to g) is uniformly convergent.</li>
+</ol></li>
+<li><div class='proof'><strong>Proof.</strong> 
         $$$$\begin{align}
 
 
@@ -237,7 +238,7 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 
 \end{align}$$$$
         Therefore, (f_{n}g_{n}) is not uniformly convergent. 
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+    <div class='qed'>∎</div></div><br></li>
 </ol>
     </div>
 <div class='problem'><strong>Problem.</strong><br> [24.14]
@@ -251,7 +252,7 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <ol>
-<li>Choose (N&gt;n=\frac{1}{\varepsilon x}). Then,
+<li>Choose (N>n=\frac{1}{\varepsilon x}). Then,
         $$$$\begin{align}
 
 
@@ -265,7 +266,7 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
 
 \end{align}$$$$</li>
 <li>We wish to find: (\lim_{n \to \infty} \sup_{x\in\mathbb{\MakeUppercase{R}}}\left\vert f_{n}-f \right\vert =0):
-        &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
+        <div class='proof'><strong>Proof.</strong> 
             $$$$\begin{align}
 
 
@@ -279,7 +280,7 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
             
 
 \end{align}$$$$ 
-        &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+        <div class='qed'>∎</div></div><br></li>
 <li>Yes, due to the proof above.</li>
 </ol>
 </div>
@@ -300,11 +301,11 @@ The above converges for ((-\frac{5}{6}, \frac{5}{6})).</li>
     <div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [25.9a]
-    (a) Let ( 0 &lt; a &lt; 1 ). Show the series ( \sum_{n=0}^{\infty} x^n ) converges uniformly on ( [-a, a] ) to ( \frac{1}{1 - x} ).
+    (a) Let ( 0 < a < 1 ). Show the series ( \sum_{n=0}^{\infty} x^n ) converges uniformly on ( [-a, a] ) to ( \frac{1}{1 - x} ).
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
-        Let (M_k=\left\vert a_{k} \right\vert b^{k}), where (a_k = 1) and (b = a) in the context of this problem. Then, (\limsup_{n \to \infty} M_k^{\frac{1}{k}}=a), and (R=1). Then, (a \cdot 1 &lt; 1), so (\sum_{k=1}^{\infty} M_k &lt; \infty). Applying the Weierstrass M-test, we show that (\sum_{k=1}^{\infty} x^{k}) converges uniformly on (S). Using the result in section (14.2) in Example (1), we show that (\sum_{k=1}^{\infty} x^{k} = \frac{1}{1-r}). Therefore, (\sum_{k=1}^{\infty} x^{n}) converges uniformly on ([-a,a]) to (\frac{1}{1-x}).       
+        Let (M_k=\left\vert a_{k} \right\vert b^{k}), where (a_k = 1) and (b = a) in the context of this problem. Then, (\limsup_{n \to \infty} M_k^{\frac{1}{k}}=a), and (R=1). Then, (a \cdot 1 < 1), so (\sum_{k=1}^{\infty} M_k < \infty). Applying the Weierstrass M-test, we show that (\sum_{k=1}^{\infty} x^{k}) converges uniformly on (S). Using the result in section (14.2) in Example (1), we show that (\sum_{k=1}^{\infty} x^{k} = \frac{1}{1-r}). Therefore, (\sum_{k=1}^{\infty} x^{n}) converges uniformly on ([-a,a]) to (\frac{1}{1-x}).       
     <div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [25.9b (Bonus)]

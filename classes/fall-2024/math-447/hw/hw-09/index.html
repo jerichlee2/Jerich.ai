@@ -26,9 +26,10 @@
 <body>
     <a href="../../index.html" class="home-button">Back</a>
     <div id="main">
-        &lt;h1&gt;MATH 447: Real Variables - Homework #9&lt;/h1&gt;
-&lt;h3&gt;Jerich Lee&lt;/h3&gt;
-&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+        <h1>MATH 447: Real Variables - Homework \#9</h1>
+<h3>Jerich Lee</h3>
+<h4>December 07, 2024</h4>
+
 <div class='problem'><strong>Problem.</strong><br> [28.6b]
     Let $ f(x) = x \sin \frac{1}{x} $ for $ x \neq 0 $ and $ f(0) = 0 $. See Fig. 19.3.
 
@@ -58,7 +59,7 @@
 <div class='solution'><strong>Solution.</strong> 
     
 <ol>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
+<li><div class='proof'><strong>Proof.</strong> 
             By MVT, $\exists t  s.t.  \frac{f(2)-f(0)}{2-0}=f^\prime (t)$
     $$$$\begin{align}
 
@@ -67,29 +68,29 @@
     
 
 \end{align}$$$$ 
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
-        From $(0,1)$, by MVT, $\exists t_1  s.t.  $ $f^\prime (t)=1$. From $(1,2)$, by MVT, $\exists t_2  s.t.  f^\prime (t)=0$. We know that $1&amp;gt;\frac{1}{7}&amp;gt;0$. By IVTD (Intermediate Value property of Derivatives), $\exists t_3 \in (0,2)  s.t.  f^\prime (t_3)=\frac{1}{7}$.          
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+    <div class='qed'>∎</div></div><br></li>
+<li><div class='proof'><strong>Proof.</strong> 
+        From $(0,1)$, by MVT, $\exists t_1  s.t.  $ $f^\prime (t)=1$. From $(1,2)$, by MVT, $\exists t_2  s.t.  f^\prime (t)=0$. We know that $1>\frac{1}{7}>0$. By IVTD (Intermediate Value property of Derivatives), $\exists t_3 \in (0,2)  s.t.  f^\prime (t_3)=\frac{1}{7}$.          
+    <div class='qed'>∎</div></div><br></li>
 </ol>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [29.10]
     Let $ f(x) = x^2 \sin\left(\frac{1}{x}\right) + \frac{x}{2} $ for $ x \neq 0 $ and $ f(0) = 0 $.
 
 <ol>
-<li>Show $ f'(0) > 0 $; see Exercise 28.4.</li>
+<li>Show $ f'(0) &gt; 0 $; see Exercise 28.4.</li>
 <li>Show $ f $ is not increasing on any open interval containing 0.</li>
 <li>Compare this example with Corollary 29.7(i).</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
-   We will appeal to Corollary 29.7 and determine $f^\prime (x)&lt;0$ for all $x\in (a,b)\cup \left{ 0 \right}$, which will prove that $f(x)$ is not increasing on any open interval containing $0$. Applying Theorem 28.3 from Ross, we get the following:
+   We will appeal to Corollary 29.7 and determine $f^\prime (x)<0$ for all $x\in (a,b)\cup \left{ 0 \right}$, which will prove that $f(x)$ is not increasing on any open interval containing $0$. Applying Theorem 28.3 from Ross, we get the following:
    $$\begin{align}
 
     f^\prime (x)=2x\sin \left( \frac{1}{x} \right) -\cos\left( \frac{1}{x} \right) +\frac{1}{2} \label{3deriv}
    
 \end{align}$$ 
-<em>Discussion:</em> The idea is to find a value $x \in (a,b)$ containing $0$ so the equation above is negative. This involves two cases: $a&lt;x&lt;0$ and $0&lt;x&lt;b$. For the first case, we see that:
+<em>Discussion:</em> The idea is to find a value $x \in (a,b)$ containing $0$ so the equation above is negative. This involves two cases: $a<x<0$ and $0<x<b$. For the first case, we see that:
 $$\begin{align}
 
     \frac{1}{x} = -\frac{3\pi}{2}n \\10pt
@@ -100,7 +101,7 @@ $$\begin{align}
 \end{align}$$
 Where $n\in \mathbb{\MakeUppercase{n}} $. 
 <div class='proof'><strong>Proof.</strong> 
-    Choose $n&gt; -\frac{2}{3\pi a}  s.t.  n\in \mathbb{\MakeUppercase{n}} $. Let $x = -\frac{2}{3\pi n}$. Then, substituting $x$ into \autoref{3deriv} gives us the following:
+    Choose $n> -\frac{2}{3\pi a}  s.t.  n\in \mathbb{\MakeUppercase{n}} $. Let $x = -\frac{2}{3\pi n}$. Then, substituting $x$ into \autoref{3deriv} gives us the following:
     $$\begin{align}
 
         f^\prime (x)=2x\sin \left( \frac{1}{x} \right) -\cos\left( \frac{1}{x} \right) +\frac{1}{2} \\[10pt] 
@@ -108,7 +109,7 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
         = \frac{1-6\pi}{2}<0
     
 \end{align}$$
-    From the above, we were able to find $a<x<0$ such that $f^\prime (x)&lt;0$, which disproves that $f$ is increasing from $(a,b)$ containing $0$. The second case where $0&lt;x&lt;b$ is handled similarly.
+    From the above, we were able to find $a&lt;x&lt;0$ such that $f^\prime (x)<0$, which disproves that $f$ is increasing from $(a,b)$ containing $0$. The second case where $0<x<b$ is handled similarly.
 <div class='qed'>∎</div></div><br>
 </div>
 
@@ -116,7 +117,7 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
     
 
     <ol>
-<li>Show $ x &lt; \tan x $ for all $ x \in \left( 0, \frac{\pi}{2} \right) $.</li>
+<li>Show $ x < \tan x $ for all $ x \in \left( 0, \frac{\pi}{2} \right) $.</li>
 <li>Show $ \frac{x}{\sin x} $ is a strictly increasing function on $ \left( 0, \frac{\pi}{2} \right) $.</li>
 <li>Show $ x \leq \frac{\pi}{2} \sin x $ for $ x \in \left[ 0, \frac{\pi}{2} \right] $.</li>
 </ol>
@@ -124,7 +125,7 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
 <div class='solution'><strong>Solution.</strong> 
     
 <ol>
-<li>To prove that $x&lt;\tan(x)$ such that $f(x)=\tan(x)$ for all $x \in (0, \frac{\pi}{2})$, it suffices to show that $f^\prime (x)&gt;1$ for all $x\in(0,\frac{\pi}{2})$    <div class='proof'><strong>Proof.</strong> 
+<li>To prove that $x<\tan(x)$ such that $f(x)=\tan(x)$ for all $x \in (0, \frac{\pi}{2})$, it suffices to show that $f^\prime (x)>1$ for all $x\in(0,\frac{\pi}{2})$    &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
         $$$$\begin{align}
 
 
@@ -134,9 +135,9 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
         
 
 \end{align}$$$$
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
-<li>To prove that $f(x)=\frac{x}{\sin(x)}$ is strictly increasing on $(0,\frac{\pi}{2})$, it suffices to show that $f^\prime (x)&gt;0$ for all $x\in(0,\frac{\pi}{2})$
-    <div class='proof'><strong>Proof.</strong> 
+    <div class='qed'>∎</div></div><br></li>
+<li>To prove that $f(x)=\frac{x}{\sin(x)}$ is strictly increasing on $(0,\frac{\pi}{2})$, it suffices to show that $f^\prime (x)>0$ for all $x\in(0,\frac{\pi}{2})$
+    &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
         $$$$\begin{align}
 
 
@@ -147,10 +148,10 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
 
 \end{align}$$$$
         \autoref{4.2} is always true for $x\in (0, \frac{\pi}{2})$. 
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+    <div class='qed'>∎</div></div><br></li>
 <li>To prove that $x \leq \frac{\pi}{2}\sin(x)$ such that $f(x) = \frac{\pi}{2}\sin(x)$ for all $x \in [0, \frac{\pi}{2}]$, it suffices to show that $g(x) = \frac{\pi}{2}\sin(x) - x \geq 0$ on the interval.  
 
-    <div class='proof'><strong>Proof.</strong> 
+    &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
         Let $g(x) = \frac{\pi}{2}\sin(x) - x$. To analyze $g(x)$, we compute its derivative:
         $$$$\begin{align}
 
@@ -175,7 +176,7 @@ Where $n\in \mathbb{\MakeUppercase{n}} $.
 
 \end{align}$$$$
         Since $g(x) \geq 0$ on $[0, \frac{\pi}{2}]$, it follows that $x \leq \frac{\pi}{2}\sin(x)$ for all $x \in [0, \frac{\pi}{2}]$.
-    &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+    <div class='qed'>∎</div></div><br></li>
 </ol>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [29.16]
@@ -213,7 +214,7 @@ $$
            s \in K, t \in K, \left\vert s-t \right\vert < \delta \implies  \left\vert g(s)-g(t) \right\vert
         
 \end{align}$$
-        We can then create a partition $P$ of $[a,b]$ such that $u_j, v_j \in P$, but $(u_j,v_j)\notin P$. If $x_{i-1}$ is not $u_j$, then $\Delta x_i &lt; \delta$. We know that $g$ is bounded for all $x\in [a,b]$, so $M_{i}-m_i \leq 2M $ for all $i$ (this includes the points $u_j$ in the finite set $E$), and if $x_{i-1}$ is not one of the finite $u_j$, then $M_{i}-m_i &lt;\varepsilon$. This implies the following:
+        We can then create a partition $P$ of $[a,b]$ such that $u_j, v_j \in P$, but $(u_j,v_j)\notin P$. If $x_{i-1}$ is not $u_j$, then $\Delta x_i < \delta$. We know that $g$ is bounded for all $x\in [a,b]$, so $M_{i}-m_i \leq 2M $ for all $i$ (this includes the points $u_j$ in the finite set $E$), and if $x_{i-1}$ is not one of the finite $u_j$, then $M_{i}-m_i <\varepsilon$. This implies the following:
         $$\begin{align}
 
             U(P,f,x)-L(P,f,x)\leq [b-a]\varepsilon + 2M\varepsilon

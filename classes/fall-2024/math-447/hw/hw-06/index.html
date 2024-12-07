@@ -26,9 +26,10 @@
 <body>
     <a href="../../index.html" class="home-button">Back</a>
     <div id="main">
-        &lt;h1&gt;MATH 447: Real Variables - Homework #6&lt;/h1&gt;
-&lt;h3&gt;Jerich Lee&lt;/h3&gt;
-&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+        <h1>MATH 447: Real Variables - Homework \#6</h1>
+<h3>Jerich Lee</h3>
+<h4>December 07, 2024</h4>
+
 <div class='problem'><strong>Problem.</strong><br> [18.7]
   Prove (xe^{x} =2) for some (x) in ((0,1)).  
 </div>
@@ -54,7 +55,7 @@
 \end{align}$$ 
     We wish to prove that the function ( f(x) = e^x ) is continuous.
   
-    Let ( \epsilon &gt; 0 ). We need to show that for every ( \epsilon &gt; 0 ), there exists ( \delta &gt; 0 ) such that if ( |x - x_0| &lt; \delta ), then ( |e^x - e^{x_0}| &lt; \epsilon ).
+    Let ( \epsilon > 0 ). We need to show that for every ( \epsilon > 0 ), there exists ( \delta > 0 ) such that if ( |x - x_0| < \delta ), then ( |e^x - e^{x_0}| < \epsilon ).
     
     Starting with the expression:
     $$\begin{align}
@@ -94,17 +95,17 @@
     
 \end{align}$$
     
-    Now, choose ( \delta ) small enough such that ( |y| = |x - x_0| &lt; \delta ) satisfies:
+    Now, choose ( \delta ) small enough such that ( |y| = |x - x_0| < \delta ) satisfies:
     $$\begin{align}
 
     \max \left\{ |y|, \left| \frac{y}{1 - y} \right| \right\} &< e^{-x_0} \epsilon
     
 \end{align}$$
-    and ( |y| &lt; 1 ).
+    and ( |y| < 1 ).
     
     Therefore, we can conclude that ( e^x ) is continuous at ( x_0 ).
     \vspace{.5cm} 
-    Invoking Theorem 17.4 iii), we show that (xe^{x}) is a continuous function. To show that there exists (x) such that (h=xe^{x}=2), we can show that pick two points in ((0,1)) : (x_1=0.01), and (x_2=0.99), and substitute these into (h), getting (h(x_1)=0.01) and (f(x_2)=2.66). (h(x_1)&lt;2&lt;h(x_2)), and because (h) is continuous on ((0,1)), we can invoke the IVT, which proves that there exists (x) such that (xe^{x}=2).  
+    Invoking Theorem 17.4 iii), we show that (xe^{x}) is a continuous function. To show that there exists (x) such that (h=xe^{x}=2), we can show that pick two points in ((0,1)) : (x_1=0.01), and (x_2=0.99), and substitute these into (h), getting (h(x_1)=0.01) and (f(x_2)=2.66). (h(x_1)<2<h(x_2)), and because (h) is continuous on ((0,1)), we can invoke the IVT, which proves that there exists (x) such that (xe^{x}=2).  
   
   <div class='qed'>∎</div></div><br>
 </div>
@@ -113,10 +114,10 @@
 </div>
 <div class='solution'><strong>Solution.</strong> 
 <div class='proof'><strong>Proof.</strong> 
-  (\implies:) The goal is to show that every point in (V) has a neighborhood, i.e., is open. Because (U) is open, we know that there exists (r=\varepsilon) for each point (y\in U). Because (f) is continuous, we also know that there is a corresponding (\delta&gt;0) such that (s\in B_{\delta}(x)=V), so this implies that there exists an open ball (V) around each point (s) in (S). Because (d(s,s_0)&lt;\delta \implies d(f(s),f(s))&lt;\varepsilon), and (\delta = V), (\varepsilon \subseteq U), as there may be other points not in (\delta) that map into (U), this implies (f(V)\subseteq U). 
+  (\implies:) The goal is to show that every point in (V) has a neighborhood, i.e., is open. Because (U) is open, we know that there exists (r=\varepsilon) for each point (y\in U). Because (f) is continuous, we also know that there is a corresponding (\delta>0) such that (s\in B_{\delta}(x)=V), so this implies that there exists an open ball (V) around each point (s) in (S). Because (d(s,s_0)<\delta \implies d(f(s),f(s))<\varepsilon), and (\delta = V), (\varepsilon \subseteq U), as there may be other points not in (\delta) that map into (U), this implies (f(V)\subseteq U). 
   \vspace{.5cm}
 
-  (\impliedby:) We know that (V) is open for every (U) in (S^{*}). Choose (\varepsilon \in U  s.t.  \varepsilon &gt;0). Then choose (\delta \in V  s.t.  \delta &gt;0). By implication, we know that (\delta) is open. Then, we can state that (d(s, s_0)&lt;\delta \implies d(f(s),f(s_0))&lt;\varepsilon), which is the definition of continuity at a point.    
+  (\impliedby:) We know that (V) is open for every (U) in (S^{*}). Choose (\varepsilon \in U  s.t.  \varepsilon >0). Then choose (\delta \in V  s.t.  \delta >0). By implication, we know that (\delta) is open. Then, we can state that (d(s, s_0)<\delta \implies d(f(s),f(s_0))<\varepsilon), which is the definition of continuity at a point.    
 <div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [21.3]
@@ -152,7 +153,7 @@ $$\begin{align}
   d(f(p),f(q))\leq d(p,s_0)+d(q,s_0).
 
 \end{align}$$
-Choosing (p,q) such that (d(p,s_0)&lt;\frac{\varepsilon}{2}) and (d(q,s_0)&lt;\varepsilon) , we can pick (\delta =\varepsilon) and use Eqn 14 and 15 to show:
+Choosing (p,q) such that (d(p,s_0)<\frac{\varepsilon}{2}) and (d(q,s_0)<\varepsilon) , we can pick (\delta =\varepsilon) and use Eqn 14 and 15 to show:
 $$\begin{align}
 
   d(f(p),f(q))\leq d(f(p))+d(f(q))\\[10pt] 
@@ -165,8 +166,8 @@ $$\begin{align}
     Consider (f:S\to \mathbb{\MakeUppercase{r}} ) where ((S,d)) is a metric space. Show the following are equivalent:
     <ol>
 <li>(f) is continuous;</li>
-<li>(f^{-1}((a,b)) ) is open in (S) for all (a&lt;b);</li>
-<li>(f^{-1}((a,b))) is open in (S) for all rational (a&lt;b).</li>
+<li>(f^{-1}((a,b)) ) is open in (S) for all (a<b);</li>
+<li>(f^{-1}((a,b))) is open in (S) for all rational (a<b).</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
@@ -199,8 +200,8 @@ $$\begin{align}
 </div>
 <div class='solution'><strong>Solution.</strong> 
  <ol>
-<li>&lt;ol&gt;
-&lt;li&gt;Suppose that (E) is bounded, and (x_0) is not a point of (E). To show that there exists a continuous unbounded real-valued function on (E), consider the function:
+<li><ol>
+<li>Suppose that (E) is bounded, and (x_0) is not a point of (E). To show that there exists a continuous unbounded real-valued function on (E), consider the function:
     $$$$$$\begin{align}
 
 
@@ -210,9 +211,9 @@ $$\begin{align}
 
 
 \end{align}$$$$$$ 
-    This function is continuous on (E).&lt;/li&gt;
-&lt;li&gt;Suppose that (E) is unbounded. Then, (f(x)=x) is unbounded and is a continuous real-valued function on (E).&lt;/li&gt;
-&lt;/ol&gt;</li>
+    This function is continuous on (E).</li>
+<li>Suppose that (E) is unbounded. Then, (f(x)=x) is unbounded and is a continuous real-valued function on (E).</li>
+</ol></li>
 <li>Suppose that (E) is bounded. Then the following:
   $$$$\begin{align}
 
@@ -221,7 +222,7 @@ $$\begin{align}
   
 
 \end{align}$$$$
-(g(x)) is bounded, as (0&lt;g(x)&lt;1) for all (x). (g(x)) has no maximal element, as (x_0) is not a member of (E).</li>
+(g(x)) is bounded, as (0<g(x)<1) for all (x). (g(x)) has no maximal element, as (x_0) is not a member of (E).</li>
 </ol> 
 </div>
 <div class='problem'><strong>Problem.</strong><br> [21.10(d)]
@@ -234,7 +235,7 @@ $$\begin{align}
   Is it true that any bounded continuous function on (\mathbb{\MakeUppercase{r}}) is uniformly continuous? 
 </div>
 <div class='solution'><strong>Solution.</strong> 
-  No. Choose (f=\frac{1}{x-x_0}) with (x\in (0,x_0)). Uniform continuity states that (\forall \varepsilon, \exists \delta  s.t.  d(p,q)&lt;\delta \implies d(f(p),f(q))) for all (p, q). Choose an arbitrary (\varepsilon). Then, there exists a corresponding (\delta) such that (d(x,x_0)&lt;\delta\implies d(f(x),f(x_0))&lt;\varepsilon). But as we take the same (\delta) about (x) closer and closer to (x_0), (d(f(x),f(x_n))) will grow larger and larger, eventually exceeding our chosen (\varepsilon). Therefore, there exists no constant (\delta) that satisfies our chosen (\varepsilon). Therefore, our bounded, continuous function (f) is not uniformly continuous.    
+  No. Choose (f=\frac{1}{x-x_0}) with (x\in (0,x_0)). Uniform continuity states that (\forall \varepsilon, \exists \delta  s.t.  d(p,q)<\delta \implies d(f(p),f(q))) for all (p, q). Choose an arbitrary (\varepsilon). Then, there exists a corresponding (\delta) such that (d(x,x_0)<\delta\implies d(f(x),f(x_0))<\varepsilon). But as we take the same (\delta) about (x) closer and closer to (x_0), (d(f(x),f(x_n))) will grow larger and larger, eventually exceeding our chosen (\varepsilon). Therefore, there exists no constant (\delta) that satisfies our chosen (\varepsilon). Therefore, our bounded, continuous function (f) is not uniformly continuous.    
 </div>
     </div>
 </body>

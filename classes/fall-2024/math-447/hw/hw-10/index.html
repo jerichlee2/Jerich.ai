@@ -26,9 +26,10 @@
 <body>
     <a href="../../index.html" class="home-button">Back</a>
     <div id="main">
-        &lt;h1&gt;MATH 447: Real Variables - Homework #10&lt;/h1&gt;
-&lt;h3&gt;Jerich Lee&lt;/h3&gt;
-&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+        <h1>MATH 447: Real Variables - Homework \#10</h1>
+<h3>Jerich Lee</h3>
+<h4>December 07, 2024</h4>
+
 <div class='problem'><strong>Problem.</strong><br> [26.6]
      
     Let $ s(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots $ and $ c(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots $ for $ x \in \mathbb{R} $.
@@ -42,8 +43,8 @@
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <ol>
-<li>&lt;ol&gt;
-&lt;li&gt;&amp;lt;div class='proof'&amp;gt;&amp;lt;strong&amp;gt;Proof.&amp;lt;/strong&amp;gt; 
+<li><ol>
+<li><div class='proof'><strong>Proof.</strong> 
         For $x\in\mathbb{\MakeUppercase{r}}$: 
    $$$$$$\begin{align}
 
@@ -62,8 +63,8 @@
 
 
 \end{align}$$$$$$ 
-    &amp;lt;div class='qed'&amp;gt;∎&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;&lt;/li&gt;
-&lt;li&gt;&amp;lt;div class='proof'&amp;gt;&amp;lt;strong&amp;gt;Proof.&amp;lt;/strong&amp;gt; 
+    <div class='qed'>∎</div></div><br></li>
+<li><div class='proof'><strong>Proof.</strong> 
         $$$$$$\begin{align}
 
 
@@ -77,9 +78,9 @@
 
 
 \end{align}$$$$$$
-    &amp;lt;div class='qed'&amp;gt;∎&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;&lt;/li&gt;
-&lt;/ol&gt;</li>
-<li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
+    <div class='qed'>∎</div></div><br></li>
+</ol></li>
+<li><div class='proof'><strong>Proof.</strong> 
             $$$$\begin{align}
 
 
@@ -90,7 +91,7 @@
         
 
 \end{align}$$$$
-        &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
+        <div class='qed'>∎</div></div><br></li>
 <li>todo</li>
 </ol>
    </div>
@@ -98,9 +99,9 @@
 
      A function $ f $ on $[a, b]$ is called a <em>step function</em> if there exists a partition 
     $$
-    P = {a = u_0 &lt; u_1 &lt; \cdots &lt; u_m = b}
+    P = {a = u_0 < u_1 < \cdots < u_m = b}
     $$ 
-    of $[a, b]$ —not $ P = {a = u_0 &lt; u_1 &lt; \cdots &lt; c_m = b} $, as stated in the textbook— such that $ f $ is constant on each interval $(u_{j-1}, u_j)$, say $ f(x) = c_j $ for $ x $ in $(u_{j-1}, u_j)$.
+    of $[a, b]$ —not $ P = {a = u_0 < u_1 < \cdots < c_m = b} $, as stated in the textbook— such that $ f $ is constant on each interval $(u_{j-1}, u_j)$, say $ f(x) = c_j $ for $ x $ in $(u_{j-1}, u_j)$.
     
     <ol>
 <li>Show that a step function $ f $ is integrable and evaluate $ \int_a^b f $.</li>
@@ -114,7 +115,7 @@
    <div class='qed'>∎</div></div><br> 
 </div>
 <div class='problem'><strong>Problem.</strong><br> [33.7]
-    Let $ f $ be a bounded function on $[a, b]$, so that there exists $ B > 0 $ such that $ |f(x)| \leq B $ for all $ x \in [a, b] $.
+    Let $ f $ be a bounded function on $[a, b]$, so that there exists $ B &gt; 0 $ such that $ |f(x)| \leq B $ for all $ x \in [a, b] $.
 
 <ol>
 <li>Show
@@ -127,7 +128,7 @@
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
-        $f$ is a bounded function on $[a,b]$, so there exists $B&gt;0  s.t.  \left\vert f(x) \right\vert \leq B$ for all $x\in[a,b]$.
+        $f$ is a bounded function on $[a,b]$, so there exists $B>0  s.t.  \left\vert f(x) \right\vert \leq B$ for all $x\in[a,b]$.
         $$\begin{align}
 
             u(f^{2},p) &= \sum_{i=1}^{\infty} M_i^{2}\Delta x_{i} \\[10pt] 
@@ -159,7 +160,7 @@
     By FTC I,
     $$\begin{align}
 
-        F^\prime (3) = e^{t^{2}} = e^{9} 
+        F^\prime (3)  = e^{9} 
     
 \end{align}$$
    <div class='qed'>∎</div></div><br> 
@@ -180,10 +181,10 @@ Show $ F $ is differentiable on $ \mathbb{R} $ and compute $ F' $.
             &= -\int_{0}^{x-1} f(t) \,\mathrm{d}t + \int_{0}^{x+1} f(t) \,\mathrm{d}t \\[10pt] 
         
 \end{align}$$
-        By FTC I, we get:
+        By FTC II, we get:
         $$\begin{align}
 
-            F^\prime (x) &= f(x_{0+1}) - f(x_{0-1}) 
+            F^\prime (x_0) &= f(x_{0}+1) - f(x_{0}-1) 
         
 \end{align}$$
     <div class='qed'>∎</div></div><br>

@@ -26,9 +26,10 @@
 <body>
     <a href="../../index.html" class="home-button">Back</a>
     <div id="main">
-        &lt;h1&gt;MATH 447: Real Variables - Homework #4&lt;/h1&gt;
-&lt;h3&gt;Jerich Lee&lt;/h3&gt;
-&lt;h4&gt;December 02, 2024&lt;/h4&gt;
+        <h1>MATH 447: Real Variables - Homework \#4</h1>
+<h3>Jerich Lee</h3>
+<h4>December 07, 2024</h4>
+
 
 <div class='problem'><strong>Problem.</strong><br> [13.3(a)]
 Let (B) be the set of all bounded sequences (\mathbf{x} = (x_{1}, x_{2}, \ldots)) and define (d(\mathbf{x}, \mathbf{y})=\sup \left{ \left\vert x_{j}-y_{j}  \right\vert :j=1,2, \ldots   \right} ).
@@ -114,7 +115,7 @@ Show that the interior of each of the following sets is the empty set.
         r_{1} <r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )<r_{2} \\[10pt] 
     
 \end{align}$$
-    Suppose that the radius of any neighborhood about any point in (E) is a rational number. Then, by above, there exists members of (B_{r}^{o}(s_{o} )) that are irrational, and (\notin E ), as (E) contains only rational numbers. Now suppose that we set our radius (r) to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let (A)  be a rational number, and (C)  to be an irrational number. Then, (B=\frac{A+C}{2}) is irrational, and (A&lt;B&lt;C). Therefore, we have shown that there is no value of radius (r) that satisfies (B_{r}^{o}(s_{o} )\subset E) for any rational point (s_{o} ) in (E).  e
+    Suppose that the radius of any neighborhood about any point in (E) is a rational number. Then, by above, there exists members of (B_{r}^{o}(s_{o} )) that are irrational, and (\notin E ), as (E) contains only rational numbers. Now suppose that we set our radius (r) to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let (A)  be a rational number, and (C)  to be an irrational number. Then, (B=\frac{A+C}{2}) is irrational, and (A<B<C). Therefore, we have shown that there is no value of radius (r) that satisfies (B_{r}^{o}(s_{o} )\subset E) for any rational point (s_{o} ) in (E).  e
    <div class='qed'>∎</div></div><br> 
 </div>
 
@@ -137,7 +138,7 @@ Let ((S,d)) be any metric space.
 </div>
 
 <div class='solution'><strong>Solution.</strong> 
-   We will show that if a sequence (s_{n} ) converges to (L_{1} ) and (L_{2} ), (\forall \varepsilon &gt;0), (\exists N_{1} s.t.  m,n &gt;N \implies \left\vert s_{n} -L_{1}   \right\vert &lt;\frac{\varepsilon}{2}) and (\exists N_{2}  s.t.  n&gt;N_{2} \implies \left\vert s_{n} -L_{2}  \right\vert &lt;\frac{\varepsilon}{2}). Choose (N_{\text{max} }=\text{max}(N_{1},N_{2} )  ). Then, (n&gt;N_{\text{max} } \implies )
+   We will show that if a sequence (s_{n} ) converges to (L_{1} ) and (L_{2} ), (\forall \varepsilon >0), (\exists N_{1} s.t.  m,n >N \implies \left\vert s_{n} -L_{1}   \right\vert <\frac{\varepsilon}{2}) and (\exists N_{2}  s.t.  n>N_{2} \implies \left\vert s_{n} -L_{2}  \right\vert <\frac{\varepsilon}{2}). Choose (N_{\text{max} }=\text{max}(N_{1},N_{2} )  ). Then, (n>N_{\text{max} } \implies )
    $$\begin{align}
 
     d\left( s_{n}  -L_{1}  + (L_{2}-s_{n}) \right)  <  d\left( \frac{\varepsilon}{2} \right)  +  d\left( \frac{\varepsilon}{2} \right)< \varepsilon \\[10pt] 
@@ -154,8 +155,8 @@ Let ((S,d)) be any metric space.
 </div>
 
 <div class='solution'><strong>Solution.</strong> 
-    Let (s_{n} ) be a sequence in (S). By the given, (\forall \varepsilon &gt;0,\exists N s.t.  n&gt;N\implies d(s_{n}-s)). Let (s_{n_{k}} ) be a subsequence of (s_{n} ). We know that (n_{k} &gt;k) for all (k). 
-    Now let (s=\lim_{n \to \infty} s_{n} ) and let (\varepsilon &gt;0). There exists (N) such that (n&gt;N) implies (d(s_{n} -s)&lt;\varepsilon ). Now (k&gt;N) implies (n_{k} &gt;N), implying (d(s_{n_{k} }-s )&lt;\varepsilon ). Therefore,
+    Let (s_{n} ) be a sequence in (S). By the given, (\forall \varepsilon >0,\exists N s.t.  n>N\implies d(s_{n}-s)). Let (s_{n_{k}} ) be a subsequence of (s_{n} ). We know that (n_{k} >k) for all (k). 
+    Now let (s=\lim_{n \to \infty} s_{n} ) and let (\varepsilon >0). There exists (N) such that (n>N) implies (d(s_{n} -s)<\varepsilon ). Now (k>N) implies (n_{k} >N), implying (d(s_{n_{k} }-s )<\varepsilon ). Therefore,
     $$\begin{align}
 
         \lim_{k \to \infty} s_{n_{k} }=s 
@@ -181,9 +182,9 @@ Let ((S,d)) be any metric space.
     \forall \varepsilon >0, \exists N\ s.t. \ m,n>N\implies d(s_{m} -s_{n} )<\varepsilon 
    
 \end{align}$$ 
-   Want: If (s_{n} ) has a convergent subsequence, then (L\in S), (d(s_{n_{k} }-L )&lt;\varepsilon\implies d(s_{n} -L)&lt;\varepsilon  ).
-   Choose (N) such that (n&gt;N\implies d(s_{n_{k}  } -L)&lt;\frac{\varepsilon}{2}).
-   Choose (N_{1} ) such that (d(s_{n_{k+1} }-s_{n_{k} }  )&lt;\frac{\varepsilon}{2})  
+   Want: If (s_{n} ) has a convergent subsequence, then (L\in S), (d(s_{n_{k} }-L )<\varepsilon\implies d(s_{n} -L)<\varepsilon  ).
+   Choose (N) such that (n>N\implies d(s_{n_{k}  } -L)<\frac{\varepsilon}{2}).
+   Choose (N_{1} ) such that (d(s_{n_{k+1} }-s_{n_{k} }  )<\frac{\varepsilon}{2})  
    Then we get:
    $$\begin{align}
 
@@ -219,8 +220,8 @@ Let ((S,d)) be any metric space.
 </ol> 
         
         
-       (\implies :)  To prove part one of the lemma above, we will suppose that ((<strong>x</strong>^{k})_{k}) is Cauchy. Fix (i). Want: ((x_{i}^{(k)})_{k}) is Cauchy. For (\varepsilon &gt; 0) we need to find (N s.t.  \left\vert x_{i}^{(k)} - x_{i}^{(m)} \right\vert &lt;\varepsilon ) for (k, m&gt;N). We need to find an (N s.t.  d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon) for all (k,m&gt;N). (\varepsilon &gt; d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup \left{ \left\vert  x_{i}- y_{i}\right\vert : i= 1,2, \ldots , n   \right} \geq \left\vert x_{i}-y_{i} \right\vert ). Therefore, this (N) works in the forward direction.
-        (\impliedby :) Suppose ((x_{i}^{(k)})_{k}) is Cauchy (\forall  i). We want to find: ((\mathbf{x}^{(k)})_{k}) is Cauchy. We fix (\varepsilon &gt;0). We need to find (N s.t.  d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon ) for (k, m&gt;N). For (1\leq i\leq n) find (N_{i} \in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert &lt; \varepsilon) for (k,m&gt;N_{i} ). Then, we know that:
+       (\implies :)  To prove part one of the lemma above, we will suppose that ((<strong>x</strong>^{k})_{k}) is Cauchy. Fix (i). Want: ((x_{i}^{(k)})_{k}) is Cauchy. For (\varepsilon > 0) we need to find (N s.t.  \left\vert x_{i}^{(k)} - x_{i}^{(m)} \right\vert <\varepsilon ) for (k, m>N). We need to find an (N s.t.  d(\mathbf{x}^{k}, \mathbf{x}^{m})<\varepsilon) for all (k,m>N). (\varepsilon > d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup \left{ \left\vert  x_{i}- y_{i}\right\vert : i= 1,2, \ldots , n   \right} \geq \left\vert x_{i}-y_{i} \right\vert ). Therefore, this (N) works in the forward direction.
+        (\impliedby :) Suppose ((x_{i}^{(k)})_{k}) is Cauchy (\forall  i). We want to find: ((\mathbf{x}^{(k)})_{k}) is Cauchy. We fix (\varepsilon >0). We need to find (N s.t.  d(\mathbf{x}^{k}, \mathbf{x}^{m})<\varepsilon ) for (k, m>N). For (1\leq i\leq n) find (N_{i} \in \mathbb{\MakeUppercase{n}}  s.t.  \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert < \varepsilon) for (k,m>N_{i} ). Then, we know that:
         $$\begin{align}
 
             x_{i}^{(k)} <\varepsilon + x_{i}^{(m)} \\[10pt] 

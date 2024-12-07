@@ -44,43 +44,54 @@ def latex_to_html(latex_file, output_html, css_path):
             latex_content = file.read()
 
         # Current date
-        current_date = datetime.now().strftime("%B %d, %Y")  # Format: "Month Day, Year"
+        current_date = datetime.now().strftime("%B %d, %Y")
 
         # Extract preamble information for title, author, and date
         title_match = re.search(r"\\title\{(.*?)\}", latex_content, re.DOTALL)
         author_match = re.search(r"\\author\{(.*?)\}", latex_content, re.DOTALL)
         date_match = re.search(r"\\date\{(.*?)\}", latex_content, re.DOTALL)
 
-        title = f"<h1>{title_match.group(1).strip()}</h1>" if title_match else ""
-        author = f"<h3>{author_match.group(1).strip()}</h3>" if author_match else ""
-
+        title_text = title_match.group(1).strip() if title_match else ""
+        author_text = author_match.group(1).strip() if author_match else ""
         if date_match:
-            date_content = date_match.group(1).replace("\\today", current_date).strip()
-            date = f"<h4>{date_content}</h4>"
+            date_text = date_match.group(1).replace("\\today", current_date).strip()
         else:
-            date = ""
+            date_text = ""
 
-        title_block = f"{title}\n{author}\n{date}"
+        # Create the title block HTML
+        title_block = ""
+        if title_text:
+            title_block += f"<h1>{title_text}</h1>\n"
+        if author_text:
+            title_block += f"<h3>{author_text}</h3>\n"
+        if date_text:
+            title_block += f"<h4>{date_text}</h4>\n"
 
-        start = latex_content.find("\\begin{document}")
-        end = latex_content.find("\\end{document}")
+        # Replace \maketitle with a placeholder so it won't be processed/escaped
+        content = latex_content.replace("\\maketitle", "TITLE_PLACEHOLDER")
+
+        # Extract the body content between \begin{document} and \end{document}
+        start = content.find("\\begin{document}")
+        end = content.find("\\end{document}")
 
         if start == -1 or end == -1:
             raise ValueError("Could not find \\begin{document} or \\end{document} in the LaTeX file.")
 
         start += len("\\begin{document}")
-        content = latex_content[start:end].strip()
+        body_content = content[start:end].strip()
 
-        content = content.replace("\\maketitle", title_block)
+        # Process the LaTeX content
+        html_content = process_latex_content(body_content)
 
-        # Process the content
-        html_content = process_latex_content(content)
+        # Now insert the title block HTML after processing
+        html_content = html_content.replace("TITLE_PLACEHOLDER", title_block)
 
-        html_content = html_template.replace("CONTENT_PLACEHOLDER", html_content)
+        # Insert into the HTML template
+        final_html = html_template.replace("CONTENT_PLACEHOLDER", html_content)
         os.makedirs(os.path.dirname(output_html), exist_ok=True)
 
         with open(output_html, 'w') as output_file:
-            output_file.write(html_content)
+            output_file.write(final_html)
 
         print(f"HTML file created successfully: {output_html}")
 
@@ -92,14 +103,12 @@ def process_latex_content(content):
     # Remove comments
     content = re.sub(r"(?<!\\)%.*", "", content)
 
-    # Initialize variables
     pos = 0
     length = len(content)
     html_output = ""
 
     while pos < length:
         if content.startswith("\\begin{", pos):
-            # Start of an environment
             env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
             if env_match:
                 env_name = env_match.group(1)
@@ -119,12 +128,11 @@ def process_latex_content(content):
                 elif env_name in ["problem", "solution", "proof"]:
                     html_output += handle_custom_environment(env_name, env_content)
                 else:
-                    # Handle other environments as plain text for now
+                    # Handle other environments as normal text
                     html_output += process_latex_content(env_content)
             else:
                 pos += 1
         elif content.startswith("\\", pos):
-            # Handle commands
             command_match = re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:])
             if command_match:
                 command = command_match.group(1)
@@ -135,7 +143,6 @@ def process_latex_content(content):
             else:
                 pos += 1
         else:
-            # Regular text
             text = ""
             while pos < length and not content.startswith("\\begin{", pos) and not content.startswith("\\", pos):
                 text += content[pos]
@@ -145,7 +152,6 @@ def process_latex_content(content):
     return html_output
 
 def extract_environment(content, pos, env_name):
-    # Extracts the content of an environment starting at pos
     start_tag = f"\\begin{{{env_name}}}"
     end_tag = f"\\end{{{env_name}}}"
     start_pos = pos + len(start_tag)
@@ -165,14 +171,13 @@ def extract_environment(content, pos, env_name):
     raise ValueError(f"Environment '{env_name}' not closed properly")
 
 def handle_enumerate(content):
-    # Parses the content of an enumerate environment and returns HTML
     items = []
     pos = 0
     length = len(content)
     while pos < length:
         if content.startswith("\\item", pos):
             pos += len("\\item")
-            # Skip optional argument after \item, if any
+            # Skip optional argument
             if pos < length and content[pos] == '[':
                 bracket_count = 1
                 pos += 1
@@ -182,24 +187,20 @@ def handle_enumerate(content):
                     elif content[pos] == ']':
                         bracket_count -= 1
                     pos += 1
-            # Extract item content
             item_content = ""
             while pos < length:
                 if content.startswith("\\item", pos) or content.startswith("\\end{", pos):
                     break
                 elif content.startswith("\\begin{enumerate}", pos):
-                    # Handle nested enumerate
                     nested_env_content, pos = extract_environment(content, pos, "enumerate")
                     nested_html = handle_enumerate(nested_env_content)
                     item_content += nested_html
                 elif content.startswith("\\begin{itemize}", pos):
-                    # Handle nested itemize
                     nested_env_content, pos = extract_environment(content, pos, "itemize")
                     nested_html = handle_itemize(nested_env_content)
                     item_content += nested_html
                 else:
                     if content.startswith("\\begin{", pos):
-                        # Handle other nested environments
                         env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
                         if env_match:
                             env_name = env_match.group(1)
@@ -214,18 +215,17 @@ def handle_enumerate(content):
                         pos += 1
             items.append(f"<li>{process_latex_content(item_content.strip())}</li>")
         else:
-            pos += 1  # Skip any whitespace or unexpected content
+            pos += 1
     return "<ol>\n" + "\n".join(items) + "\n</ol>"
 
 def handle_itemize(content):
-    # Similar to handle_enumerate but returns <ul>
     items = []
     pos = 0
     length = len(content)
     while pos < length:
         if content.startswith("\\item", pos):
             pos += len("\\item")
-            # Skip optional argument after \item, if any
+            # Skip optional argument
             if pos < length and content[pos] == '[':
                 bracket_count = 1
                 pos += 1
@@ -235,18 +235,15 @@ def handle_itemize(content):
                     elif content[pos] == ']':
                         bracket_count -= 1
                     pos += 1
-            # Extract item content
             item_content = ""
             while pos < length:
                 if content.startswith("\\item", pos) or content.startswith("\\end{", pos):
                     break
                 elif content.startswith("\\begin{itemize}", pos):
-                    # Handle nested itemize
                     nested_env_content, pos = extract_environment(content, pos, "itemize")
                     nested_html = handle_itemize(nested_env_content)
                     item_content += nested_html
                 elif content.startswith("\\begin{enumerate}", pos):
-                    # Handle nested enumerate
                     nested_env_content, pos = extract_environment(content, pos, "enumerate")
                     nested_html = handle_enumerate(nested_env_content)
                     item_content += nested_html
@@ -266,11 +263,10 @@ def handle_itemize(content):
                         pos += 1
             items.append(f"<li>{process_latex_content(item_content.strip())}</li>")
         else:
-            pos += 1  # Skip any whitespace or unexpected content
+            pos += 1
     return "<ul>\n" + "\n".join(items) + "\n</ul>"
 
 def handle_verbatim(content):
-    # Escape HTML special characters
     escaped_content = (
         content
         .replace("&", "&amp;")
@@ -278,23 +274,18 @@ def handle_verbatim(content):
         .replace(">", "&gt;")
     )
     return f"<pre>{escaped_content}</pre>"
+
 def handle_lstlisting(content):
-    """
-    Handle the content of a lstlisting environment, ensuring no LaTeX rendering
-    or processing occurs, even if it contains square brackets or other special characters.
-    """
-    # Escape HTML and special characters to prevent rendering issues
     escaped_content = (
         content
         .replace("&", "&amp;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
-        .replace("{", "&#123;")  # Escaping '{'
-        .replace("}", "&#125;")  # Escaping '}'
-        .replace("[", "&#91;")  # Escaping '['
-        .replace("]", "&#93;")  # Escaping ']'
+        .replace("{", "&#123;")
+        .replace("}", "&#125;")
+        .replace("[", "&#91;")
+        .replace("]", "&#93;")
     )
-    # Wrap the escaped content in a preformatted block
     return f"<pre class='code-block'>{escaped_content}</pre>"
 
 def handle_math_environment(env_name, content):
@@ -309,7 +300,6 @@ def handle_custom_environment(env_name, content):
     template = env_map.get(env_name, f"<div class='{env_name}'>{{}}</div>")
     processed_content = process_latex_content(content)
     return template.format(processed_content)
-    
 
 def handle_figure(content):
     includegraphics_match = re.search(r"\\includegraphics\[.*?\]\{(.*?)\}", content, re.DOTALL)
@@ -319,7 +309,7 @@ def handle_figure(content):
     caption_html = f"<figcaption>{caption}</figcaption>" if caption else ""
     return f"""
     <figure>
-        <img src="{image_path}" alt="{caption}" style="max-width:100\%;height:auto;">
+        <img src="{image_path}" alt="{caption}" style="max-width:100%;height:auto;">
         {caption_html}
     </figure>
     """
@@ -344,29 +334,28 @@ def process_command(command, argument):
         return f"\\{command}{argument}"
 
 def process_text_block(text_block):
-    # First, replace \vspace with a line break
-    text_block = re.sub(r"\\vspace\*?\{\s*.*?\s*\}", "<br>", text_block)
-
-    # Split text_block into text and math parts
-    math_pattern = r'(\\\[.*?\\\]|\\\(.+?\\\)|\$\$.*?\$\$|\$(?:[^$\\]|\\.)+\$)'
+    math_pattern = r'(\\\[.*?\\\]|\\\(.+?\)|\$\$.*?\$\$|\$(?:[^$\\]|\\.)+\$)'
     processed_parts = []
     last_end = 0
     for match in re.finditer(math_pattern, text_block, flags=re.DOTALL):
         start, end = match.span()
+        # Text before math
         if start > last_end:
             text_part = text_block[last_end:start]
             processed_parts.append(process_text(text_part))
+        # Math segment: escape < and >
         math_expr = match.group()
+        math_expr = math_expr.replace('<', '&lt;').replace('>', '&gt;')
         processed_parts.append(math_expr)
         last_end = end
+    # Remaining text after last math block
     if last_end < len(text_block):
         text_part = text_block[last_end:]
         processed_parts.append(process_text(text_part))
     return ''.join(processed_parts)
 
 def process_text(text_part):
-    # Handle LaTeX commands within text
-    # text_part = text_part.replace('\\\\', '<br>')
+    # Replace LaTeX markup with HTML tags (non-math text)
     text_part = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", text_part)
     text_part = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", text_part)
     text_part = re.sub(r"\\subsubsection\{(.*?)\}", r"<h4>\1</h4>", text_part)
@@ -374,10 +363,11 @@ def process_text(text_part):
     text_part = re.sub(r"\\textbf\{(.*?)\}", r"<strong>\1</strong>", text_part)
     text_part = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", text_part)
     text_part = text_part.replace("\\noindent", "")
-    # Replace special characters
+
+    # Escape only '&' here (to avoid breaking HTML entities),
+    # Leave < and > alone so HTML tags remain intact.
     text_part = text_part.replace('&', '&amp;')
-    text_part = text_part.replace('<', '&lt;')
-    text_part = text_part.replace('>', '&gt;')
+
     return text_part
 
 if __name__ == "__main__":

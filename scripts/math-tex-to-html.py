@@ -367,6 +367,8 @@ def process_text(text_part):
     # Escape only '&' here (to avoid breaking HTML entities),
     # Leave < and > alone so HTML tags remain intact.
     text_part = text_part.replace('&', '&amp;')
+    text_part = text_part.replace('<', '&lt;')
+    text_part = text_part.replace('>', '&gt;')
 
     return text_part
 

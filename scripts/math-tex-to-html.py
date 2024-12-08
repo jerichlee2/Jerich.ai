@@ -102,19 +102,22 @@ def latex_to_html(latex_file, output_html, css_path):
 def process_latex_content(content, in_math_mode=False):
     # Remove comments
     content = re.sub(r"(?<!\\)%.*", "", content)
-
     pos = 0
     length = len(content)
     html_output = ""
 
     while pos < length:
+        # Check for environment start first
         if content.startswith("\\begin{", pos):
             env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
             if env_match:
                 env_name = env_match.group(1)
-                env_content, pos = extract_environment(content, pos, env_name)
+                env_content, new_pos = extract_environment(content, pos, env_name)
+                pos = new_pos
                 if env_name == "enumerate":
                     html_output += handle_enumerate(env_content)
+                elif env_name == "itemize":
+                    html_output += handle_itemize(env_content)
                 elif env_name == "verbatim":
                     html_output += handle_verbatim(env_content)
                 elif env_name == "lstlisting":
@@ -122,30 +125,48 @@ def process_latex_content(content, in_math_mode=False):
                 elif env_name == "figure":
                     html_output += handle_figure(env_content)
                 elif env_name in ['align', 'align*', 'equation', 'equation*', 'gather', 'multline', 'split']:
-                    html_output += handle_math_environment(env_name, env_content)
+                    # Math environment
+                    html_output += f"$$\\begin{{{env_name}}}\n{env_content}\n\\end{{{env_name}}}$$"
                 elif env_name in ["problem", "solution", "proof"]:
                     html_output += handle_custom_environment(env_name, env_content)
                 else:
-                    # Handle other environments as normal text
-                    html_output += process_latex_content(env_content)
+                    # Generic environment
+                    html_output += process_latex_content(env_content, in_math_mode=in_math_mode)
             else:
-                pos += 1
-        elif content.startswith("\\", pos):
-            command_match = re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:])
-            if command_match:
-                command = command_match.group(1)
-                star = command_match.group(2)
-                argument = command_match.group(3) if command_match.group(3) else ""
-                pos += len(command_match.group(0))
-                html_output += process_command(command, argument)
-            else:
+                # Not a recognized environment, move forward
                 pos += 1
         else:
-            text = ""
-            while pos < length and not content.startswith("\\begin{", pos) and not content.startswith("\\", pos):
-                text += content[pos]
-                pos += 1
-            html_output += process_text_block(text)
+            # Check for \left( or \right) first to avoid treating them as commands with braces
+            special_delim_match = re.match(r"\\(left|right)(\(|\)|\[|\]|\{|\}|\\|\|)", content[pos:])
+            if special_delim_match:
+                direction = special_delim_match.group(1)  # 'left' or 'right'
+                delimiter = special_delim_match.group(2)  # actual delimiter like ( or )
+                pos += len(special_delim_match.group(0))
+                if in_math_mode:
+                    # Keep them as \left( or \right)
+                    html_output += f"\\{direction}{delimiter}"
+                else:
+                    # Outside math mode, just show the delimiter character
+                    html_output += delimiter
+            else:
+                # Now try a generic command
+                command_match = re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:])
+                if command_match:
+                    command = command_match.group(1)
+                    argument = command_match.group(3) if command_match.group(3) else ""
+                    pos += len(command_match.group(0))
+                    html_output += process_command(command, argument, in_math_mode=in_math_mode)
+                else:
+                    # No environment, no special delimiter, no command
+                    # Treat the next characters as text until something else occurs
+                    text_start = pos
+                    while pos < length \
+                          and not content.startswith("\\begin{", pos) \
+                          and not re.match(r"\\(left|right)(\(|\)|\[|\]|\{|\}|\\|\|)", content[pos:]) \
+                          and not re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:]):
+                        pos += 1
+                    text = content[text_start:pos]
+                    html_output += process_text_block(text)
 
     return html_output
 
@@ -211,10 +232,11 @@ def handle_enumerate(content):
                     else:
                         item_content += content[pos]
                         pos += 1
-            items.append(f"<li>{process_latex_content(item_content.strip())}</li>")
+            items.append(f"<li>{(item_content.strip())}</li>")
         else:
             pos += 1
     return "<ol>\n" + "\n".join(items) + "\n</ol>"
+
 
 def handle_verbatim(content):
     escaped_content = (
@@ -238,19 +260,6 @@ def handle_lstlisting(content):
     )
     return f"<pre class='code-block'>{escaped_content}</pre>"
 
-def handle_math_environment(env_name, content):
-    return f"$$\\begin{{{env_name}}}\n{content}\n\\end{{{env_name}}}$$"
-
-def handle_custom_environment(env_name, content):
-    env_map = {
-        "problem": "<div class='problem'><strong>Problem.</strong><br> {}</div>",
-        "solution": "<div class='solution'><strong>Solution.</strong> {}</div>",
-        "proof": "<div class='proof'><strong>Proof.</strong> {}<div class='qed'>∎</div></div><br>",
-    }
-    template = env_map.get(env_name, f"<div class='{env_name}'>{{}}</div>")
-    processed_content = process_latex_content(content)
-    return template.format(processed_content)
-
 def handle_figure(content):
     includegraphics_match = re.search(r"\\includegraphics\[.*?\]\{(.*?)\}", content, re.DOTALL)
     caption_match = re.search(r"\\caption\{(.*?)\}", content, re.DOTALL)
@@ -264,86 +273,101 @@ def handle_figure(content):
     </figure>
     """
 
+def handle_custom_environment(env_name, content):
+    env_map = {
+        "problem": "<div class='problem'><strong>Problem.</strong><br> {}</div>",
+        "solution": "<div class='solution'><strong>Solution.</strong> {}</div>",
+        "proof": "<div class='proof'><strong>Proof.</strong> {}<div class='qed'>∎</div></div><br>",
+    }
+    template = env_map.get(env_name, f"<div class='{env_name}'>{{}}</div>")
+    processed_content = process_latex_content(content)
+    return template.format(processed_content)
+
 def process_command(command, argument, in_math_mode=False):
-    # Remove outer braces if present
     arg_content = argument.strip()
     if arg_content.startswith('{') and arg_content.endswith('}'):
-        arg_content = arg_content[1:-1]
+        arg_content = arg_content[1:-1].strip()
 
-    # If in math mode, we want to do minimal transformations
     if in_math_mode:
         if command == 'MakeUppercase':
-            # Convert the argument to uppercase and return it as plain text
             return arg_content.upper()
         elif command == 'mathbb':
-            # Just return \mathbb{UPPERCASED_CONTENT} if needed
-            # If the argument contained another command like \MakeUppercase,
-            # you'd have processed it before calling process_command again.
-            # Here, we assume arg_content is already processed.
+            m = re.search(r'\\MakeUppercase\{([^}]*)\}', arg_content)
+            if m:
+                uppercase_text = m.group(1).upper()
+                arg_content = re.sub(r'\\MakeUppercase\{[^}]*\}', uppercase_text, arg_content)
+            return f"\\mathbb{{{arg_content}}}"
+        elif command == 'mathcal':
+            m = re.search(r'\\MakeUppercase\{([^}]*)\}', arg_content)
+            if m:
+                uppercase_text = m.group(1).upper()
+                arg_content = re.sub(r'\\MakeUppercase\{[^}]*\}', uppercase_text, arg_content)
             return f"\\mathbb{{{arg_content}}}"
         else:
-            # For other commands inside math, return them as is
             return f"\\{command}{{{arg_content}}}"
     else:
-        # Outside math mode, you may apply your existing HTML transformations if desired.
-        if command == 'section':
+        if command == 'MakeUppercase':
+            # Outside math mode, just uppercase the argument
+            return arg_content.upper()
+        elif command == 'section':
             return f"<h2>{arg_content}</h2>"
         elif command == 'subsection':
             return f"<h3>{arg_content}</h3>"
-        # ... other commands as before ...
+        elif command == 'subsubsection':
+            return f"<h4>{arg_content}</h4>"
+        elif command in ['emph', 'textit']:
+            return f"<em>{arg_content}</em>"
+        elif command == 'textbf':
+            return f"<strong>{arg_content}</strong>"
+        elif command == 'noindent':
+            return ''
         else:
             return f"\\{command}{{{arg_content}}}"
 
 def process_text_block(text_block):
-    # Identify math segments and handle them separately
-    # For math mode sections, call process_command with in_math_mode=True.
-    math_pattern = r'(\$\$(.*?)\$\$|\$(.*?)\$)'
+    # Identify math segments
+    math_pattern = r'(\$\$.*?\$\$|\$.*?\$)'
     processed_parts = []
     last_end = 0
 
     for match in re.finditer(math_pattern, text_block, flags=re.DOTALL):
         start, end = match.span()
-        # Text before math
+        # Text before math mode
         if start > last_end:
-            text_part = text_block[last_end:start]
-            processed_parts.append(process_text(text_part))  # normal text processing
+            processed_parts.append(process_text(text_block[last_end:start], in_math_mode=False))
         math_segment = match.group(0)
-        
-        # Now process math_segment as in-math-mode content
-        math_content = math_segment.strip('$')
-        # Process math content with in_math_mode=True
-        processed_math = process_latex_content(math_content, in_math_mode=True)
-        
-        # Re-wrap processed math in $...$ or $$...$$ depending on original delimiter
-        if math_segment.startswith('$$'):
+        if math_segment.startswith('$$') and math_segment.endswith('$$'):
+            inner = math_segment[2:-2]
+            processed_math = process_latex_content(inner, in_math_mode=True)
             processed_parts.append(f"$${processed_math}$$")
         else:
+            inner = math_segment[1:-1]
+            processed_math = process_latex_content(inner, in_math_mode=True)
             processed_parts.append(f"${processed_math}$")
         last_end = end
 
     # Remaining text after last math block
     if last_end < len(text_block):
-        text_part = text_block[last_end:]
-        processed_parts.append(process_text(text_part))
+        processed_parts.append(process_text(text_block[last_end:], in_math_mode=False))
 
     return ''.join(processed_parts)
 
+def process_text(text_part, in_math_mode=False):
+    # In math mode, do not escape HTML or transform text
+    if not in_math_mode:
+        # Replace LaTeX markup with HTML tags (non-math text)
+        text_part = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", text_part)
+        text_part = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", text_part)
+        text_part = re.sub(r"\\subsubsection\{(.*?)\}", r"<h4>\1</h4>", text_part)
+        text_part = re.sub(r"\\emph\{(.*?)\}", r"<em>\1</em>", text_part)
+        text_part = re.sub(r"\\textbf\{(.*?)\}", r"<strong>\1</strong>", text_part)
+        text_part = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", text_part)
+        text_part = text_part.replace("\\noindent", "")
 
-def process_text(text_part):
-    # Replace LaTeX markup with HTML tags (non-math text)
-    text_part = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", text_part)
-    text_part = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", text_part)
-    text_part = re.sub(r"\\subsubsection\{(.*?)\}", r"<h4>\1</h4>", text_part)
-    text_part = re.sub(r"\\emph\{(.*?)\}", r"<em>\1</em>", text_part)
-    text_part = re.sub(r"\\textbf\{(.*?)\}", r"<strong>\1</strong>", text_part)
-    text_part = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", text_part)
-    text_part = text_part.replace("\\noindent", "")
-
-    # Escape only '&' here (to avoid breaking HTML entities),
-    # Leave < and > alone so HTML tags remain intact.
-    text_part = text_part.replace('&', '&amp;')
-    text_part = text_part.replace('<', '&lt;')
-    text_part = text_part.replace('>', '&gt;')
+        # Escape HTML for non-math text
+        text_part = text_part.replace('&', '&amp;')
+        text_part = text_part.replace('<', '&lt;')
+        text_part = text_part.replace('>', '&gt;')
 
     return text_part
 

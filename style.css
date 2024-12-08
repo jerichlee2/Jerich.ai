@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #eee;
     font-family: sans-serif;
     font-size: 16px;
     line-height: 1.4;
@@ -121,7 +121,7 @@ hr {
     width: 10px;
     height: 10px;
     border-radius: 0px;
-    background-color: #ffffff;
+    background-color: #eee;
     border: 0px solid white;
 }
 /* .timespan {
@@ -161,7 +161,7 @@ hr {
     border: 1px solid #ddd;
     border-radius: 3px;
     padding: 5px;
-    background-color: #ffffff;
+    background-color: #eee;
     padding-bottom: 10px;
 }
 @media (max-width: 991px) {

@@ -37,17 +37,17 @@
 % Title information
 \title{Proofs with structure}
 \author{Jerich Lee}
-\date{\today}
+\date{2024-11-26}
 
 \begin{document}
 
 \maketitle
 We now are able to create our own hypotheses—check it out:
 \begin{problem}
-    Let \(a\) and \(b\) be real numbers and suppose that \(a-5b=4\) and \(b+2=3\). Show that \(a=9\).  
+    Let $a$ and $b$ be real numbers and suppose that $a-5b=4$ and $b+2=3$. Show that $a=9$.  
 \end{problem}
 \begin{solution}
-    \begin{proof} Since \(b+2=3\), we have \(b=1\). Therefore:
+    \begin{proof} Since $b+2=3$, we have $b=1$. Therefore:
         \begin{align}
            a&=(a-5b)+5b \\[10pt] 
             &=4+5 \cdot1 \\[10pt] 
@@ -68,10 +68,10 @@ Pay attention to the \emph{have} command on line 2 of the above; we can create o
 \vspace{.5cm} 
 We can use lemmas, or previously proved statements to help prove our current statement. Check it out:
 \begin{problem}
-    Let \(x\) be a rational number, and suppose that \(3x=2\). Show that \(x\neq 1\).  
+    Let $x$ be a rational number, and suppose that $3x=2$. Show that $x\neq 1$.  
 \end{problem}
 \begin{solution}
-    \begin{proof} It suffices to prove that \(x<1\): 
+    \begin{proof} It suffices to prove that $x<1$: 
         \begin{align}
            x&=\frac{3x}{3} \\[10pt] 
            &= \frac{2}{3}\\[10pt] 

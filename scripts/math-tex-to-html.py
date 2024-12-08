@@ -10,7 +10,6 @@ def latex_to_html(latex_file, output_html, css_path):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Converted Document</title>
     <link rel="stylesheet" href="{css_path}">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>

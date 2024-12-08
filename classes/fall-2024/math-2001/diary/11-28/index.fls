@@ -1,8 +1,8 @@
-PWD /Users/jerichlee/Documents/jerichlee.ai/classes/math-2001/diary/11-28
+PWD /Users/jerichlee/Documents/jerich/classes/fall-2024/math-2001/diary/11-28
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jerichlee/Documents/jerichlee.ai/classes/math-2001/diary/11-28/index.tex
+INPUT /Users/jerichlee/Documents/jerich/classes/fall-2024/math-2001/diary/11-28/index.tex
 OUTPUT index.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls

@@ -315,23 +315,40 @@ def handle_figure(content):
     """
 
 def process_command(command, argument):
+    # Clean braces from argument if present
+    if argument.startswith('{') and argument.endswith('}'):
+        arg_content = argument[1:-1].strip()
+    else:
+        arg_content = argument.strip()
+    
+    # Recursively process the argument to handle nested commands
+    # This ensures something like \mathbb{\MakeUppercase{r}} is fully processed
+    processed_arg = process_latex_content(arg_content)
+
+    # Handle specific commands
     if command == 'section':
-        return f"<h2>{argument[1:-1]}</h2>"
+        return f"<h2>{processed_arg}</h2>"
     elif command == 'subsection':
-        return f"<h3>{argument[1:-1]}</h3>"
+        return f"<h3>{processed_arg}</h3>"
     elif command == 'subsubsection':
-        return f"<h4>{argument[1:-1]}</h4>"
+        return f"<h4>{processed_arg}</h4>"
     elif command in ['emph', 'textit']:
-        return f"<em>{argument[1:-1]}</em>"
+        return f"<em>{processed_arg}</em>"
     elif command == 'textbf':
-        return f"<strong>{argument[1:-1]}</strong>"
+        return f"<strong>{processed_arg}</strong>"
     elif command == 'noindent':
         return ''
-    elif command == '\\':
-        return '<br>'
+    elif command == 'MakeUppercase':
+        # Convert the processed argument to uppercase
+        return processed_arg.upper()
+    elif command == 'mathbb':
+        # For mathbb, we might wrap the argument in a special span or leave it as math.
+        # If inside math mode, you might return something like: f"\\mathbb{{{processed_arg}}}"
+        # If outside math mode and you want HTML representation:
+        return f"<span class='mathbb'>{processed_arg}</span>"
     else:
-        # For other commands, return as is
-        return f"\\{command}{argument}"
+        # For other commands, just return them as-is or handle if needed
+        return f"\\{command}{{{processed_arg}}}"
 
 def process_text_block(text_block):
     math_pattern = r'(\\\[.*?\\\]|\\\(.+?\)|\$\$.*?\$\$|\$(?:[^$\\]|\\.)+\$)'

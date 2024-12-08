@@ -36,7 +36,7 @@ def latex_to_html(latex_file, output_html, css_path):
     </style>
 </head>
 <body>
-    <a href="/Users/jerichlee/Documents/jerichlee.ai/blog/index.html" class="home-button">Back</a>
+    <a href="https://jerichlee2.github.io/Jerich.ai/blog/index.html" class="home-button">Back</a>
     <div id="main">
         CONTENT_PLACEHOLDER
     </div>

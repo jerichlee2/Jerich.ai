@@ -99,7 +99,7 @@ def latex_to_html(latex_file, output_html, css_path):
         print(f"An error occurred while processing the file '{latex_file}': {e}")
         raise
 
-def process_latex_content(content):
+def process_latex_content(content, in_math_mode=False):
     # Remove comments
     content = re.sub(r"(?<!\\)%.*", "", content)
 
@@ -115,8 +115,6 @@ def process_latex_content(content):
                 env_content, pos = extract_environment(content, pos, env_name)
                 if env_name == "enumerate":
                     html_output += handle_enumerate(env_content)
-                elif env_name == "itemize":
-                    html_output += handle_itemize(env_content)
                 elif env_name == "verbatim":
                     html_output += handle_verbatim(env_content)
                 elif env_name == "lstlisting":
@@ -217,54 +215,6 @@ def handle_enumerate(content):
         else:
             pos += 1
     return "<ol>\n" + "\n".join(items) + "\n</ol>"
-
-def handle_itemize(content):
-    items = []
-    pos = 0
-    length = len(content)
-    while pos < length:
-        if content.startswith("\\item", pos):
-            pos += len("\\item")
-            # Skip optional argument
-            if pos < length and content[pos] == '[':
-                bracket_count = 1
-                pos += 1
-                while pos < length and bracket_count > 0:
-                    if content[pos] == '[':
-                        bracket_count += 1
-                    elif content[pos] == ']':
-                        bracket_count -= 1
-                    pos += 1
-            item_content = ""
-            while pos < length:
-                if content.startswith("\\item", pos) or content.startswith("\\end{", pos):
-                    break
-                elif content.startswith("\\begin{itemize}", pos):
-                    nested_env_content, pos = extract_environment(content, pos, "itemize")
-                    nested_html = handle_itemize(nested_env_content)
-                    item_content += nested_html
-                elif content.startswith("\\begin{enumerate}", pos):
-                    nested_env_content, pos = extract_environment(content, pos, "enumerate")
-                    nested_html = handle_enumerate(nested_env_content)
-                    item_content += nested_html
-                else:
-                    if content.startswith("\\begin{", pos):
-                        env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
-                        if env_match:
-                            env_name = env_match.group(1)
-                            nested_env_content, pos = extract_environment(content, pos, env_name)
-                            nested_html = process_latex_content(f"\\begin{{{env_name}}}{nested_env_content}\\end{{{env_name}}}")
-                            item_content += nested_html
-                        else:
-                            item_content += content[pos]
-                            pos += 1
-                    else:
-                        item_content += content[pos]
-                        pos += 1
-            items.append(f"<li>{process_latex_content(item_content.strip())}</li>")
-        else:
-            pos += 1
-    return "<ul>\n" + "\n".join(items) + "\n</ul>"
 
 def handle_verbatim(content):
     escaped_content = (

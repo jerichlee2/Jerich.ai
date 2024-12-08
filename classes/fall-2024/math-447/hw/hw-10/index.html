@@ -31,22 +31,22 @@
 <h4>December 07, 2024</h4>
 
 <div class='problem'><strong>Problem.</strong><br> [26.6]
-     
-    Let $ s(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots{} $ and $ c(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots{} $ for $ x \in{} <span class='mathbb'>R</span> $.
+    \noindent{} 
+    Let $ s(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots{} $ and $ c(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots{} $ for $ x \in{} \mathbb{R} $.
     <ol>
 <li>Prove $ s' = c $ and $ c' = -s $.</li>
 <li>Prove $ (s^2 + c^2)' = 0 $.</li>
 <li>Prove $ s^2 + c^2 = 1 $.</li>
 </ol>
     
-    Actually, $ s(x) = \sin{} x $ and $ c(x) = \cos{} x $, but you do <strong>not</strong> need these facts.
+    Actually, $ s(x) = \sin{} x $ and $ c(x) = \cos{} x $, but you do \textbf{not} need these facts.
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <ol>
 <li>&lt;ol&gt;
 &lt;li&gt;&amp;lt;div class='proof'&amp;gt;&amp;lt;strong&amp;gt;Proof.&amp;lt;/strong&amp;gt; 
-        For $x\in{}&amp;lt;span class='mathbb'&amp;gt;{r&amp;lt;/span&amp;gt;}$: 
-   $$$$$$\begin{align}
+        For $x\in{}\mathbb{\MakeUppercase{r}}$: 
+   $$$$$$$$\begin{align}
 
 
 
@@ -62,10 +62,10 @@
    
 
 
-\end{align}$$$$$$ 
+\end{align}$$$$$$$$ 
     &amp;lt;div class='qed'&amp;gt;∎&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;&lt;/li&gt;
 &lt;li&gt;&amp;lt;div class='proof'&amp;gt;&amp;lt;strong&amp;gt;Proof.&amp;lt;/strong&amp;gt; 
-        $$$$$$\begin{align}
+        $$$$$$$$\begin{align}
 
 
 
@@ -77,11 +77,11 @@
         
 
 
-\end{align}$$$$$$
+\end{align}$$$$$$$$$$
     &amp;lt;div class='qed'&amp;gt;∎&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;&lt;/li&gt;
 &lt;/ol&gt;</li>
 <li>&lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt; 
-            $$$$\begin{align}
+            $$$$$$\begin{align}
 
 
             \left( s^{2}+c^{2} \right)^\prime &=0 \\[10pt] 
@@ -90,17 +90,17 @@
             &= 0
         
 
-\end{align}$$$$
+\end{align}$$$$$$
         &lt;div class='qed'&gt;∎&lt;/div&gt;&lt;/div&gt;&lt;br&gt;</li>
 <li>todo</li>
 </ol>
    </div>
 <div class='problem'><strong>Problem.</strong><br> [33.3]
 
-     A function $ f $ on $[a, b]$ is called a <em>step function</em> if there exists a partition 
-    $$
+    \noindent{} A function $ f $ on $[a, b]$ is called a \textit{step function} if there exists a partition 
+    $$$$
     P = {a = u_0 &lt; u_1 &lt; \cdots{} &lt; u_m = b}
-    $$ 
+    $$$$ 
     of $[a, b]$ —not $ P = {a = u_0 &lt; u_1 &lt; \cdots{} &lt; c_m = b} $, as stated in the textbook— such that $ f $ is constant on each interval $(u_{j-1}, u_j)$, say $ f(x) = c_j $ for $ x $ in $(u_{j-1}, u_j)$.
     
     <ol>
@@ -111,7 +111,7 @@
 <div class='solution'><strong>Solution.</strong> 
    <div class='proof'><strong>Proof.</strong> 
     If $f$ is constant on every interval, then $M_i = m_i$. Then, $f$ is monotone and bounded on $\left{}( u_{j-1}, u_{j} \right{}) $, (in fact it is constant from $\left{}( u_{j-1},u_{j} \right{}) $), so therefore it is uniformly continuous, which implies that
-    there exists a continuous extension to the closed set $[u_{j-1}, u_{j}] $. Invoking Theorem (3.38) from Ross (Piecewise Monotone), we show that $f\in{} \mathcal{{r}}$.   
+    there exists a continuous extension to the closed set $[u_{j-1}, u_{j}] $. Invoking Theorem (3.38) from Ross (Piecewise Monotone), we show that $f\in{} \mathcal{\MakeUppercase{r}}$.   
    <div class='qed'>∎</div></div><br> 
 </div>
 <div class='problem'><strong>Problem.</strong><br> [33.7]
@@ -119,10 +119,10 @@
 
 <ol>
 <li>Show
-    $$
+    $$$$
     U(f^2, P) - L(f^2, P) \leq{} 2B[U(f, P) - L(f, P)]
-    $$
-    for all partitions $ P $ of $[a, b]$. <em>Hint:</em> $ f(x)^2 - f(y)^2 = [f(x) + f(y)] \cdot{} [f(x) - f(y)] $.</li>
+    $$$$
+    for all partitions $ P $ of $[a, b]$. \textit{Hint:} $ f(x)^2 - f(y)^2 = [f(x) + f(y)] \cdot{} [f(x) - f(y)] $.</li>
 <li>Show that if $ f $ is integrable on $[a, b]$, then $ f^2 $ also is integrable on $[a, b]$.</li>
 </ol>
 </div>
@@ -143,10 +143,10 @@
     <div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [34.2]
-     Calculate
+    \noindent{} Calculate
 
 <ol>
-<li>$ \lim_{h \to{} 0} \frac{1}{h} \int_3{}^{3+h} e^{t^2} , dt $.</li>
+<li>$ \lim_{h \to 0} \frac{1}{h} \int_3{}^{3+h} e^{t^2} , dt $.</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
@@ -166,12 +166,12 @@
    <div class='qed'>∎</div></div><br> 
 </div>
 <div class='problem'><strong>Problem.</strong><br> [34.5]
-      Let $ f $ be a continuous function on $ <span class='mathbb'>R</span> $ and define
+    \noindent{}  Let $ f $ be a continuous function on $ \mathbb{R} $ and define
 $$
-F(x) = \int_{x-1}^{x+1} f(t) , dt \quad{} \text{for} x \in{} <span class='mathbb'>R</span>.
-$$
+F(x) = \int_{x-1}^{x+1} f(t) , dt \quad{} \text{for } x \in{} \mathbb{R}.
+$$$$
 
-Show $ F $ is differentiable on $ <span class='mathbb'>R</span> $ and compute $ F' $.
+Show $ F $ is differentiable on $ \mathbb{R} $ and compute $ F' $.
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
@@ -190,14 +190,14 @@ Show $ F $ is differentiable on $ <span class='mathbb'>R</span> $ and compute $ 
     <div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> 
-     <strong>A. [Bonus problem]</strong> Suppose $ f $ is a continuous non-negative function on $[a, b]$, with 
-$$
-M = \max_{x \in{} [a, b]} f(x).
-$$
-For $ n \in{} <span class='mathbb'>N</span> $, let
+    \noindent{} \textbf{A. [Bonus problem]} Suppose $ f $ is a continuous non-negative function on $[a, b]$, with 
+$$$$
+M = \max_{x \in [a, b]} f(x).
+$$$$
+For $ n \in{} \mathbb{N} $, let
 $$
 M_n = \left{}( \int_a{}^b f^n , dt \right{})^{1/n}.
-$$
+$$$$
 Prove that $ \lim{} M_n = M $.
 </div>
 <div class='solution'><strong>Solution.</strong> 

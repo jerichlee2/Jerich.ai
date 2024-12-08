@@ -4,7 +4,7 @@
 read -p "Enter the class name (or type 'blog' for blog entries): " CLASS_NAME
 
 # Define the base directory
-BASE_DIR="/Users/jerichlee/Documents/jerichlee.ai"
+BASE_DIR="/Users/jerichlee/Documents/jerich"
 
 # Adjust target directory based on the input
 if [[ "$CLASS_NAME" == "blog" ]]; then

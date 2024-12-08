@@ -10,6 +10,7 @@ def latex_to_html(latex_file, output_html, css_path):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{document_title}</title>
     <link rel="stylesheet" href="{css_path}">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
@@ -36,40 +37,35 @@ def latex_to_html(latex_file, output_html, css_path):
     </div>
 </body>
 </html>
-    """.format(css_path=css_path)
+    """
 
     try:
         with open(latex_file, 'r') as file:
             latex_content = file.read()
 
-        # Current date
-        current_date = datetime.now().strftime("%B %d, %Y")
-
-        # Extract preamble information for title, author, and date
+        # Extract title, author, and date
         title_match = re.search(r"\\title\{(.*?)\}", latex_content, re.DOTALL)
         author_match = re.search(r"\\author\{(.*?)\}", latex_content, re.DOTALL)
         date_match = re.search(r"\\date\{(.*?)\}", latex_content, re.DOTALL)
 
-        title_text = title_match.group(1).strip() if title_match else ""
-        author_text = author_match.group(1).strip() if author_match else ""
-        if date_match:
-            date_text = date_match.group(1).replace("\\today", current_date).strip()
-        else:
-            date_text = ""
+        # Extract and format document title
+        document_title = title_match.group(1).strip() if title_match else "Converted Document"
 
-        # Create the title block HTML
+        # Create title block HTML
         title_block = ""
-        if title_text:
-            title_block += f"<h1>{title_text}</h1>\n"
-        if author_text:
-            title_block += f"<h3>{author_text}</h3>\n"
-        if date_text:
-            title_block += f"<h4>{date_text}</h4>\n"
+        if title_match:
+            title_block += f"<h1>{html.escape(title_match.group(1).strip())}</h1>\n"
+        if author_match:
+            title_block += f"<h3>{html.escape(author_match.group(1).strip())}</h3>\n"
+        if date_match:
+            current_date = datetime.now().strftime("%B %d, %Y")
+            date_text = date_match.group(1).replace("\\today", current_date).strip()
+            title_block += f"<h4>{html.escape(date_text)}</h4>\n"
 
-        # Replace \maketitle with a placeholder so it won't be processed/escaped
+        # Replace \maketitle with the title block placeholder
         content = latex_content.replace("\\maketitle", "TITLE_PLACEHOLDER")
 
-        # Extract the body content between \begin{document} and \end{document}
+        # Extract body content between \begin{document} and \end{document}
         start = content.find("\\begin{document}")
         end = content.find("\\end{document}")
 
@@ -79,16 +75,16 @@ def latex_to_html(latex_file, output_html, css_path):
         start += len("\\begin{document}")
         body_content = content[start:end].strip()
 
-        # Process the LaTeX content
+        # Process the LaTeX content into HTML
         html_content = process_latex_content(body_content)
 
-        # Now insert the title block HTML after processing
+        # Insert title block and replace placeholders
         html_content = html_content.replace("TITLE_PLACEHOLDER", title_block)
+        final_html = html_template.format(document_title=html.escape(document_title), css_path=css_path)
+        final_html = final_html.replace("CONTENT_PLACEHOLDER", html_content)
 
-        # Insert into the HTML template
-        final_html = html_template.replace("CONTENT_PLACEHOLDER", html_content)
+        # Write the final HTML to the output file
         os.makedirs(os.path.dirname(output_html), exist_ok=True)
-
         with open(output_html, 'w') as output_file:
             output_file.write(final_html)
 

@@ -9,7 +9,7 @@ def latex_to_html(latex_file, output_html, css_path):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Converted Document</title>
+    <title>{document_title}</title>
     <link rel="stylesheet" href="{css_path}">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
@@ -42,31 +42,36 @@ def latex_to_html(latex_file, output_html, css_path):
     </div>
 </body>
 </html>
-    """.format(css_path=css_path)
+    """
 
     try:
         with open(latex_file, 'r') as file:
             latex_content = file.read()
 
+        # Extract title
+        title_match = re.search(r"\\title\{(.*?)\}", latex_content, re.DOTALL)
+        document_title = title_match.group(1).strip() if title_match else "Converted Document"
+
+        # Replace the title in the HTML template
+        html_template = html_template.format(document_title=document_title, css_path=css_path)
+
         # Current date
         current_date = datetime.now().strftime("%B %d, %Y")
 
-        # Extract preamble information for title, author, and date
-        title_match = re.search(r"\\title\{(.*?)\}", latex_content, re.DOTALL)
+        # Extract author and date
         author_match = re.search(r"\\author\{(.*?)\}", latex_content, re.DOTALL)
         date_match = re.search(r"\\date\{(.*?)\}", latex_content, re.DOTALL)
 
-        title = f"<h1>{title_match.group(1).strip()}</h1>" if title_match else ""
         author = f"<h3>{author_match.group(1).strip()}</h3>" if author_match else ""
-
         if date_match:
             date_content = date_match.group(1).replace("\\today", current_date).strip()
             date = f"<h4>{date_content}</h4>"
         else:
             date = ""
 
-        title_block = f"{title}\n{author}\n{date}"
+        title_block = f"<h1>{document_title}</h1>\n{author}\n{date}"
 
+        # Find content between \begin{document} and \end{document}
         start = latex_content.find("\\begin{document}")
         end = latex_content.find("\\end{document}")
 
@@ -81,9 +86,11 @@ def latex_to_html(latex_file, output_html, css_path):
         # Process the content
         html_content = process_latex_content(content)
 
+        # Insert content into the template
         html_content = html_template.replace("CONTENT_PLACEHOLDER", html_content)
-        os.makedirs(os.path.dirname(output_html), exist_ok=True)
 
+        # Write the output HTML file
+        os.makedirs(os.path.dirname(output_html), exist_ok=True)
         with open(output_html, 'w') as output_file:
             output_file.write(html_content)
 

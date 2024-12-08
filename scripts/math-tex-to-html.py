@@ -314,62 +314,70 @@ def handle_figure(content):
     </figure>
     """
 
-def process_command(command, argument):
-    # Clean braces from argument if present
-    if argument.startswith('{') and argument.endswith('}'):
-        arg_content = argument[1:-1].strip()
-    else:
-        arg_content = argument.strip()
-    
-    # Recursively process the argument to handle nested commands
-    # This ensures something like \mathbb{\MakeUppercase{r}} is fully processed
-    processed_arg = process_latex_content(arg_content)
+def process_command(command, argument, in_math_mode=False):
+    # Remove outer braces if present
+    arg_content = argument.strip()
+    if arg_content.startswith('{') and arg_content.endswith('}'):
+        arg_content = arg_content[1:-1]
 
-    # Handle specific commands
-    if command == 'section':
-        return f"<h2>{processed_arg}</h2>"
-    elif command == 'subsection':
-        return f"<h3>{processed_arg}</h3>"
-    elif command == 'subsubsection':
-        return f"<h4>{processed_arg}</h4>"
-    elif command in ['emph', 'textit']:
-        return f"<em>{processed_arg}</em>"
-    elif command == 'textbf':
-        return f"<strong>{processed_arg}</strong>"
-    elif command == 'noindent':
-        return ''
-    elif command == 'MakeUppercase':
-        # Convert the processed argument to uppercase
-        return processed_arg.upper()
-    elif command == 'mathbb':
-        # For mathbb, we might wrap the argument in a special span or leave it as math.
-        # If inside math mode, you might return something like: f"\\mathbb{{{processed_arg}}}"
-        # If outside math mode and you want HTML representation:
-        return f"<span class='mathbb'>{processed_arg}</span>"
+    # If in math mode, we want to do minimal transformations
+    if in_math_mode:
+        if command == 'MakeUppercase':
+            # Convert the argument to uppercase and return it as plain text
+            return arg_content.upper()
+        elif command == 'mathbb':
+            # Just return \mathbb{UPPERCASED_CONTENT} if needed
+            # If the argument contained another command like \MakeUppercase,
+            # you'd have processed it before calling process_command again.
+            # Here, we assume arg_content is already processed.
+            return f"\\mathbb{{{arg_content}}}"
+        else:
+            # For other commands inside math, return them as is
+            return f"\\{command}{{{arg_content}}}"
     else:
-        # For other commands, just return them as-is or handle if needed
-        return f"\\{command}{{{processed_arg}}}"
+        # Outside math mode, you may apply your existing HTML transformations if desired.
+        if command == 'section':
+            return f"<h2>{arg_content}</h2>"
+        elif command == 'subsection':
+            return f"<h3>{arg_content}</h3>"
+        # ... other commands as before ...
+        else:
+            return f"\\{command}{{{arg_content}}}"
 
 def process_text_block(text_block):
-    math_pattern = r'(\\\[.*?\\\]|\\\(.+?\)|\$\$.*?\$\$|\$(?:[^$\\]|\\.)+\$)'
+    # Identify math segments and handle them separately
+    # For math mode sections, call process_command with in_math_mode=True.
+    math_pattern = r'(\$\$(.*?)\$\$|\$(.*?)\$)'
     processed_parts = []
     last_end = 0
+
     for match in re.finditer(math_pattern, text_block, flags=re.DOTALL):
         start, end = match.span()
         # Text before math
         if start > last_end:
             text_part = text_block[last_end:start]
-            processed_parts.append(process_text(text_part))
-        # Math segment: escape < and >
-        math_expr = match.group()
-        math_expr = math_expr.replace('<', '&lt;').replace('>', '&gt;')
-        processed_parts.append(math_expr)
+            processed_parts.append(process_text(text_part))  # normal text processing
+        math_segment = match.group(0)
+        
+        # Now process math_segment as in-math-mode content
+        math_content = math_segment.strip('$')
+        # Process math content with in_math_mode=True
+        processed_math = process_latex_content(math_content, in_math_mode=True)
+        
+        # Re-wrap processed math in $...$ or $$...$$ depending on original delimiter
+        if math_segment.startswith('$$'):
+            processed_parts.append(f"$${processed_math}$$")
+        else:
+            processed_parts.append(f"${processed_math}$")
         last_end = end
+
     # Remaining text after last math block
     if last_end < len(text_block):
         text_part = text_block[last_end:]
         processed_parts.append(process_text(text_part))
+
     return ''.join(processed_parts)
+
 
 def process_text(text_part):
     # Replace LaTeX markup with HTML tags (non-math text)

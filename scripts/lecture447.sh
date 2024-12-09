@@ -2,9 +2,9 @@
 
 # Define paths
 downloads_dir="/Users/jerichlee/Downloads"
-pdfs_dir="/Users/jerichlee/Documents/jerichlee.ai/classes/math-447/lecture-slides/Lecture-Slides-Pdfs"
-html_dir="/Users/jerichlee/Documents/jerichlee.ai/classes/math-447/lecture-slides/"
-index_file="/Users/jerichlee/Documents/jerichlee.ai/classes/math-447/index.html"
+pdfs_dir="/Users/jerichlee/Documents/jerich.ai/classes/fall-2024/math-447/lecture-slides/Lecture-Slides-Pdfs"
+html_dir="/Users/jerichlee/Documents/jerich.ai/classes/fall-2024/math-447/lecture-slides/"
+index_file="/Users/jerichlee/Documents/jerich.ai/classes/fall-2024/math-447/index.html"
 
 # Find the lectureX.pdf file with the largest X in the Downloads folder
 latest_lecture=$(ls ${downloads_dir}/lecture*.pdf | grep -o 'lecture[0-9]\+' | grep -o '[0-9]\+' | sort -n | tail -1)

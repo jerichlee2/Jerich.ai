@@ -129,30 +129,28 @@ Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is
 \end{problem}
 
 \begin{solution}
-   \begin{enumerate}
-    \item \begin{proof}
+ \begin{proof}
         \begin{enumerate}
             \item If $|b| \leq a$, then by definition, $-a \leq b \leq a$. This is because $|b| \leq a$ implies $b$ is within the interval $[-a, a]$.
             \item If $-a \leq b \leq a$, then $b$ is within the interval $[-a, a]$. This directly implies $|b| \leq a$ since the maximum deviation of $b$ from zero is $a$.
         \end{enumerate}
         Thus, $|b| \leq a$ if and only if $-a \leq b \leq a$. 
     \end{proof}
-    \item \begin{proof}
+    \begin{proof}
         We will prove this inequality using the triangle inequality and considering both possible cases.
-        \begin{enumerate}
-            \item \textbf{Using the Triangle Inequality:}
+  \textbf{Using the Triangle Inequality:}
             \begin{enumerate}
                 \item The triangle inequality states $|a| = |(a - b) + b| \leq |a - b| + |b|$.
                 \item Rearranging gives $|a| - |b| \leq |a - b|$.
             \end{enumerate}
             
-            \item \textbf{Consider the Reverse Situation:}
+          \textbf{Consider the Reverse Situation:}
             \begin{enumerate}
                 \item Similarly, $|b| = |(b - a) + a| \leq |b - a| + |a| = |a - b| + |a|$.
                 \item Rearranging gives $|b| - |a| \leq |a - b|$.
             \end{enumerate}
             
-            \item \textbf{Combine the Results:}
+             \textbf{Combine the Results:}
             \begin{enumerate}
                 \item From the two inequalities, we have:
                 $$
@@ -160,7 +158,7 @@ Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is
                 $$
             \end{enumerate}
             
-            \item \textbf{Conclusion:}
+            \textbf{Conclusion:}
             \begin{enumerate}
                 \item The absolute value $||a| - |b||$ is defined as:
                 $$
@@ -168,12 +166,11 @@ Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is
                 $$
                 \item Therefore, $||a| - |b|| \leq |a - b|$.
             \end{enumerate}
-        \end{enumerate}
+
         
         Thus, we have proven that $||a|-|b||\leq|a-b|$ for all $a,b \in \mathbb{R}$. 
-        
     \end{proof}
-   \end{enumerate} 
+
 \end{solution}
 
 
@@ -190,18 +187,17 @@ Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is
 \begin{solution}
     \begin{proof}
      We will prove this statement using a proof by contradiction.
-    \begin{enumerate}
-        \item Assume the hypothesis: For every $b_1 > b$, we have $a \leq b_1$.
-        \item Suppose, for the sake of contradiction, that $a > b$.
-        \item Consider $b_1 = \frac{a + b}{2}$. Note that:
+         Assume the hypothesis: For every $b_1 > b$, we have $a \leq b_1$.
+         Suppose, for the sake of contradiction, that $a > b$.
+         Consider $b_1 = \frac{a + b}{2}$. Note that:
         \begin{enumerate}
             \item $b_1 > b$ (because $a > b$)
             \item $b_1 < a$ (because it's the midpoint between $a$ and $b$)
         \end{enumerate}
-        \item By our initial assumption, since $b_1 > b$, we must have $a \leq b_1$.
-        \item However, we also showed that $b_1 < a$.
-        \item This is a contradiction: we can't have both $a \leq b_1$ and $b_1 < a$.
-    \end{enumerate}
+        By our initial assumption, since $b_1 > b$, we must have $a \leq b_1$.
+        However, we also showed that $b_1 < a$.
+         This is a contradiction: we can't have both $a \leq b_1$ and $b_1 < a$.
+
     
     Therefore, our supposition that $a > b$ must be false. We conclude that $a \leq b$.
     
@@ -228,21 +224,19 @@ $s\leq t$ for all $s \in S$ and $t \in T$.
    
 \end{problem}
 \begin{solution}
-    \begin{enumerate}
-        \item Observe $S$ is bounded above and $T$ is bounded below.
-        \item Prove $\text{sup}\ S \leq \text{inf}\ T$
-        \item Give an example of such sets $S$ and $T$ where $S \ \cap \ T$ is nonempty.
-        \item Give an example of sets $S$ and $T$ where $\text{sup}\ S = \text{inf}\ T$ and $S \ \cap \ T$ is the empty set.
-    \end{enumerate}
+         Observe $S$ is bounded above and $T$ is bounded below.
+         Prove $\text{sup}\ S \leq \text{inf}\ T$
+         Give an example of such sets $S$ and $T$ where $S \ \cap \ T$ is nonempty.
+         Give an example of sets $S$ and $T$ where $\text{sup}\ S = \text{inf}\ T$ and $S \ \cap \ T$ is the empty set.
+
     
-    \begin{enumerate}
-        \item 
+
         \begin{enumerate}
             \item Let $M=t,\ t \in T$. Then $S\leq M$ for all $s\in S$. By Def 4.2, $M$ is an upper bound of $S$, and $S$ is bounded above.
             \item Let $m=s$, such that $s\in S$. Then, $m\leq t$ for all $t \in T$. Then, $m$ is a lower bound of $T$, and $T$ is bounded below.
         \end{enumerate}
         
-        \item To prove $\sup S \leq \inf T$:
+     To prove $\sup S \leq \inf T$:
         \begin{enumerate}
             \item By the given property, we know that $s \leq t$ for all $s \in S$ and all $t \in T$.
             \item Let $M = \sup S$. By definition of supremum, $s \leq M$ for all $s \in S$.
@@ -255,10 +249,9 @@ $s\leq t$ for all $s \in S$ and $t \in T$.
         Therefore, we have proven that $\sup S \leq \inf T$. 
     
         
-        \item An example of such sets $S$ and $T$ where $S \ \cap \ T$ is nonempty: $S=[0,1], T=[1,2]$
+         An example of such sets $S$ and $T$ where $S \ \cap \ T$ is nonempty: $S=[0,1], T=[1,2]$
         
-        \item An example of sets $S$ and $T$ where $\text{sup}\ S = \text{inf}\ T$ and $S \ \cap \ T$ is the empty set: $S=[0,1), T=(1,2]$
-    \end{enumerate}
+       An example of sets $S$ and $T$ where $\text{sup}\ S = \text{inf}\ T$ and $S \ \cap \ T$ is the empty set: $S=[0,1), T=(1,2]$
     
 \end{solution}
 

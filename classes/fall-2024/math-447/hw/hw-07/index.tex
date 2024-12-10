@@ -31,22 +31,22 @@ Prove that if $E$ is a connected subset of a metric space $(S, d)$, then its clo
 \end{problem}
 \begin{solution}
     \begin{proof}
-        To solve this problem, we will prove the contrapositive, i.e., if \(E^{-}\) is disconnected, then \(E\) is also disconnected. Because \(E^{-}\) is disconnected, there exist \(U_1, U_2\) such that:
+        To solve this problem, we will prove the contrapositive, i.e., if $E^{-}$ is disconnected, then $E$ is also disconnected. Because $E^{-}$ is disconnected, there exist $U_1, U_2$ such that:
     \begin{enumerate}
-        \item \(E^{-}\subseteq U_1 \cup U_2\) 
-        \item \((E^{-}\cap U_1)\cap (E^{-}\cap U_2)=\emptyset\)
-        \item \((E^{-}\cap U_1) \neq \emptyset, (E^{-1}\cap U_{2})\neq \emptyset\)   
-    \end{enumerate}  By the definition of closure, \(E \subset E^{-}\). Then, 
+        \item $E^{-}\subseteq U_1 \cup U_2$ 
+        \item $(E^{-}\cap U_1)\cap (E^{-}\cap U_2)=\emptyset$
+        \item $(E^{-}\cap U_1) \neq \emptyset, (E^{-1}\cap U_{2})\neq \emptyset$   
+    \end{enumerate}  By the definition of closure, $E \subset E^{-}$. Then, 
     \begin{align}
         (E\cap U_1)\cap (E\cap U_2)\subset (E^{-}\cap U_1)\cap (E^{-}\cap U_2) \\[10pt] 
         (E\cap U_1)\cap (E\cap U_2)=\emptyset 
     \end{align}  Therefore, the following holds true:
     \begin{enumerate}
-    \item \(E \subset E^{-} \subseteq U_1 \cup U_2\implies E \subseteq U_1 \cup U_2\)  
-    \item \((E\cap U_1)\cap (E\cap U_2)=\emptyset\)
-    \item \((E\cap U_1)\neq \emptyset, (E\cap U_{2})\neq \emptyset\)   
+    \item $E \subset E^{-} \subseteq U_1 \cup U_2\implies E \subseteq U_1 \cup U_2$  
+    \item $(E\cap U_1)\cap (E\cap U_2)=\emptyset$
+    \item $(E\cap U_1)\neq \emptyset, (E\cap U_{2})\neq \emptyset$   
     \end{enumerate}
-    Therefore, \(E\) is also disconnected.
+    Therefore, $E$ is also disconnected.
 \end{proof}
 \end{solution}
 \begin{problem}
@@ -54,17 +54,17 @@ Prove that an intersection of convex sets in $\mathbb{R}^n$ is convex.
 \end{problem}
 \begin{solution}
     \begin{proof}
-        Suppose we have sets \(E,F\) that are both convex. We wish to find \(E\cup F\) is convex. We know the following:
+        Suppose we have sets $E,F$ that are both convex. We wish to find $E\cup F$ is convex. We know the following:
         \begin{align}
             \forall x, y \in E, 0<t<1 \implies tx+(1-t)y\in E\\[10pt] 
             \forall u, v \in F, 0<t<1 \implies tu+(1-t)v \in F
         \end{align}
-        Choose \(\forall a,b \in E\cup F\). Then,
+        Choose $\forall a,b \in E\cup F$. Then,
         \begin{align}
             ta+(1-t)b\in E\\[10pt] 
             ta+(1-t)b \in F
         \end{align} 
-        By the definition of an intersection of a set, we know that \(x\in P\) iff \(x\in E_{\alpha}\) for every \(\alpha \in A\). Let \(a \in E\), and \(b \in F\), and \(E = E_1\), \(F = E_2\), \(E_1, E_2 \in E_{\alpha}\). \(P=E\cap F\). By the above, we know that \(ta+(1-t)b\in E\cap F\). Therefore, the intersection of convex sets \(E\) and \(F\) is also convex.        
+        By the definition of an intersection of a set, we know that $x\in P$ iff $x\in E_{\alpha}$ for every $\alpha \in A$. Let $a \in E$, and $b \in F$, and $E = E_1$, $F = E_2$, $E_1, E_2 \in E_{\alpha}$. $P=E\cap F$. By the above, we know that $ta+(1-t)b\in E\cap F$. Therefore, the intersection of convex sets $E$ and $F$ is also convex.        
     \end{proof}
 \end{solution}
 \begin{problem}
@@ -72,12 +72,12 @@ On the metric space $\mathbb{R}^n$ (with the Euclidean metric $d$), denote by $P
 \end{problem}
 \begin{solution}
     \begin{proof}
-        The idea is to choose the largest value of \(P_i(s)\), where \(s\in \mathbb{\MakeUppercase{r}}^{n}\), and \(P_i\) is the projection function of \(\mathbb{\MakeUppercase{r}}^{n}\), i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values \(s, t \in \mathbb{\MakeUppercase{r}}^{n}\) is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value \(k\), thereby making the function \(P_i\) Lipschitz. For elements \( s, t \in \mathbb{R}^{n} \), choose \(k=1\). Then,
+        The idea is to choose the largest value of $P_i(s)$, where $s\in \mathbb{\MakeUppercase{r}}^{n}$, and $P_i$ is the projection function of $\mathbb{\MakeUppercase{r}}^{n}$, i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values $s, t \in \mathbb{\MakeUppercase{r}}^{n}$ is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value $k$, thereby making the function $P_i$ Lipschitz. For elements $ s, t \in \mathbb{R}^{n} $, choose $k=1$. Then,
         \begin{align}
             \left\vert s_i - t_i \right\vert < (1)d(s,t) \\[10pt] 
             =\left(  \sum_{i=1}^{n} \left\vert s_i - t_i \right\vert^{2}  \right)^{\frac{1}{2}}
         \end{align}
-        Therefore, \(P_i\) is Lipschitz. 
+        Therefore, $P_i$ is Lipschitz. 
          \end{proof}
 \end{solution}
 \begin{problem}
@@ -93,7 +93,7 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
 \end{problem}
 \begin{solution}
         \begin{enumerate}
-            \item \item To show that \(d\) is a metric, we need to show that \(d\) satisfies the three criteria of a metric space:
+            \item \item To show that $d$ is a metric, we need to show that $d$ satisfies the three criteria of a metric space:
             \begin{enumerate}
                 \item Non-degeneracy:
                 \begin{align}
@@ -101,11 +101,11 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
                   d(a,b) = \sum_{i=1}^{\infty} \left\vert a_i - b_{i} \right\vert  
                 \end{align} 
                 \begin{proof}
-                    \(\implies:\) 
+                    $\implies:$ 
                     \begin{align}
                         \sum_{i=1}^{\infty} \left\vert a_{i}-b_{i} \right\vert = \sum_{i=1}^{\infty} \left\vert 0 \right\vert =0 
                     \end{align} 
-                    \(\impliedby:\) 
+                    $\impliedby:$ 
                     \begin{align}
                         \sum_{i=1}^{\infty} \left\vert a_{i}-b_{i} \right\vert =0 \implies \left\vert a_{i}-b_{i} \right\vert =0 \\[10pt] 
                         a_{i}=b_{i}=0
@@ -144,25 +144,25 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
                 \sum_{i=1}^{\infty} s_{i} - \sum_{i=1}^{\infty} t_{i} \leq k \sum_{i=1}^{\infty} \left\vert a_{i}-b_{i} \right\vert \\[10pt] 
                 \left\vert S \right\vert -\left\vert T \right\vert \leq k\left\vert S-T \right\vert 
             \end{align} 
-            Choose \(k=1\). Then:
+            Choose $k=1$. Then:
             \begin{align}
                 \left\vert \left( S-T \right)+T  \right\vert \leq \left\vert S-T \right\vert +\left\vert T \right\vert \\[10pt] 
                 \left\vert S \right\vert \leq \left\vert S-T \right\vert +\left\vert T \right\vert 
             \end{align}
-            By the triangle inequality established in Problem 4.1, at \(k = 1\), \(f\) is Lipschitz. 
+            By the triangle inequality established in Problem 4.1, at $k = 1$, $f$ is Lipschitz. 
             \end{proof}
-            \item To prove that \(g: \mathbb{\MakeUppercase{r}} \to \ell_1\) is uniformly continuous, we will use the definition, i.e., 
+            \item To prove that $g: \mathbb{\MakeUppercase{r}} \to \ell_1$ is uniformly continuous, we will use the definition, i.e., 
             \begin{align}
                 \forall \varepsilon>0, \exists \delta \ s.t. \ x,y\in S \text{ and } \left\vert x-y \right\vert <\delta \implies \left\vert f(x)-f(y) \right\vert <\varepsilon
             \end{align} 
-            We will determine \(\delta\) by the following discussion:
+            We will determine $\delta$ by the following discussion:
             \begin{align}
                 f(x)-f(y) = \left(\frac{x^{2}}{2^{n}}- \frac{y^{2}}{2^{n}}   \right) =\\[10pt] 
                 \left( \frac{x^{2}-y^{2}}{2^{n}} \right) = \left( \frac{(x+y)(x-y)}{2^{n}} \right)  \\[10pt] 
                 \left( \frac{(x+y)(x-y)}{2^{n}} \right) <\varepsilon \\[10pt] 
                 (x-y) < \frac{\varepsilon \cdot 2^{n}}{(x+y)} \\[10pt] 
             \end{align} 
-            Choose \(\delta=\frac{\varepsilon \cdot 2^{n}}{(x+y)}\). Then, \(\left\vert x-y \right\vert <\delta \) implies:
+            Choose $\delta=\frac{\varepsilon \cdot 2^{n}}{(x+y)}$. Then, $\left\vert x-y \right\vert <\delta $ implies:
             \begin{align}
                 \left\vert f(x)-f(y) \right\vert = \left\vert \left(\frac{x^{2}}{2^{n}}- \frac{y^{2}}{2^{n}}   \right) \right\vert  =\\[10pt] 
                 \left( \frac{x^{2}-y^{2}}{2^{n}} \right) = \left( \frac{(x+y)(x-y)}{2^{n}} \right) < \left( \frac{(x+y)\delta}{2^{n}} \right) \\[10pt] 
@@ -172,7 +172,7 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
             \begin{align}
                 \left\vert x-y \right\vert < \delta \implies  \left\vert f(x)-f(y) \right\vert < \varepsilon
             \end{align}
-            Then \(g\) is uniformly continuous.
+            Then $g$ is uniformly continuous.
         \end{enumerate}
         
 

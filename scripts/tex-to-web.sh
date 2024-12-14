@@ -10,7 +10,7 @@ CLASSES_DIR="/Users/jerichlee/Documents/jerich/classes"
 BLOG_ENTRIES_DIR="/Users/jerichlee/Documents/jerich/blog/entries"
 
 # Paths to Python scripts
-BLOG_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/math-tex-to-html.py"
+BLOG_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/blog-latex-to-html.py"
 DIARY_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/math-tex-to-html.py"
 
 # Path to the CSS file

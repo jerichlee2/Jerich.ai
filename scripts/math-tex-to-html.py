@@ -329,44 +329,27 @@ def process_text_block(text_block):
         start, end = match.span()
         # Text before math mode
         if start > last_end:
-            pre_math_text = text_block[last_end:start].strip()
-            if pre_math_text:
-                # Split pre_math_text into paragraphs
-                paragraphs = re.split(r'\n\s*\n', pre_math_text)
-                for para in paragraphs:
-                    para = process_text(para, in_math_mode=False)
-                    if para:
-                        processed_parts.append(f"<p>{para}</p>\n")
+            processed_parts.append(process_text(text_block[last_end:start], in_math_mode=False))
         math_segment = match.group(0)
         if math_segment.startswith('$$') and math_segment.endswith('$$'):
             inner = math_segment[2:-2]
             processed_math = process_latex_content(inner, in_math_mode=True)
-            processed_parts.append(f"<p>$$\n{processed_math}\n$$</p>\n")
+            processed_parts.append(f"$${processed_math}$$")
         else:
             inner = math_segment[1:-1]
             processed_math = process_latex_content(inner, in_math_mode=True)
-            processed_parts.append(f"<p>${processed_math}$</p>\n")
+            processed_parts.append(f"${processed_math}$")
         last_end = end
 
     # Remaining text after last math block
     if last_end < len(text_block):
-        post_math_text = text_block[last_end:].strip()
-        if post_math_text:
-            # Split post_math_text into paragraphs
-            paragraphs = re.split(r'\n\s*\n', post_math_text)
-            for para in paragraphs:
-                para = process_text(para, in_math_mode=False)
-                if para:
-                    processed_parts.append(f"<p>{para}</p>\n")
+        processed_parts.append(process_text(text_block[last_end:], in_math_mode=False))
 
     return ''.join(processed_parts)
 
 def process_text(text_part, in_math_mode=False):
     # In math mode, do not escape HTML or transform text
     if not in_math_mode:
-        # Escape HTML for non-math text first
-        text_part = html.escape(text_part)
-
         # Replace LaTeX markup with HTML tags (non-math text)
         text_part = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", text_part)
         text_part = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", text_part)
@@ -374,10 +357,12 @@ def process_text(text_part, in_math_mode=False):
         text_part = re.sub(r"\\emph\{(.*?)\}", r"<em>\1</em>", text_part)
         text_part = re.sub(r"\\textbf\{(.*?)\}", r"<strong>\1</strong>", text_part)
         text_part = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", text_part)
-        text_part = re.sub(r"\\noindent", "", text_part)
+        text_part = text_part.replace("\\noindent", "")
 
-        # Optionally, convert single newlines to <br> for line breaks within paragraphs
-        # text_part = text_part.replace('\n', '<br>')
+        # Escape HTML for non-math text
+        text_part = text_part.replace('&', '&amp;')
+        text_part = text_part.replace('<', '&lt;')
+        text_part = text_part.replace('>', '&gt;')
 
     return text_part
 

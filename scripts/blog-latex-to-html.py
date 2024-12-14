@@ -117,6 +117,25 @@ def process_latex_content(content):
     content = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", content)
     content = content.replace("\\noindent", "")
 
+    # Handle nested enumerate environments
+    def replace_enumerate(match):
+        inner_content = match.group(1).strip()
+        
+        # Handle items properly, including the last one
+        inner_html = re.sub(
+            r"\\item\s+((?:.|\n)*?)(?=(\\item|\\end\{enumerate\}|$))",
+            lambda m: f"<li>{m.group(1).strip()}</li>",
+            inner_content,
+            flags=re.DOTALL
+        )
+
+        # Recursively replace nested enumerates
+        inner_html = re.sub(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}", replace_enumerate, inner_html, flags=re.DOTALL)
+
+        return f"<ol>\n{inner_html}\n</ol>"
+
+    content = re.sub(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}", replace_enumerate, content, flags=re.DOTALL)
+
     # Split content into paragraphs
     paragraphs = [f"<p>{para.strip()}</p>" for para in content.split("\n\n") if para.strip()]
 

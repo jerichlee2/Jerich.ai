@@ -35,17 +35,17 @@ Prove $n^2>n+1$ for all integers $n\geq2$.
 \begin{solution}
 \begin{proof}
     We will prove the base case of $n=2$ first:
-$$
+\begin{align}
 (2)^2>(2)+1
-$$
-$$
+\end{align}
+\begin{align}
 4>3
-$$
+\end{align}
 The above verifies the base case. The inductive hypothesis is as follows:
 
-$$
+\begin{align}
 n^2>n+1, \ n\geq 2
-$$
+\end{align}
 
 We want to prove the case such that $P_{n+1}$ is true whenever $P_{n}$ is true and $n\geq m$. The inductive step is as follows:
 
@@ -74,9 +74,9 @@ The last line is true for all $n\geq 2$.
     To find all rational solutions of the equation $x^8-4x^5+13x^3-7x+1=0$, we can use the Rational Zeros Theorem.
 
 Corollary—Rational Zeros Theorem: If a polynomial equation 
-$$
+\begin{align}
 a_nx^n + a_{n-1}x^{n-1} + ... + a_1x + a_0 = 0
-$$
+\end{align}
 with integer coefficients has a rational solution $x = \frac{p}{q}$ 
 —where $p$ and $q$ are integers with no common factors and $q \neq 0$—, then:
 \begin{enumerate}
@@ -108,14 +108,14 @@ The only integers that divide 1 are 1 and -1. Therefore, the only possible ratio
 Now, we need to check if these candidates actually satisfy the equation:
 
 For $x = 1$:
-$$
+\begin{align}
 1^8 - 4(1^5) + 13(1^3) - 7(1) + 1 = 1 - 4 + 13 - 7 + 1 = 4 \neq 0
-$$
+\end{align}
 
 For $x = -1$:
-$$
+\begin{align}
 (-1)^8 - 4((-1)^5) + 13((-1)^3) - 7(-1) + 1 = 1 + 4 - 13 + 7 + 1 = 0
-$$
+\end{align}
 
 Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is $x = -1$.
 \end{solution}
@@ -153,17 +153,17 @@ Therefore, the only rational solution to the equation $x^8-4x^5+13x^3-7x+1=0$ is
              \textbf{Combine the Results:}
             \begin{enumerate}
                 \item From the two inequalities, we have:
-                $$
+                \begin{align}
                 |a| - |b| \leq |a - b| \quad \text{and} \quad |b| - |a| \leq |a - b|
-                $$
+                \end{align}
             \end{enumerate}
             
             \textbf{Conclusion:}
             \begin{enumerate}
                 \item The absolute value $||a| - |b||$ is defined as:
-                $$
+                \begin{align}
                 ||a| - |b|| = \max(|a| - |b|, |b| - |a|)
-                $$
+                \end{align}
                 \item Therefore, $||a| - |b|| \leq |a - b|$.
             \end{enumerate}
 
@@ -271,17 +271,17 @@ $s\leq t$ for all $s \in S$ and $t \in T$.
         \end{enumerate}
         \item We also know that for all $n \in \mathbb{N}$, $a_n \leq s_n \leq b_n$
         \item Combining these facts, we can conclude that for $n > \max(N_1, N_2)$:
-        $$
+        \begin{align}
         s - \varepsilon < a_n \leq s_n \leq b_n < s + \varepsilon
-        $$
+        \end{align}
         \item This implies:
-        $$
+        \begin{align}
         s - \varepsilon < s_n < s + \varepsilon
-        $$
+        \end{align}
         \item Therefore:
-        $$
+        \begin{align}
         |s_n - s| < \varepsilon
-        $$
+        \end{align}
         \item By the definition of a limit of a sequence, this proves that $\lim_{n \to \infty} s_n = s$
     \end{enumerate}
     Thus, we have proven the squeeze lemma. 
@@ -363,9 +363,9 @@ Let $x=\text{sup} \ S$. Prove that $x^2=2$, by establishing that (i) $x^2\leq 2$
             \begin{enumerate}
                 \item Assume $\alpha^2 > 2$.
                 \item For $n \in \mathbb{N}$, consider $(\alpha - \frac{1}{n})^2$:
-                $$
+                \begin{align}
                 \left( \alpha-\frac{1}{n} \right)^2=\alpha^2-\frac{2\alpha}{n}+\frac{1}{n^2}>\alpha^2-\frac{2\alpha}{n}
-                $$
+                \end{align}
                 \item Since $\alpha^2 > 2$, we have:
                 \begin{align}
                 2<\alpha^2-\frac{2\alpha}{n} \\
@@ -375,9 +375,9 @@ Let $x=\text{sup} \ S$. Prove that $x^2=2$, by establishing that (i) $x^2\leq 2$
                 \end{align}
                 \item Choose $n_0 \in \mathbb{N}$ such that $\frac{1}{n_0} < \frac{\alpha^2-2}{2\alpha}$.
                 \item Then:
-                $$
+                \begin{align}
                 \left( \alpha-\frac{1}{n_0} \right)^2>\alpha^2-(\alpha^2-2)=2
-                $$
+                \end{align}
                 \item This contradicts the fact that $\alpha$ is an upper bound for $S$.
                 \item Therefore, our assumption must be false, and $\alpha^2 \leq 2$.
             \end{enumerate}
@@ -385,14 +385,14 @@ Let $x=\text{sup} \ S$. Prove that $x^2=2$, by establishing that (i) $x^2\leq 2$
             \begin{enumerate}
                 \item Assume $\alpha^2 < 2$.
                 \item For $n \in \mathbb{N}$, consider $(\alpha + \frac{1}{n})^2$:
-                $$
+                \begin{align}
                 \left( \alpha + \frac{1}{n} \right)^2 = \alpha^2 + \frac{2\alpha}{n} + \frac{1}{n^2} < \alpha^2 + \frac{2\alpha}{n} + \frac{1}{n} = \alpha^2 + \frac{2\alpha + 1}{n}.
-                $$
+                \end{align}
                 \item Choose $n_0 \in \mathbb{N}$ such that $\frac{1}{n_0} < \frac{2 - \alpha^2}{2\alpha + 1}$.
                 \item Then:
-                $$
+                \begin{align}
                 \left( \alpha + \frac{1}{n_0} \right)^2 < \alpha^2 + (2 - \alpha^2) = 2.
-                $$
+                \end{align}
                 \item This means $\alpha + \frac{1}{n_0} \in S$, contradicting $\alpha$ as an upper bound for $S$.
                 \item Therefore, our assumption must be false, and $\alpha^2 \geq 2$.
             \end{enumerate}

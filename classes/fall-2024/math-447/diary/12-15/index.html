@@ -126,13 +126,58 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
     Suppose $f:\mathbb{{R}}\to{} \mathbb{{R}}$ is differentiable everywhere, and $\lim_{t \to 0} f^\prime{} (t)$ exists. Prove that $f^\prime{}$ is continuous at $0$.    
 </div>
 <div class='solution'><strong>Solution.</strong> 
+   So for this problem, I appealed to the Sequential Criterion for continuity (Theorem 17.1 + 17.2): 
+  $$\begin{align}
+
+    f:S\to S^{*} \text{ is continuous at } x\in S \iff  f(x_{n})\to f(x) \text{ whenever } x_{n}\to x. \label{seqcon}
+  
+\end{align}$$  The question was labeled <em>Difficult Problem</em>, which always kind of confuses bc sometimes these labeled problems can be impossible but else they are actually not bad. This problem (I think) is of the latter...
+   <div class='proof'><strong>Proof.</strong> 
     
+
+    We know that $f^\prime{} (0)$ is defined on $f^\prime{} $, as $f$is diff'able everywhere.
+    
+    WTF: $\lim_{n \to 0}f^\prime{} (x)=f^\prime{} (0) $ 
+
+    We know that $\lim_{x \to 0}f^\prime{} (x) $ exists. So, we want to show that it equals $f^\prime{} (0)$ by \autoref{seqcon}.
+    $$\begin{align}
+
+       \lim_{x \to 0} f^\prime (x)=L 
+    
+\end{align}$$
+    We know that the above implies:
+    $$\begin{align}
+
+        \lim_{n \to \infty} f^\prime (a_{n})=L \ s.t. \ \lim_{n \to \infty} a_{n}\to 0 \\[10pt] 
+        \left\vert f^\prime (a_{n})-L \right\vert <\varepsilon \\[10pt] 
+        \frac{f^\prime (a_{n})-f^\prime (0)}{a_{n}}=L \\[10pt] 
+        f^\prime (0) = -La_{n}+f^\prime (a_{n}) \\[10pt] 
+        f^\prime (a_{n}) = La_{n}+f^\prime (0) \\[10pt] 
+        \left\vert La_{n}+f^\prime (0)-L \right\vert <\varepsilon \\[10pt] 
+        \left\vert L(a_{n}-1)+f^\prime (0) \right\vert < \varepsilon \\[10pt] 
+        \left\vert f^\prime (0) -L \right\vert < \varepsilon \implies f^\prime (0) = L \label{y}
+    
+\end{align}$$
+    By \autoref{y}, 
+    $$\begin{align}
+
+        \lim_{x \to 0} f^\prime (x)=f^\prime (0)
+    
+\end{align}$$.
+   <div class='qed'>∎</div></div><br>     
+
 </div>
 <div class='problem'><strong>Problem.</strong><br> [11]
     Suppose $f: \mathbb{{R}}\to{} \mathbb{{R}}$ is continuous and strictly decreasing, with $f(2)=3$ and $f^\prime{} (2)=-5$. Find $g^\prime{} (3)$, where $g=f^{-1}$ (the inverse function of $f$).     
 </div>
 <div class='solution'><strong>Solution.</strong> 
+    $f:\mathbb{{R}}\to{} \mathbb{{R}}$ is cont., strictly decreasing, $f(2)=3, f^\prime{} (2)=-5$. By the Derivative of an Inverse Function, 
+    $$\begin{align}
+
+    g^\prime (d)&=\frac{1}{f^\prime (c)}= \frac{1}{f^\prime (g(d))} \label{in} \\[10pt] 
+    g^\prime (3) &= \boxed{\frac{1}{-5}}
     
+\end{align}$$   
 </div>
 <div class='problem'><strong>Problem.</strong><br> [12]
    Compute $\lim_{n \to \infty} \sum_{j=1}^{n} \frac{1}{n+5j}$.  
@@ -155,7 +200,36 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 </ol>  
 </div>
 <div class='solution'><strong>Solution.</strong> 
-    
+    This one was a monster. Prob the hardest problem in the entire pset. Lots of duh moments.
+    <ol>
+<li>By the Linearity and Comparison of Integrals, we know that 
+        $$\begin{align}
+
+            g\leq f \implies \int_{a}^{b} g \leq \int_{a}^{b} g \label{linint}   
+        
+\end{align}$$
+        Let $g=0$ and $f = (tf+g)^{2}$. We know that $f\geq g$, as the square of a integrand is always positive. By \autoref{linint}, $\int_{a}^{b} (tf+g)^{2}  \geq 0$ and $\int_{a}^{b} (tf-g)^{2}\geq 0 $.</li>
+<li>Using the result of part 1:
+        $$\begin{align}
+
+            \int_{a}^{b} (tf+g)^{2} \geq 0\\[10pt]  
+            &= \int_{a}^{b} t^{2}f^{2} + 2tfg + g^{2} \\[10pt] 
+            &= \int_{a}^{b} t^{2}f^{2} + 2\int_{a}^{b} tfg + \int_{a}^{b} g \geq 0 \\[10pt] 
+            &= t^{2}\int_{a}^{b} f^{2} + 2t\int_{a}^{b} fg + \int_{a}^{b} g^{2} \\[10pt] 
+            &= -2\int_{a}^{b} fg \leq t\int_{a}^{b} f^{2} + \frac{1}{t}\int_{a}^{b} g^{2}         
+        
+\end{align}$$
+        The other case, $\int_{a}^{b} (tf-g)^{2}\geq  $ is handled similarly to obtain the absolute value of $2\left\vert \int_{a}^{b} fg   \right\vert $.</li>
+<li><div class='proof'><strong>Proof.</strong> 
+            Suppose by contradiction, $fg=y&gt;0$ for some $x\in{}[a,b]$. By continuity of the interval of integrable functions, $\exists{} $ interval $[c,d] \subset{} [a,b]\ s.t. \ f\geq{} \frac{y}{2}$ on $[c,d]$. Then,
+        $$\begin{align}
+
+            \int_{a}^{b} f^{2} = \int_{a}^{b} f^{2}+\int_{c}^{d} f^{2}+\int_{d}^{b} f^{2}\geq \frac{y}{2}(d-c)>0         
+        
+\end{align}$$  
+            Which is a contradiction.
+        <div class='qed'>∎</div></div><br></li>
+</ol>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [14]
    Recall that the metric $d$ on $\mathbb{{R}}^{n}$ is defined as follows: for $\vec{a}, \vec{b}\in{} \mathbb{{R}}^{n}, d(\vec{a},\vec{b})=\lVert \vec{a} -\vec{b} \rVert $, where, for $\vec{c}=(c_1, \ldots{} , c_{n}),\lVert \vec{c} \rVert =( \sum_{i} \vert c_i \vert  )^{\frac{1}{2}}  $. Suppose $\vec{x}, \vec{y} \in{} \mathbb{{R}}^{n}$. Prove that the function $\phi{}:\mathbb{{R}}\to{} \mathbb{{R}}:t \mapsto{} \lVert \vec{x} +\vec{ty} \rVert $ is convex.     

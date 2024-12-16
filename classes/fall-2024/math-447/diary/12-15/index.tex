@@ -131,13 +131,48 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
     Suppose $f:\mathbb{{R}}\to \mathbb{{R}}$ is differentiable everywhere, and $\lim_{t \to 0} f^\prime (t)$ exists. Prove that $f^\prime$ is continuous at $0$.    
 \end{problem}
 \begin{solution}
+   So for this problem, I appealed to the Sequential Criterion for continuity (Theorem 17.1 + 17.2): 
+  \begin{align}
+    f:S\to S^{*} \text{ is continuous at } x\in S \iff  f(x_{n})\to f(x) \text{ whenever } x_{n}\to x. \label{seqcon}
+  \end{align}  The question was labeled \emph{Difficult Problem}, which always kind of confuses bc sometimes these labeled problems can be impossible but else they are actually not bad. This problem (I think) is of the latter...
+   \begin{proof}
+    \noindent
+
+    We know that $f^\prime (0)$ is defined on $f^\prime $, as $f$is diff'able everywhere.
     
+    WTF: $\lim_{n \to 0}f^\prime (x)=f^\prime (0) $ 
+
+    We know that $\lim_{x \to 0}f^\prime (x) $ exists. So, we want to show that it equals $f^\prime (0)$ by \autoref{seqcon}.
+    \begin{align}
+       \lim_{x \to 0} f^\prime (x)=L 
+    \end{align}
+    We know that the above implies:
+    \begin{align}
+        \lim_{n \to \infty} f^\prime (a_{n})=L \ s.t. \ \lim_{n \to \infty} a_{n}\to 0 \\[10pt] 
+        \left\vert f^\prime (a_{n})-L \right\vert <\varepsilon \\[10pt] 
+        \frac{f^\prime (a_{n})-f^\prime (0)}{a_{n}}=L \\[10pt] 
+        f^\prime (0) = -La_{n}+f^\prime (a_{n}) \\[10pt] 
+        f^\prime (a_{n}) = La_{n}+f^\prime (0) \\[10pt] 
+        \left\vert La_{n}+f^\prime (0)-L \right\vert <\varepsilon \\[10pt] 
+        \left\vert L(a_{n}-1)+f^\prime (0) \right\vert < \varepsilon \\[10pt] 
+        \left\vert f^\prime (0) -L \right\vert < \varepsilon \implies f^\prime (0) = L \label{y}
+    \end{align}
+    By \autoref{y}, 
+    \begin{align}
+        \lim_{x \to 0} f^\prime (x)=f^\prime (0)
+    \end{align}.
+   \end{proof}     
+
 \end{solution}
 \begin{problem}[11]
     Suppose $f: \mathbb{{R}}\to \mathbb{{R}}$ is continuous and strictly decreasing, with $f(2)=3$ and $f^\prime (2)=-5$. Find $g^\prime (3)$, where $g=f^{-1}$ (the inverse function of $f$).     
 \end{problem}
 \begin{solution}
-    
+    $f:\mathbb{{R}}\to \mathbb{{R}}$ is cont., strictly decreasing, $f(2)=3, f^\prime (2)=-5$. By the Derivative of an Inverse Function, 
+    \begin{align}
+    g^\prime (d)&=\frac{1}{f^\prime (c)}= \frac{1}{f^\prime (g(d))} \label{in} \\[10pt] 
+    g^\prime (3) &= \boxed{\frac{1}{-5}}
+    \end{align}   
 \end{solution}
 \begin{problem}[12]
    Compute $\lim_{n \to \infty} \sum_{j=1}^{n} \frac{1}{n+5j}$.  
@@ -158,7 +193,30 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
    \end{enumerate}  
 \end{problem}
 \begin{solution}
-    
+    This one was a monster. Prob the hardest problem in the entire pset. Lots of duh moments.
+    \begin{enumerate}
+        \item By the Linearity and Comparison of Integrals, we know that 
+        \begin{align}
+            g\leq f \implies \int_{a}^{b} g \leq \int_{a}^{b} g \label{linint}   
+        \end{align}
+        Let $g=0$ and $f = (tf+g)^{2}$. We know that $f\geq g$, as the square of a integrand is always positive. By \autoref{linint}, $\int_{a}^{b} (tf+g)^{2}  \geq 0$ and $\int_{a}^{b} (tf-g)^{2}\geq 0 $.    
+        \item Using the result of part 1:
+        \begin{align}
+            \int_{a}^{b} (tf+g)^{2} \geq 0\\[10pt]  
+            &= \int_{a}^{b} t^{2}f^{2} + 2tfg + g^{2} \\[10pt] 
+            &= \int_{a}^{b} t^{2}f^{2} + 2\int_{a}^{b} tfg + \int_{a}^{b} g \geq 0 \\[10pt] 
+            &= t^{2}\int_{a}^{b} f^{2} + 2t\int_{a}^{b} fg + \int_{a}^{b} g^{2} \\[10pt] 
+            &= -2\int_{a}^{b} fg \leq t\int_{a}^{b} f^{2} + \frac{1}{t}\int_{a}^{b} g^{2}         
+        \end{align}
+        The other case, $\int_{a}^{b} (tf-g)^{2}\geq  $ is handled similarly to obtain the absolute value of $2\left\vert \int_{a}^{b} fg   \right\vert $.
+        \item \begin{proof}
+            Suppose by contradiction, $fg=y>0$ for some $x\in[a,b]$. By continuity of the interval of integrable functions, $\exists $ interval $[c,d] \subset [a,b]\ s.t. \ f\geq \frac{y}{2}$ on $[c,d]$. Then,
+        \begin{align}
+            \int_{a}^{b} f^{2} = \int_{a}^{b} f^{2}+\int_{c}^{d} f^{2}+\int_{d}^{b} f^{2}\geq \frac{y}{2}(d-c)>0         
+        \end{align}  
+            Which is a contradiction.
+        \end{proof}
+    \end{enumerate}
 \end{solution}
 \begin{problem}[14]
    Recall that the metric $d$ on $\mathbb{{R}}^{n}$ is defined as follows: for $\vec{a}, \vec{b}\in \mathbb{{R}}^{n}, d(\vec{a},\vec{b})=\left\lVert \vec{a} -\vec{b} \right\rVert $, where, for $\vec{c}=(c_1, \ldots , c_{n}),\left\lVert \vec{c} \right\rVert =\left( \sum_{i} \left\vert c_i \right\vert  \right)^{\frac{1}{2}}  $. Suppose $\vec{x}, \vec{y} \in \mathbb{{R}}^{n}$. Prove that the function $\phi:\mathbb{{R}}\to \mathbb{{R}}:t \mapsto \left\lVert \vec{x} +\vec{ty} \right\rVert $ is convex.     

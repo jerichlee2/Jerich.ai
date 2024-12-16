@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1734334967.04908 "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" "index.pdf" "index" 1734334967.93897 0
-  "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" 1734334965.86235 17664 a5617728b74ac2f3238d8a8154d6871a ""
+["pdflatex"] 1734336948.96947 "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" "index.pdf" "index" 1734336949.97328 0
+  "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" 1734336948.71941 20290 c6d7cbbad5b232c71de510c3acd2a0ad ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -111,9 +111,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1710571862.48943 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1710571826 8221424 096a2afea9898eaddb935b45b38cfbab ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "index.aux" 1734334967.86001 374 d2de45710b4cc4461a43f631a12896c0 "pdflatex"
-  "index.out" 1734334967.54724 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "index.tex" 1734334965.86235 17664 a5617728b74ac2f3238d8a8154d6871a ""
+  "index.aux" 1734336949.88686 586 cb83e2fcfd300e63f5d42a88f32be0f2 "pdflatex"
+  "index.out" 1734336949.54349 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "index.tex" 1734336948.71941 20290 c6d7cbbad5b232c71de510c3acd2a0ad ""
   (generated)
   "index.aux"
   "index.log"

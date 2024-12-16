@@ -189,12 +189,12 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
    Suppose the functions $f$ and $g$ are integrable on $[a,b]$. 
    <ol>
 <li>Prove that the inequalities $\int_{a}^{b} (tf+g)^{2} \geq 0$ and $\int_{a}^{b} (tf-g)^{2} \geq 0$ holds for any $t$.</li>
-<li>Prove that, for any $t>0$, we have $2\left\vert \int_{a}^{b} fg \right\vert \leq t\int_{a}^{b} f^{2} +\frac{1}{t}\int_{a}^{b} g^{2}$.</li>
+<li>Prove that, for any $t>0$, we have $2\left\vert \int_{a}^{b} fg \right\vert \leq t\int_{a}^{b} f^{2} +\frac{1}{t}\int_{a}^{b} g^{2}$. \label{bun}</li>
 <li>Show that, if $\int_{a}^{b} f^{2} = 0$, then $\int_{a}^{b} fg=0  $.</li>
 <li>Prove Bunyakovsky-Cauchy-Schwarz Inequality for Integrals:
      $$\begin{align}
 
-        \left( \int_{a}^{b} fg   \right)^{2} \leq \left( \int_{a}^{b} \left\vert fg \right\vert    \right)^{2} \leq \left( \int_{a}^{b} f^{2}   \right) \cdot \left( \int_{a}^{b} g^{2}  \right)
+        \left( \int_{a}^{b} fg   \right)^{2} \leq \left( \int_{a}^{b} \left\vert fg \right\vert    \right)^{2} \leq \left( \int_{a}^{b} f^{2}   \right) \cdot \left( \int_{a}^{b} g^{2}  \right) \label{bunya}
     
 \end{align}$$</li>
 </ol>  
@@ -205,7 +205,7 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 <li>By the Linearity and Comparison of Integrals, we know that 
         $$\begin{align}
 
-            g\leq f \implies \int_{a}^{b} g \leq \int_{a}^{b} g \label{linint}   
+            g\leq f \implies \int_{a}^{b} g \leq \int_{a}^{b} f \label{linint}   
         
 \end{align}$$
         Let $g=0$ and $f = (tf+g)^{2}$. We know that $f\geq g$, as the square of a integrand is always positive. By \autoref{linint}, $\int_{a}^{b} (tf+g)^{2}  \geq 0$ and $\int_{a}^{b} (tf-g)^{2}\geq 0 $.</li>
@@ -229,13 +229,54 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 \end{align}$$  
             Which is a contradiction.
         <div class='qed'>∎</div></div><br></li>
+<li><div class='proof'><strong>Proof.</strong> 
+           $$\begin{align}
+
+            2\left\vert \int_{a}^{b} fg \,\mathrm{d}x  \right\vert^{2}&< \left( t\int_{a}^{b} f^{2} +\frac{1}{t}\int_{a}^{b} g^{2}    \right)\left( t\int_{a}^{b} f^{2} +\frac{1}{t}\int_{a}^{b} g^{2}   \right) \\[10pt] 
+            &\leq t^{2}\underbrace{\left( \int_{a}^{b} f^{2}   \right)^{2} }_{\alpha}+2\left( \int_{a}^{b} f^{2}  \right)\left( \int_{a}^{b} g^{2}  \right) + \frac{1}{t^{2}}\underbrace{\left( \int_{a}^{b} g^{2}   \right)^{2} }_{\beta} \\[10pt]     
+           
+\end{align}$$ 
+           We wish to minimize the function 
+           $$\begin{align}
+
+            h(t) &= \alpha t + \frac{\beta}{t} \\[10pt] 
+            h^\prime (t) &= \alpha - \frac{\beta}{t^{2}} = 0
+            \implies \alpha=\frac{\beta}{t^{2}} \\[10pt] 
+            t^{2}=\frac{\beta}{2}\\[10pt] 
+            t = \left( \frac{\beta}{\alpha} \right)^{2} \label{t}
+           
+\end{align}$$ 
+           Subbing \autoref{t} into \autoref{bun}, we achieve \autoref{bunya}.
+        <div class='qed'>∎</div></div><br></li>
 </ol>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [14]
    Recall that the metric $d$ on $\mathbb{{R}}^{n}$ is defined as follows: for $\vec{a}, \vec{b}\in{} \mathbb{{R}}^{n}, d(\vec{a},\vec{b})=\lVert \vec{a} -\vec{b} \rVert $, where, for $\vec{c}=(c_1, \ldots{} , c_{n}),\lVert \vec{c} \rVert =( \sum_{i} \vert c_i \vert  )^{\frac{1}{2}}  $. Suppose $\vec{x}, \vec{y} \in{} \mathbb{{R}}^{n}$. Prove that the function $\phi{}:\mathbb{{R}}\to{} \mathbb{{R}}:t \mapsto{} \lVert \vec{x} +\vec{ty} \rVert $ is convex.     
 </div>
 <div class='solution'><strong>Solution.</strong> 
-    
+<div class='proof'><strong>Proof.</strong> 
+       $$\begin{align}
+
+    \phi\left( \frac{t+s}{2} \right) &\leq \frac{\phi(t)+\phi(2)}{2}\\[10pt] 
+    \left\lVert \vec{x_i}+t \vec{y_i}  \right\rVert &\leq \left\lVert \vec{x_{i}}\right\rVert + \left\lVert \vec{ty_{i}}\right\rVert \\[10pt] 
+    &= \left\lVert \vec{x_{i}}\right\rVert + \left\lVert \vec{t}\right\rVert \cdot\left\lVert \vec{y_{i}}\right\rVert \\[10pt] 
+    c&= \frac{t+s}{2}\\[10pt] 
+    \phi\left( c \right) &= \left\lVert \vec{v} +c \vec{y} \right\rVert \\[10pt] 
+    &= \left\lVert \vec{x} + \left( \frac{t+s}{2} \right) \vec{y} \right\rVert \\[10pt] 
+    &= \left\lVert \vec{x} +\frac{t}{2}\vec{y} +\frac{s}{2}\vec{y} \right\rVert \\[10pt] 
+    &\leq \left\lVert \vec{x} \right\rVert + \left\lVert \frac{t}{2}\vec{y} \right\rVert + \left\lVert \frac{s}{2}\vec{y} \right\rVert \\[10pt] 
+    &= \left\lVert \vec{x} \right\rVert + \frac{t}{2}\left\lVert \vec{y} \right\rVert + \frac{s}{2}\left\lVert \vec{y} \right\rVert \label{yuh}
+   
+\end{align}$$ 
+   WTF: $$\begin{align}
+
+    \frac{\phi(t)+\phi(s)}{2}&=\frac{\left\lVert \vec{x} +t\vec{y} \right\rVert + \left\lVert \vec{x} +s \vec{y} \right\rVert}{2} \\[10pt] 
+    &\leq \frac{\left\lVert \vec{x} \right\rVert}{2}+\frac{\left\lVert \vec{x} \right\rVert}{2}+\frac{\left\lVert t \vec{y}  \right\rVert}{2} + \frac{\left\lVert s \vec{y}   \right\rVert}{2} \\[10pt] 
+    &= \left\lVert \vec{x} \right\rVert + \frac{t+s}{2}\left\lVert \vec{y} \right\rVert \label{huh}
+   
+\end{align}$$
+   \autoref{yuh}= \autoref{huh}.
+<div class='qed'>∎</div></div><br>
 </div>
 <div class='problem'><strong>Problem.</strong><br> [15]
    Suppose $E$ is a compact subset of a metric space $(S,d)$. 
@@ -246,7 +287,7 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 </ol> 
 </div>
 <div class='solution'><strong>Solution.</strong> 
-    
+    Why is $E\subset{} \mathbb{{R}}^{2}$  $E=\{ (u,v):u^{2}+v^{2}=1 \} $ 
 </div>
 <div class='problem'><strong>Problem.</strong><br> [16]
     The function $g: \mathbb{{R}}\to{} \mathbb{{R}}$ is defined by setting 

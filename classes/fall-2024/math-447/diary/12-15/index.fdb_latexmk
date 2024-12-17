@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1734336948.96947 "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" "index.pdf" "index" 1734336949.97328 0
-  "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" 1734336948.71941 20290 c6d7cbbad5b232c71de510c3acd2a0ad ""
+["pdflatex"] 1734412657.00996 "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" "index.pdf" "index" 1734412657.99623 0
+  "/Users/jerichlee/Documents/jerich/classes/fall-2024/math-447/diary/12-15/index.tex" 1734412656.40668 22888 8710be24d3bc0ea3466063929f8ecbf0 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -9,6 +9,8 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm" 1136768653 1344 8a0be4fe4d376203000810ad4dc81558 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -111,9 +113,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1710571862.48943 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1710571826 8221424 096a2afea9898eaddb935b45b38cfbab ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "index.aux" 1734336949.88686 586 cb83e2fcfd300e63f5d42a88f32be0f2 "pdflatex"
-  "index.out" 1734336949.54349 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "index.tex" 1734336948.71941 20290 c6d7cbbad5b232c71de510c3acd2a0ad ""
+  "index.aux" 1734412657.90979 594 2848ff91cea33401b8657cb42e70cab9 "pdflatex"
+  "index.out" 1734412657.57353 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "index.tex" 1734412656.40668 22888 8710be24d3bc0ea3466063929f8ecbf0 ""
   (generated)
   "index.aux"
   "index.log"

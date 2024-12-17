@@ -236,7 +236,7 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 \begin{problem}[14]
    Recall that the metric $d$ on $\mathbb{{R}}^{n}$ is defined as follows: for $\vec{a}, \vec{b}\in \mathbb{{R}}^{n}, d(\vec{a},\vec{b})=\left\lVert \vec{a} -\vec{b} \right\rVert $, where, for $\vec{c}=(c_1, \ldots , c_{n}),\left\lVert \vec{c} \right\rVert =\left( \sum_{i} \left\vert c_i \right\vert  \right)^{\frac{1}{2}}  $. Suppose $\vec{x}, \vec{y} \in \mathbb{{R}}^{n}$. Prove that the function $\phi:\mathbb{{R}}\to \mathbb{{R}}:t \mapsto \left\lVert \vec{x} +\vec{ty} \right\rVert $ is convex.     
 \end{problem}
-\begin{solution}
+\begin{solution}[Mine]
 \begin{proof}
        \begin{align}
     \phi\left( \frac{t+s}{2} \right) &\leq \frac{\phi(t)+\phi(2)}{2}\\[10pt] 
@@ -256,6 +256,12 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
    \end{align}
    \autoref{yuh}= \autoref{huh}.
 \end{proof}
+\end{solution}
+\begin{solution}[True]
+   Using the parallelogram identity:
+   \begin{align}
+    \left\lVert \vec{x} +\vec{y} \right\rVert^{2}+\left\lVert \vec{x} -\vec{y} \right\rVert^{2}= 2\left( \left\lVert \vec{x} \right\rVert^{2}+\left\lVert \vec{y} \right\rVert^{2}   \right) 
+   \end{align} 
 \end{solution}
 \begin{problem}[15]
    Suppose $E$ is a compact subset of a metric space $(S,d)$. 
@@ -314,13 +320,14 @@ This can be achieved by grouping $a_k$'s into blocks of length $2^0, 2^1, 2^2, \
 \end{solution}
 \begin{problem}[21]
    Determine whether the following series converge: 
-\end{problem}
-\begin{solution}
    \begin{enumerate}
     \item $\sum_{k=1}^{\infty} \frac{k+\sqrt{k} \sin k}{k^{3}+1}$
     \item $\sum_{k=1}^{\infty} \frac{(-4)^{k}}{k^{4}}$
     \item $\sum_{k=1}^{\infty} \frac{2k^{2}-1}{k^{3}+1}$   
    \end{enumerate} 
+\end{problem}
+\begin{solution}
+What is $\lim_{k \to \infty} \frac{(-4)^{k}}{k^{4}}$ 
 \end{solution}
 \begin{problem}[22]
    The sequence $(a_{n})$ is defined by $a_1=5, a_{n+1}=\sqrt{2a_{n}+3} $ for $n\geq 1$. Determine whether this sequence converges. If it does, find its limit.    
@@ -473,5 +480,49 @@ Show that there is a differentiable function on $\mathbb{R}$ whose derivative is
 \begin{solution}
     
 \end{solution}
-
+\subsubsection*{Exam 2 Practice Problems}
+\begin{problem}[17.10(c)]
+    Prove the following functions are discontinuous at the indicated points. 
+    \begin{enumerate}
+        \item $f(x)=1$ for $x>0$ and $f(x)=0$ for $x\leq 0,x_0=0$ 
+        \item $g(x)=\sin(\frac{1}{x})$ for $x\neq 0$ and $g(0)=0,x_0=0$.
+        \item $sgn(x)=\frac{x}{\left\vert x \right\vert }$ for $x\neq 0$.    
+    \end{enumerate}
+\end{problem}
+\begin{problem}[18.6]
+    Prove $x=\cos x$ for some $x$ in $(0,\frac{\pi}{2})$ 
+\end{problem}
+\begin{problem}[22.5]
+   Let $E$ and $F$ be connected sets in some metric space.
+   \begin{enumerate}
+    \item Prove that if $E\cap F\neq \varnothing $, then $E\cup F$ is connected.
+    \item Give an example to show $E \cup  F$ need not be connected. Incidentally, the empty set \emph{is} connected.   
+   \end{enumerate} 
+\end{problem}
+\begin{problem}[24.13]
+   Prove that if $(f_{n})$ is a sequence of uniformly continuous functions on an interval $(a,b)$, and if $f_{n}\to f$ uniformly on $(a,b)$, then $f$ is also uniformly continuous on $(a,b)$.
+\end{problem}
+\begin{problem}[24.15]
+    Let $f_{n}(x)=\frac{nx}{1+nx}$ for $x\in [0,\infty )$ .
+    \begin{enumerate}
+        \item Find $f(x)=\lim_{n \to \infty} f_{n}(x)$ 
+        \item Does $f_{n}\to f$ uniformly on $[0,1]$? Justify.
+        \item Does $f_{n}\to f$ uniformly on $[1,\infty )$? Justify.  
+    \end{enumerate}
+\end{problem}
+\begin{problem}[25.6]
+\begin{enumerate}
+    \item 
+    Show that if $\sum \left\vert a_{k} \right\vert  <\infty $, then $\sum a_{k}x^{k}$ converges uniformly on $[-1,1]$ to a continuous function.
+    \item Does $\sum_{n=1}^{\infty} \frac{1}{n^{2}}x^{n}$ represent a continuous function on $[-1,1]$? 
+\end{enumerate}
+\end{problem}
+\subsubsection*{Exam 1 Practice Problems}
+\begin{problem}[13.3]
+   Let $B$ be the set of all bounded sequences $\mathbf{x} =\left( x_1 ,x_2, \ldots    \right) $, and define $d(\mathbf{x} ,\mathbf{y} )=\sup\left\{ \left\vert x_{j}-y_{j} \right\vert  :j=1,2, \ldots  \right\} $.
+   \begin{enumerate}
+    \item Show $d$ is a metric for $B$ 
+    \item Does $d^{*}(\mathbf{x} ,\mathbf{y} )=\sum_{j=1}^{\infty} \left\vert x_{j}-y_{j} \right\vert $ define a metric for $B$?
+   \end{enumerate}  
+\end{problem}
 \end{document}

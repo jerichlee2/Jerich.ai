@@ -15,7 +15,7 @@ def latex_to_html(latex_file, output_html, css_path):
     <script>
         MathJax = {{
             tex: {{
-                inlineMath: [['\\\\(', '\\\\)']],
+                inlineMath: [['$', '$']],
                 displayMath: [['$$', '$$']],
                 packages: {{ '[+]': ['ams'] }},
                 processEscapes: true

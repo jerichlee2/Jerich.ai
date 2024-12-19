@@ -297,3 +297,20 @@ hr {
     z-index: -1; /* Place behind logo */
 }
 
+.post {
+    margin-bottom: 20px;
+}
+
+.post-date {
+    display: inline;
+}
+
+.post-title {
+    display: inline;
+}
+
+.post-preview {
+    color: #555;
+    font-size: 14px;
+    text-align: justify; /* Justify previews */
+}

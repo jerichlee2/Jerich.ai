@@ -81,12 +81,13 @@ def latex_to_html(latex_file, output_html, css_path):
         start += len("\\begin{document}")
         content = latex_content[start:end].strip()
 
+        # Replace \maketitle with our own <h1>, <h3>, <h4>, etc.
         content = content.replace("\\maketitle", title_block)
 
-        # Process the content
+        # Process the LaTeX content into HTML
         html_content = process_latex_content(content)
 
-        # Insert content into the template
+        # Insert processed content into the HTML template
         html_content = html_template.replace("CONTENT_PLACEHOLDER", html_content)
 
         # Write the output HTML file
@@ -100,14 +101,24 @@ def latex_to_html(latex_file, output_html, css_path):
         print(f"An error occurred while processing the file '{latex_file}': {e}")
         raise
 
+
 def process_latex_content(content):
-    # Remove comments
+    # 1. Remove LaTeX comments
     content = re.sub(r"%.*", "", content)
 
-    # Replace \vspace with line breaks
+    # 2. Replace \vspace with simple <br>
     content = re.sub(r"\\vspace\*?\{\s*.*?\s*\}", "<br>", content)
 
-    # Handle LaTeX commands
+    # 3. Convert figures to HTML <figure><img>...</figure>
+    #    Updated regex to allow optional [htbp] or similar arguments.
+    content = re.sub(
+        r"\\begin\{figure\}(?:\[[^]]*\])?(.*?)\\end\{figure\}",
+        replace_figure,
+        content,
+        flags=re.DOTALL
+    )
+
+    # 4. Convert various LaTeX commands to HTML
     content = content.replace('\\\\', '<br>')
     content = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", content)
     content = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", content)
@@ -117,11 +128,11 @@ def process_latex_content(content):
     content = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", content)
     content = content.replace("\\noindent", "")
 
-    # Handle nested enumerate environments
+    # 5. Handle nested enumerate environments
     def replace_enumerate(match):
         inner_content = match.group(1).strip()
-        
-        # Handle items properly, including the last one
+
+        # Convert each \item
         inner_html = re.sub(
             r"\\item\s+((?:.|\n)*?)(?=(\\item|\\end\{enumerate\}|$))",
             lambda m: f"<li>{m.group(1).strip()}</li>",
@@ -130,16 +141,79 @@ def process_latex_content(content):
         )
 
         # Recursively replace nested enumerates
-        inner_html = re.sub(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}", replace_enumerate, inner_html, flags=re.DOTALL)
+        inner_html = re.sub(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}",
+                            replace_enumerate, inner_html, flags=re.DOTALL)
 
         return f"<ol>\n{inner_html}\n</ol>"
 
-    content = re.sub(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}", replace_enumerate, content, flags=re.DOTALL)
+    content = re.sub(
+        r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}",
+        replace_enumerate,
+        content,
+        flags=re.DOTALL
+    )
 
-    # Split content into paragraphs
-    paragraphs = [f"<p>{para.strip()}</p>" for para in content.split("\n\n") if para.strip()]
+    # 6. Split content into paragraphs by double newlines
+    paragraphs = [f"<p>{para.strip()}</p>"
+                  for para in content.split("\n\n") if para.strip()]
 
     return "\n".join(paragraphs)
+
+
+def replace_figure(match):
+    """
+    Convert a LaTeX figure environment to an HTML <figure><img>...<figcaption></figure>.
+    Example LaTeX:
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{path/to/image.jpg}
+        \caption{My caption!}
+        \label{fig:mylabel}
+      \end{figure}
+    """
+
+    figure_block = match.group(1)
+
+    # 1. Extract the \includegraphics line
+    img_match = re.search(r"\\includegraphics(\[.*?\])?\{(.*?)\}", figure_block, re.DOTALL)
+    if not img_match:
+        # If we don't find \includegraphics, return original text (fallback)
+        return match.group(0)
+
+    # 2. Optional arguments (e.g., [width=0.8\textwidth])
+    optional_args = img_match.group(1) or ""
+    # 3. Path to the actual image
+    image_path = img_match.group(2).strip()
+
+    # 4. Extract caption
+    caption_match = re.search(r"\\caption\{(.*?)\}", figure_block, re.DOTALL)
+    caption = caption_match.group(1).strip() if caption_match else ""
+
+    # 5. Extract label
+    label_match = re.search(r"\\label\{(.*?)\}", figure_block, re.DOTALL)
+    label = label_match.group(1).strip() if label_match else ""
+
+    # 6. Determine inline style for image width if present
+    style = ""
+    width_match = re.search(r"width\s*=\s*([0-9.]+)\\textwidth", optional_args)
+    if width_match:
+        width_fraction = float(width_match.group(1))
+        # Convert fraction of textwidth to percentage
+        style = f'style="width:{width_fraction * 100}%"'
+
+    # 7. Construct the <figure> HTML
+    figure_html = "<figure"
+    if label:
+        figure_html += f' id="{label}"'
+    figure_html += ">\n"
+
+    figure_html += f'  <img src="{image_path}" alt="{caption}" {style}/>\n'
+    if caption:
+        figure_html += f'  <figcaption>{caption}</figcaption>\n'
+    figure_html += "</figure>"
+
+    return figure_html
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:

@@ -176,11 +176,13 @@ Where $n\in{} \mathbb{N} $.
 
 <strong>29.9 Theorem.</strong> \\
 Let $ f $ be a one-to-one continuous function on an open interval $ I $, and let $ J = f(I) $. If $ f $ is differentiable at $ x_0 \in{} I $ and if $ f'(x_0) \neq{} 0 $, then $ f^{-1} $ is differentiable at $ y_0 = f(x_0) $ and
-$$
+$$\begin{align}
+    
 (f^{-1})'(y_0) = \frac{1}{f'(x_0)}.
-$$$$
-&lt;/div&gt;
-&lt;div class='solution'&gt;&lt;strong&gt;Solution.&lt;/strong&gt; 
+
+\end{align}$$
+</div>
+<div class='solution'><strong>Solution.</strong> 
     $$\begin{align}
 
         f(x)=\tan(x) \\[10pt] 
@@ -189,19 +191,21 @@ $$$$
         \left( f^{-1} \right) \left( y \right) =\frac{1}{\sec^{2}\left( \arctan(y) \right) }
     
 \end{align}$$
-&lt;/div&gt;
-&lt;div class='problem'&gt;&lt;strong&gt;Problem.&lt;/strong&gt;&lt;br&gt; [32.7]
+</div>
+<div class='problem'><strong>Problem.</strong><br> [32.7]
     Let $ f $ be integrable on $[a, b]$, and suppose $ g $ is a function on $[a, b]$ such that $ g(x) = f(x) $ except for finitely many $ x $ in $[a, b]$. Show $ g $ is integrable and
-$$$$
-\int_a{}^b f = \int_a{}^b g.
-$$$$
-&lt;em&gt;Hint:&lt;/em&gt; First reduce to the case where $ f $ is the function identically equal to 0.
-&lt;/div&gt;
-&lt;div class='solution'&gt;&lt;strong&gt;Solution.&lt;/strong&gt; 
-    &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt;  Let $g$ be a bounded function from $[a,b]$ (we can deduce the boundedness of $g$ from the integrability of $f$). Let $M=\sup{}\vert g(x) \vert $, and let $E$ be the finite set of points such that $g(x)\neq{} f(x)$. As $E$ is finite, we are able to cover $E$ with disjoint intervals $[u_j, v_j]\subset{} [a,b]$, and also make the sum of all disjoint intervals $[u_j, v_j]$ less than $\varepsilon{}$ (arbitrarily small). By removing these intervals from $[a,b]$, we obtain a new set $K$ (this set is compact, as it is bounded and closed). Using Theorem 21.4 in Ross, we can say that $g$ is uniformly continuous on $K$. This implies the following: 
+$$\begin{align}
+    
+\int_a^b f = \int_a^b g.
+
+\end{align}$$
+<em>Hint:</em> First reduce to the case where $ f $ is the function identically equal to 0.
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    <div class='proof'><strong>Proof.</strong>  Let $g$ be a bounded function from $[a,b]$ (we can deduce the boundedness of $g$ from the integrability of $f$). Let $M=\sup{}\vert g(x) \vert $, and let $E$ be the finite set of points such that $g(x)\neq{} f(x)$. As $E$ is finite, we are able to cover $E$ with disjoint intervals $[u_j, v_j]\subset{} [a,b]$, and also make the sum of all disjoint intervals $[u_j, v_j]$ less than $\varepsilon{}$ (arbitrarily small). By removing these intervals from $[a,b]$, we obtain a new set $K$ (this set is compact, as it is bounded and closed). Using Theorem 21.4 in Ross, we can say that $g$ is uniformly continuous on $K$. This implies the following: 
         $$\begin{align}
 
-           s \in K, t \in K, \left\vert s-t \right\vert < \delta \implies  \left\vert g(s)-g(t) \right\vert
+           s \in K, t \in K, \left\vert s-t \right\vert &lt; \delta \implies  \left\vert g(s)-g(t) \right\vert
         
 \end{align}$$
         We can then create a partition $P$ of $[a,b]$ such that $u_j, v_j \in{} P$, but $(u_j,v_j)\notin{} P$. If $x_{i-1}$ is not $u_j$, then $\Delta{} x_i &lt; \delta{}$. We know that $g$ is bounded for all $x\in{} [a,b]$, so $M_{i}-m_i \leq{} 2M $ for all $i$ (this includes the points $u_j$ in the finite set $E$), and if $x_{i-1}$ is not one of the finite $u_j$, then $M_{i}-m_i &lt;\varepsilon{}$. This implies the following:

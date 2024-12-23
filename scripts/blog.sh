@@ -72,14 +72,15 @@ cat <<EOL > "$FILE_PATH"
 \newtheorem*{proposition}{Proposition}
 \newtheorem{problem}{Problem}
 \newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
 \theoremstyle{plain} % Restore the default style for other theorem environments
 %
 
 % Theorem-like environments
 % Title information
-\title{$FULL_DATE}
+\title{}
 \author{Jerich Lee}
-\date{}
+\date{\today}
 
 \begin{document}
 

@@ -103,10 +103,7 @@ def latex_to_html(latex_file, output_html, css_path):
 
 
 def process_latex_content(content, in_math_mode=False):
-    """
-    Parse LaTeX text (content) recursively.
-    in_math_mode indicates whether we are inside a math block, so we handle escaping differently.
-    """
+
     # Remove comments (that aren't escaped like \%)
     content = re.sub(r"(?<!\\)%.*", "", content)
 
@@ -141,7 +138,7 @@ def process_latex_content(content, in_math_mode=False):
                     # Math environment -> wrap with $$ ... $$
                     safe_content = env_content  # We'll do final angle-bracket escaping later
                     html_output += f"$$\\begin{{{env_name}}}\n{safe_content}\n\\end{{{env_name}}}$$"
-                elif env_name in ["problem", "solution", "proof"]:
+                elif env_name in ["problem", "solution", "proof", "lemma", "proposition", "theorem"]:
                     # Example custom environment
                     html_output += handle_custom_environment(env_name, env_content)
                 else:
@@ -187,10 +184,7 @@ def process_latex_content(content, in_math_mode=False):
 
 
 def extract_environment(content, pos, env_name):
-    """
-    Find matching \begin{env_name} ... \end{env_name}, 
-    supporting nested environments of the same name.
-    """
+
     start_tag = f"\\begin{{{env_name}}}"
     end_tag = f"\\end{{{env_name}}}"
     start_pos = pos + len(start_tag)
@@ -214,9 +208,7 @@ def extract_environment(content, pos, env_name):
 
 
 def handle_enumerate(content):
-    """
-    Convert \begin{enumerate} ... \end{enumerate} into <ol><li>...</li>...</ol>.
-    """
+
     items = []
     pos = 0
     length = len(content)
@@ -273,9 +265,7 @@ def handle_enumerate(content):
 
 
 def handle_itemize(content):
-    """
-    Convert \begin{itemize} ... \end{itemize} into <ul><li>...</li>...</ul>.
-    """
+
     items = []
     pos = 0
     length = len(content)
@@ -331,9 +321,7 @@ def handle_itemize(content):
 
 
 def handle_verbatim(content):
-    """
-    For verbatim, we return everything as-is (with basic HTML escaping).
-    """
+
     escaped_content = (
         content
         .replace("&", "&amp;")
@@ -344,9 +332,7 @@ def handle_verbatim(content):
 
 
 def handle_lstlisting(content):
-    """
-    For lstlisting, do something similar to verbatim, but maybe add a class for styling.
-    """
+
     escaped_content = (
         content
         .replace("&", "&amp;")
@@ -361,9 +347,7 @@ def handle_lstlisting(content):
 
 
 def handle_figure(content):
-    """
-    Simple example for figure environment with \includegraphics and optional \caption.
-    """
+
     includegraphics_match = re.search(r"\\includegraphics\[.*?\]\{(.*?)\}", content, re.DOTALL)
     caption_match = re.search(r"\\caption\{(.*?)\}", content, re.DOTALL)
 
@@ -380,11 +364,10 @@ def handle_figure(content):
 
 
 def handle_custom_environment(env_name, content):
-    """
-    Example for 'problem', 'solution', 'proof', etc.
-    """
+
     env_map = {
         "problem": "<div class='problem'><strong>Problem.</strong><br> {}</div>",
+        "theorem": "<div class='theorem'><strong>Theorem.</strong><br> {}</div>",
         "lemma": "<div class='lemma'><strong>Lemma.</strong><br> {}</div>",
         "proposition": "<div class='proposition'><strong>Proposition.</strong><br> {}</div>",
         "solution": "<div class='solution'><strong>Solution.</strong> {}</div>",
@@ -396,9 +379,7 @@ def handle_custom_environment(env_name, content):
 
 
 def process_command(command, argument, in_math_mode=False):
-    """
-    Handle one-off LaTeX commands like \section, \emph, etc.
-    """
+
     # Strip surrounding braces if present
     arg_content = argument.strip()
     if arg_content.startswith('{') and arg_content.endswith('}'):
@@ -436,9 +417,7 @@ def process_command(command, argument, in_math_mode=False):
 
 
 def process_text_block(text_block, in_math_mode=False):
-    """
-    Splits text_block into segments of math vs. non-math and processes each.
-    """
+
     math_pattern = r'(\$\$.*?\$\$|\$.*?\$)'
     processed_parts = []
     last_end = 0
@@ -472,10 +451,7 @@ def process_text_block(text_block, in_math_mode=False):
 
 
 def process_text(text_part, in_math_mode=False):
-    """
-    If we're in math mode, we still want to ensure angle brackets get HTML-escaped.
-    MathJax interprets &lt; and &gt; as < and > anyway.
-    """
+
     if in_math_mode:
         # Only escape < and >
         text_part = text_part.replace('<', '&lt;').replace('>', '&gt;')
@@ -489,10 +465,7 @@ def process_text(text_part, in_math_mode=False):
 
 
 def escape_angle_brackets_in_math(html_text):
-    """
-    As a final step, find all $...$ or $$...$$ blocks
-    and replace <, > with &lt;, &gt; to avoid HTML tag confusion.
-    """
+
     pattern = re.compile(r"(\${1,2})(.*?)(\1)", re.DOTALL)
 
     def replacer(m):

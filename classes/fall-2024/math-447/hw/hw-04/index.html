@@ -31,7 +31,7 @@
 <h4>December 22, 2024</h4>
 
 
-<div class='problem'><strong>Problem.</strong><br> [13.3(a)]
+<div class='problem'><strong>Problem.</strong><br> [13.3]
 Let $B$ be the set of all bounded sequences $\mathbf{x} = (x_{1}, x_{2}, \ldots{})$ and define $d(\mathbf{x}, \mathbf{y})=\sup{} \{ \vert x_{j}-y_{j}  \vert :j=1,2, \ldots{}   \} $.
 <ol>
 <li>Show $d$ is a metric for $B$.</li>
@@ -90,7 +90,7 @@ Lines 8 and 9 can be shown in Homework 3 Problem 4.
 </ol>
     </div>
 
-<div class='problem'><strong>Problem.</strong><br> [13.10(a)]
+<div class='problem'><strong>Problem.</strong><br> [13.10]
 Show that the interior of each of the following sets is the empty set.
 <ol>
 <li>$\left\{ \frac{1}{n}:n\in\mathbb{{N}}  \right\} $</li>
@@ -109,11 +109,11 @@ Show that the interior of each of the following sets is the empty set.
         r_{1} &lt;r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )&lt;r_{2}
     
 \end{align}$$
-    Suppose that the radius of any neighborhood about any point in $E$ is a rational number. Then, by above, there exists members of $B_{r}^{o}(s_{o} )$ that are irrational, and $\notin{} E $, as $E$ contains only rational numbers. Now suppose that we set our radius $r$ to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let $A$  be a rational number, and $C$  to be an irrational number. Then, $B=\frac{A+C}{2}$ is irrational, and $A&lt;B&lt;C$. Therefore, we have shown that there is no value of radius $r$ that satisfies $B_{r}^{o}(s_{o} )\subset{} E$ for any rational point $s_{o} $ in $E$.  e
+    Suppose that the radius of any neighborhood about any point in $E$ is a rational number. Then, by above, there exists members of $B_{r}^{o}(s_{o} )$ that are irrational, and $\notin{} E $, as $E$ contains only rational numbers. Now suppose that we set our radius $r$ to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let $A$  be a rational number, and $C$  to be an irrational number. Then, $B=\frac{A+C}{2}$ is irrational, and $A&lt;B&lt;C$. Therefore, we have shown that there is no value of radius $r$ that satisfies $B_{r}^{o}(s_{o} )\subset{} E$ for any rational point $s_{o} $ in $E$.
    <div class='qed'>∎</div></div><br> 
 </div>
 
-<div class='problem'><strong>Problem.</strong><br> [13.12(b)]   
+<div class='problem'><strong>Problem.</strong><br> [13.12]   
 Let $(S,d)$ be any metric space.
 <ol>
 <li>Show that the finite union of compact sets in $S$ is compact.</li>
@@ -127,7 +127,7 @@ Let $(S,d)$ be any metric space.
    <div class='qed'>∎</div></div><br> 
 </div>
 
-<div class='problem'><strong>Problem.</strong><br> [A]
+<div class='problem'><strong>Problem.</strong><br> 
     Show that a sequence in a metric space $(S,d)$ cannot have more than one limit.
 </div>
 
@@ -142,7 +142,7 @@ Let $(S,d)$ be any metric space.
    This implies that $L_{1} =L_{2} $, so there cannot be more than one limit in $(S,d)$. 
 </div>
 
-<div class='problem'><strong>Problem.</strong><br> [B]
+<div class='problem'><strong>Problem.</strong><br> 
     <ol>
 <li>Suppose a sequence $s_{n} $ in a metric space $(S,d)$ converges to $s\in S$. Prove that any subsequence of $s_{n} $ converges to $s$ as well.</li>
 </ol>
@@ -157,7 +157,7 @@ Let $(S,d)$ be any metric space.
     
 \end{align}$$   
 </div>
-<div class='problem'><strong>Problem.</strong><br> [C]
+<div class='problem'><strong>Problem.</strong><br> 
     Suppose $(S,d)$ is a complete metric space, and $E \subset{} S$. We can view $E$ as a metric space, equipped with the metric inherited from $S$. Prove that $E$ is complete iff it is a closed subset of $S$. 
 </div>
 
@@ -165,7 +165,7 @@ Let $(S,d)$ be any metric space.
     $\implies{} :$ Suppose that $E$ is not complete. Then, $E$ does not contain its limit points. By definition, a closed set is a set that contains all of its limit points. Therefore, $E$ cannot be closed.
     $\impliedby{} :$ Suppose that $E$ is not a closed subset of $S$. Then, $E$ does not contain all of its limit points. Suppose that $E$ is complete. Then, every Cauchy sequence in $E$ converges to some limit point in $E$.
 </div>
-<div class='problem'><strong>Problem.</strong><br> [D]
+<div class='problem'><strong>Problem.</strong><br> 
     Suppose $s_{n} $ is a Cauchy sequence in a metric space $(S,d)$ which has a convergent subsequence. Is it true that the sequence $s_{n} $ itself converges?
 </div>
 
@@ -188,14 +188,12 @@ Let $(S,d)$ be any metric space.
 \end{align}$$
 </div>
 
-<div class='problem'><strong>Problem.</strong><br> [Bonus Problem]
+<div class='problem'><strong>Problem.</strong><br> 
     Is the metric space $(B,d)$ defined in Problem 13.3(a) complete?
 </div>
 
 <div class='solution'><strong>Solution.</strong> 
-    
         If $B$ is the set of all bounded sequences $\mathbf{x} = (x_{1}, x_{2}, \ldots{}, x_n )$, endowed with the distance function $d(\mathbf{x}, \mathbf{y})=\sup{} \{ \vert x_i - y_{i} \vert : i=1,2, \ldots{} n \}$, then the metric space $(B,d)$ is complete.
-    
     <div class='proof'><strong>Proof.</strong> 
 
         We wish to find a proof that $(B, d)$ such that $B$ is the set of all bounded sequences, and $d$ is the distance defined as:
@@ -206,13 +204,14 @@ Let $(S,d)$ be any metric space.
 \end{align}$$ 
         The idea is to treat the set $B$ of sequences as a set of infinite dimensional vectors in $\mathbb{{R}} $. 
         We will utilize and prove the following lemma: 
-        
-                Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{{R}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
+<div class='lemma'><strong>Lemma.</strong><br> 
+            Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{{R}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
+</div>
             <ol>
 <li>$(\textbf{x}^{(k)})_{k}$ is Cauchy iff $(\textbf{x}^{k})_{k}$  is Cauchy for $1 \leq i \leq n $</li>
 <li>$(\textbf{x}^{(k)})_{k}$ converges to $\mathbf{x} = (x_{i})^{n}_{i=1}$ iff $\lim_{k \to \infty} x_{i}^{(k)}$ for $1 \leq i \leq n $</li>
 </ol> 
-        
+
         
        $\implies{} :$  To prove part one of the lemma above, we will suppose that $(&lt;strong&gt;x&lt;/strong&gt;^{k})_{k}$ is Cauchy. Fix $i$. Want: $(x_{i}^{(k)})_{k}$ is Cauchy. For $\varepsilon{} &gt; 0$ we need to find $N\ s.t. \ \vert x_{i}^{(k)} - x_{i}^{(m)} \vert &lt;\varepsilon{} $ for $k, m&gt;N$. We need to find an $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{}$ for all $k,m&gt;N$. $\varepsilon{} &gt; d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup{} \{ \vert  x_{i}- y_{i}\vert : i= 1,2, \ldots{} , n   \} \geq{} \vert x_{i}-y_{i} \vert $. Therefore, this $N$ works in the forward direction.
         $\impliedby{} :$ Suppose $(x_{i}^{(k)})_{k}$ is Cauchy $\forall{} \ i$. We want to find: $(\mathbf{x}^{(k)})_{k}$ is Cauchy. We fix $\varepsilon{} &gt;0$. We need to find $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{} $ for $k, m&gt;N$. For $1\leq{} i\leq{} n$ find $N_{i} \in{} \mathbb{{N}} \ s.t. \ \vert x_{i}^{(k)}- x_{i}^{(m)} \vert &lt; \varepsilon{}$ for $k,m&gt;N_{i} $. Then, we know that:
@@ -230,11 +229,14 @@ Let $(S,d)$ be any metric space.
         
 \end{align}$$
         We can prove a quick fact proposition about differences of supremums of sequences:
+
+       <div class='proposition'><strong>Proposition.</strong><br>  
+        $$\begin{align}
+  
+          \sup (s_{n} -t_{n} )\leq \sup s_{n} - t_{n} \\[10pt]  
         
-       $$$$
-          \sup{} (s_{n} -t_{n} )\leq{} \sup{} s_{n} - t_{n} \\[10pt]  
-       $$$$
-        
+\end{align}$$
+       </div>
         <div class='proof'><strong>Proof.</strong> 
             $$\begin{align}
 

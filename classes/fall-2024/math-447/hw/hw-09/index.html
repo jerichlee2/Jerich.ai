@@ -76,7 +76,7 @@
     Let $ f(x) = x^2 \sin{}(\frac{1}{x}) + \frac{x}{2} $ for $ x \neq{} 0 $ and $ f(0) = 0 $.
 
 <ol>
-<li>Show $ f'(0) > 0 $; see Exercise 28.4.</li>
+<li>Show $ f'(0) &gt; 0 $; see Exercise 28.4.</li>
 <li>Show $ f $ is not increasing on any open interval containing 0.</li>
 <li>Compare this example with Corollary 29.7(i).</li>
 </ol>
@@ -92,19 +92,19 @@
 $$\begin{align}
 
     \frac{1}{x} = -\frac{3\pi}{2}n \\[10pt]
-    x>a = \frac{1}{a}>\frac{1}{x} \\[10pt] 
-    \frac{1}{a}> -\frac{3\pi}{2}n \\[10pt] 
-    n > -\frac{2}{3\pi a}
+    x&gt;a = \frac{1}{a}&gt;\frac{1}{x} \\[10pt] 
+    \frac{1}{a}&gt; -\frac{3\pi}{2}n \\[10pt] 
+    n &gt; -\frac{2}{3\pi a}
 
 \end{align}$$
-Where $n\in{} \mathbb{\MakeUppercase{n}} $. 
+Where $n\in{} \mathbb{N} $. 
 <div class='proof'><strong>Proof.</strong> 
-    Choose $n&gt; -\frac{2}{3\pi{} a} \ s.t. \ n\in{} \mathbb{\MakeUppercase{n}} $. Let $x = -\frac{2}{3\pi{} n}$. Then, substituting $x$ into \autoref{3deriv} gives us the following:
+    Choose $n&gt; -\frac{2}{3\pi{} a} \ s.t. \ n\in{} \mathbb{N} $. Let $x = -\frac{2}{3\pi{} n}$. Then, substituting $x$ into \autoref{3deriv} gives us the following:
     $$\begin{align}
 
         f^\prime (x)=2x\sin \left( \frac{1}{x} \right) -\cos\left( \frac{1}{x} \right) +\frac{1}{2} \\[10pt] 
         = 2\left( -\frac{3\pi}{2}n \right)\left( 1 \right) - 0 + \frac{1}{2}  \\[10pt] 
-        = \frac{1-6\pi}{2}<0
+        = \frac{1-6\pi}{2}&lt;0
     
 \end{align}$$
     From the above, we were able to find $a&lt;x&lt;0$ such that $f^\prime{} (x)&lt;0$, which disproves that $f$ is increasing from $(a,b)$ containing $0$. The second case where $0&lt;x&lt;b$ is handled similarly.
@@ -115,7 +115,7 @@ Where $n\in{} \mathbb{\MakeUppercase{n}} $.
     
 
     <ol>
-<li>Show $ x < \tan x $ for all $ x \in \left( 0, \frac{\pi}{2} \right) $.</li>
+<li>Show $ x &lt; \tan x $ for all $ x \in \left( 0, \frac{\pi}{2} \right) $.</li>
 <li>Show $ \frac{x}{\sin x} $ is a strictly increasing function on $ \left( 0, \frac{\pi}{2} \right) $.</li>
 <li>Show $ x \leq \frac{\pi}{2} \sin x $ for $ x \in \left[ 0, \frac{\pi}{2} \right] $.</li>
 </ol>
@@ -123,22 +123,22 @@ Where $n\in{} \mathbb{\MakeUppercase{n}} $.
 <div class='solution'><strong>Solution.</strong> 
     
 <ol>
-<li>To prove that $x<\tan(x)$ such that $f(x)=\tan(x)$ for all $x \in (0, \frac{\pi}{2})$, it suffices to show that $f^\prime (x)>1$ for all $x\in(0,\frac{\pi}{2})$    <div class='proof'><strong>Proof.</strong> 
+<li>To prove that $x&lt;\tan(x)$ such that $f(x)=\tan(x)$ for all $x \in (0, \frac{\pi}{2})$, it suffices to show that $f^\prime (x)&gt;1$ for all $x\in(0,\frac{\pi}{2})$    <div class='proof'><strong>Proof.</strong> 
         $$\begin{align}
 
-            f^\prime (x)>1 \\[10pt] 
-            \sec^{2}(x)-1>0\\[10pt] 
-            \underbrace{\frac{1}{\cos^{2}(x)}}_{< 1} >1
+            f^\prime (x)&gt;1 \\[10pt] 
+            \sec^{2}(x)-1&gt;0\\[10pt] 
+            \underbrace{\frac{1}{\cos^{2}(x)}}_{&lt; 1} &gt;1
         
 \end{align}$$
     <div class='qed'>∎</div></div><br></li>
-<li>To prove that $f(x)=\frac{x}{\sin(x)}$ is strictly increasing on $(0,\frac{\pi}{2})$, it suffices to show that $f^\prime (x)>0$ for all $x\in(0,\frac{\pi}{2})$
+<li>To prove that $f(x)=\frac{x}{\sin(x)}$ is strictly increasing on $(0,\frac{\pi}{2})$, it suffices to show that $f^\prime (x)&gt;0$ for all $x\in(0,\frac{\pi}{2})$
     <div class='proof'><strong>Proof.</strong> 
         $$\begin{align}
 
             f^\prime (x)=-x(\sin(x))^{-2}\cos(x)+(\sin(x))^{-1}\\[10pt] 
-            \frac{\sin(x)-x\cos(x)}{\sin^{2}(x)}>0 \\[10pt] 
-            \sin(x)-x\cos(x)>0 \label{4.2}
+            \frac{\sin(x)-x\cos(x)}{\sin^{2}(x)}&gt;0 \\[10pt] 
+            \sin(x)-x\cos(x)&gt;0 \label{4.2}
         
 \end{align}$$
         \autoref{4.2} is always true for $x\in{} (0, \frac{\pi}{2})$. 
@@ -179,8 +179,8 @@ Let $ f $ be a one-to-one continuous function on an open interval $ I $, and let
 $$
 (f^{-1})'(y_0) = \frac{1}{f'(x_0)}.
 $$$$
-</div>
-<div class='solution'><strong>Solution.</strong> 
+&lt;/div&gt;
+&lt;div class='solution'&gt;&lt;strong&gt;Solution.&lt;/strong&gt; 
     $$\begin{align}
 
         f(x)=\tan(x) \\[10pt] 
@@ -189,16 +189,16 @@ $$$$
         \left( f^{-1} \right) \left( y \right) =\frac{1}{\sec^{2}\left( \arctan(y) \right) }
     
 \end{align}$$
-</div>
-<div class='problem'><strong>Problem.</strong><br> [32.7]
+&lt;/div&gt;
+&lt;div class='problem'&gt;&lt;strong&gt;Problem.&lt;/strong&gt;&lt;br&gt; [32.7]
     Let $ f $ be integrable on $[a, b]$, and suppose $ g $ is a function on $[a, b]$ such that $ g(x) = f(x) $ except for finitely many $ x $ in $[a, b]$. Show $ g $ is integrable and
 $$$$
 \int_a{}^b f = \int_a{}^b g.
 $$$$
-<em>Hint:</em> First reduce to the case where $ f $ is the function identically equal to 0.
-</div>
-<div class='solution'><strong>Solution.</strong> 
-    <div class='proof'><strong>Proof.</strong>  Let $g$ be a bounded function from $[a,b]$ (we can deduce the boundedness of $g$ from the integrability of $f$). Let $M=\sup{}\vert g(x) \vert $, and let $E$ be the finite set of points such that $g(x)\neq{} f(x)$. As $E$ is finite, we are able to cover $E$ with disjoint intervals $[u_j, v_j]\subset{} [a,b]$, and also make the sum of all disjoint intervals $[u_j, v_j]$ less than $\varepsilon{}$ (arbitrarily small). By removing these intervals from $[a,b]$, we obtain a new set $K$ (this set is compact, as it is bounded and closed). Using Theorem 21.4 in Ross, we can say that $g$ is uniformly continuous on $K$. This implies the following: 
+&lt;em&gt;Hint:&lt;/em&gt; First reduce to the case where $ f $ is the function identically equal to 0.
+&lt;/div&gt;
+&lt;div class='solution'&gt;&lt;strong&gt;Solution.&lt;/strong&gt; 
+    &lt;div class='proof'&gt;&lt;strong&gt;Proof.&lt;/strong&gt;  Let $g$ be a bounded function from $[a,b]$ (we can deduce the boundedness of $g$ from the integrability of $f$). Let $M=\sup{}\vert g(x) \vert $, and let $E$ be the finite set of points such that $g(x)\neq{} f(x)$. As $E$ is finite, we are able to cover $E$ with disjoint intervals $[u_j, v_j]\subset{} [a,b]$, and also make the sum of all disjoint intervals $[u_j, v_j]$ less than $\varepsilon{}$ (arbitrarily small). By removing these intervals from $[a,b]$, we obtain a new set $K$ (this set is compact, as it is bounded and closed). Using Theorem 21.4 in Ross, we can say that $g$ is uniformly continuous on $K$. This implies the following: 
         $$\begin{align}
 
            s \in K, t \in K, \left\vert s-t \right\vert < \delta \implies  \left\vert g(s)-g(t) \right\vert

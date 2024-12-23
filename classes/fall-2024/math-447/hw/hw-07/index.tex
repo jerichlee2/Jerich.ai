@@ -72,7 +72,7 @@ On the metric space $\mathbb{R}^n$ (with the Euclidean metric $d$), denote by $P
 \end{problem}
 \begin{solution}
     \begin{proof}
-        The idea is to choose the largest value of $P_i(s)$, where $s\in \mathbb{\MakeUppercase{r}}^{n}$, and $P_i$ is the projection function of $\mathbb{\MakeUppercase{r}}^{n}$, i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values $s, t \in \mathbb{\MakeUppercase{r}}^{n}$ is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value $k$, thereby making the function $P_i$ Lipschitz. For elements $ s, t \in \mathbb{R}^{n} $, choose $k=1$. Then,
+        The idea is to choose the largest value of $P_i(s)$, where $s\in \mathbb{R}^{n}$, and $P_i$ is the projection function of $\mathbb{R}^{n}$, i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values $s, t \in \mathbb{R}^{n}$ is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value $k$, thereby making the function $P_i$ Lipschitz. For elements $ s, t \in \mathbb{R}^{n} $, choose $k=1$. Then,
         \begin{align}
             \left\vert s_i - t_i \right\vert < (1)d(s,t) \\[10pt] 
             =\left(  \sum_{i=1}^{n} \left\vert s_i - t_i \right\vert^{2}  \right)^{\frac{1}{2}}
@@ -135,7 +135,7 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
                 \end{proof}
             \end{enumerate}
             \item \begin{align}
-                f: \ell_1 \to \mathbb{\MakeUppercase{r}} : (a_{i}) \mapsto \sum_{i=1}^{\infty} a_{i}\\[10pt] 
+                f: \ell_1 \to \mathbb{R} : (a_{i}) \mapsto \sum_{i=1}^{\infty} a_{i}\\[10pt] 
                 s,t \in \ell_1, d^{*}(f(s), f(t))\leq kd(s,t)
             \end{align}
             \begin{proof}
@@ -151,7 +151,7 @@ d(a,b) = \sum_{i=1}^{\infty} |a_i - b_i|.
             \end{align}
             By the triangle inequality established in Problem 4.1, at $k = 1$, $f$ is Lipschitz. 
             \end{proof}
-            \item To prove that $g: \mathbb{\MakeUppercase{r}} \to \ell_1$ is uniformly continuous, we will use the definition, i.e., 
+            \item To prove that $g: \mathbb{R} \to \ell_1$ is uniformly continuous, we will use the definition, i.e., 
             \begin{align}
                 \forall \varepsilon>0, \exists \delta \ s.t. \ x,y\in S \text{ and } \left\vert x-y \right\vert <\delta \implies \left\vert f(x)-f(y) \right\vert <\varepsilon
             \end{align} 

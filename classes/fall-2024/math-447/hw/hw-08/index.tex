@@ -151,8 +151,8 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.
 \end{problem}
 \begin{solution}
     \begin{proof}
-        $\forall \varepsilon>0 \exists N_1 \ s.t. \ N_1(\varepsilon)\in \mathbb{\MakeUppercase{n}} \ s.t. \ \left\vert f_n(x)-f(x) \right\vert<\varepsilon $ for $n\geq N_1, \forall x\in S$, 
-    $\forall \varepsilon>0 \exists N_2 \ s.t. \ N_2(\varepsilon)\in \mathbb{\MakeUppercase{n}} \ s.t. \ \left\vert g_n(x)-g(x) \right\vert<\varepsilon $ for $n\geq N_2, \forall x\in S$. Then,
+        $\forall \varepsilon>0 \exists N_1 \ s.t. \ N_1(\varepsilon)\in \mathbb{N} \ s.t. \ \left\vert f_n(x)-f(x) \right\vert<\varepsilon $ for $n\geq N_1, \forall x\in S$, 
+    $\forall \varepsilon>0 \exists N_2 \ s.t. \ N_2(\varepsilon)\in \mathbb{N} \ s.t. \ \left\vert g_n(x)-g(x) \right\vert<\varepsilon $ for $n\geq N_2, \forall x\in S$. Then,
     \begin{align}
         f(x)-\varepsilon<f_{n}(x)<f(x)+\varepsilon \\[10pt] 
         g(x)-\varepsilon<g_{n}(x)<g(x)+\varepsilon \\[10pt]
@@ -176,9 +176,9 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.
     \item \begin{enumerate}
         \item $f_{n}\to f$ is Lipschitz at $k=1$, $x-y\leq k\left\vert x-y \right\vert $, so $f_{n}\to f$ is uniformly continuous. We know that:
         \item \begin{align}
-            \lim_{n \to \infty}\sup_{x\in \mathbb{\MakeUppercase{r}}}\left\vert g_{n}(x)-g(x) \right\vert= 0\\[10pt] 
-            = \lim_{n \to \infty}\sup_{x\in \mathbb{\MakeUppercase{r}}} \left\vert \frac{1}{n}-0 \right\vert, \lim_{n \to \infty} \frac{1}{n}=0 \\[10pt] 
-            \implies \lim_{n \to \infty} \sup_{x\in \mathbb{\MakeUppercase{r}} } \frac{1}{n}=0
+            \lim_{n \to \infty}\sup_{x\in \mathbb{R}}\left\vert g_{n}(x)-g(x) \right\vert= 0\\[10pt] 
+            = \lim_{n \to \infty}\sup_{x\in \mathbb{R}} \left\vert \frac{1}{n}-0 \right\vert, \lim_{n \to \infty} \frac{1}{n}=0 \\[10pt] 
+            \implies \lim_{n \to \infty} \sup_{x\in \mathbb{R} } \frac{1}{n}=0
         \end{align}
         Therefore, $g_{n}\to g$ is uniformly convergent. 
         \end{enumerate}
@@ -216,16 +216,16 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.
            \frac{nx}{1+n^{2}x^{2}}<\varepsilon \\[10pt] 
            \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert < \varepsilon
         \end{align}
-        \item We wish to find: $\lim_{n \to \infty} \sup_{x\in\mathbb{\MakeUppercase{R}}}\left\vert f_{n}-f \right\vert =0$:
+        \item We wish to find: $\lim_{n \to \infty} \sup_{x\in\mathbb{R}}\left\vert f_{n}-f \right\vert =0$:
         \begin{proof}
             \begin{align}
-                \lim_{n \to \infty} \sup_{x\mathbb{\MakeUppercase{r}}}\left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0 \\[10pt] 
-                \sup_{x\in \mathbb{\MakeUppercase{r}}}\frac{nx}{1+n^{2}x^{2}} \\[10pt] 
+                \lim_{n \to \infty} \sup_{x\mathbb{R}}\left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0 \\[10pt] 
+                \sup_{x\in \mathbb{R}}\frac{nx}{1+n^{2}x^{2}} \\[10pt] 
                 \frac{nx}{1+n^{2}x^{2}}<\frac{nx}{n^{2}x^{2}} \\[10pt] 
                 \sup \frac{nx}{1+n^{2}x^{2}}\leq \sup \frac{nx}{n^{2}x^{2}} = \sup \frac{1}{nx}=0\\[10pt] 
                 \sup \frac{nx}{1+n^{2}x^{2}} \leq 0 \\[10pt] 
                 \implies \sup \frac{nx}{1+n^{2}x^{2}}=0 \\[10pt] 
-                \lim_{n \to \infty} \sup_{x\in \mathbb{\MakeUppercase{r}} } \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0
+                \lim_{n \to \infty} \sup_{x\in \mathbb{R} } \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0
             \end{align} 
         \end{proof}
     \item Yes, due to the proof above.

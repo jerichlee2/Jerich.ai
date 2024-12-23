@@ -64,8 +64,8 @@ Prove that an intersection of convex sets in $\mathbb{R}^n$ is convex.
         Suppose we have sets $E,F$ that are both convex. We wish to find $E\cup{} F$ is convex. We know the following:
         $$\begin{align}
 
-            \forall x, y \in E, 0<t<1 \implies tx+(1-t)y\in E\\[10pt] 
-            \forall u, v \in F, 0<t<1 \implies tu+(1-t)v \in F
+            \forall x, y \in E, 0&lt;t&lt;1 \implies tx+(1-t)y\in E\\[10pt] 
+            \forall u, v \in F, 0&lt;t&lt;1 \implies tu+(1-t)v \in F
         
 \end{align}$$
         Choose $\forall{} a,b \in{} E\cup{} F$. Then,
@@ -83,10 +83,10 @@ On the metric space $\mathbb{R}^n$ (with the Euclidean metric $d$), denote by $P
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
-        The idea is to choose the largest value of $P_i(s)$, where $s\in{} \mathbb{\MakeUppercase{r}}^{n}$, and $P_i$ is the projection function of $\mathbb{\MakeUppercase{r}}^{n}$, i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values $s, t \in{} \mathbb{\MakeUppercase{r}}^{n}$ is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value $k$, thereby making the function $P_i$ Lipschitz. For elements $ s, t \in{} \mathbb{R}^{n} $, choose $k=1$. Then,
+        The idea is to choose the largest value of $P_i(s)$, where $s\in{} \mathbb{R}^{n}$, and $P_i$ is the projection function of $\mathbb{R}^{n}$, i.e., choose the projection with the largest magnitude. By the triangle inequality, we know that the difference between the largest projection of values $s, t \in{} \mathbb{R}^{n}$ is always less than or equal to their respective Euclidean distances. As a result, we can always bound the differences between the difference of the outputs by the difference of the inputs by some constant value $k$, thereby making the function $P_i$ Lipschitz. For elements $ s, t \in{} \mathbb{R}^{n} $, choose $k=1$. Then,
         $$\begin{align}
 
-            \left\vert s_i - t_i \right\vert < (1)d(s,t) \\[10pt] 
+            \left\vert s_i - t_i \right\vert &lt; (1)d(s,t) \\[10pt] 
             =\left(  \sum_{i=1}^{n} \left\vert s_i - t_i \right\vert^{2}  \right)^{\frac{1}{2}}
         
 \end{align}$$
@@ -164,7 +164,7 @@ d(a,b) = \sum_{i=1}^{\infty{}} |a_i - b_i|.
 </ol></li>
 <li>$$\begin{align}
 
-                f: \ell_1 \to \mathbb{\MakeUppercase{r}} : (a_{i}) \mapsto \sum_{i=1}^{\infty} a_{i}\\[10pt] 
+                f: \ell_1 \to \mathbb{R} : (a_{i}) \mapsto \sum_{i=1}^{\infty} a_{i}\\[10pt] 
                 s,t \in \ell_1, d^{*}(f(s), f(t))\leq kd(s,t)
             
 \end{align}$$
@@ -185,10 +185,10 @@ d(a,b) = \sum_{i=1}^{\infty{}} |a_i - b_i|.
 \end{align}$$
             By the triangle inequality established in Problem 4.1, at $k = 1$, $f$ is Lipschitz. 
             <div class='qed'>∎</div></div><br></li>
-<li>To prove that $g: \mathbb{\MakeUppercase{r}} \to \ell_1$ is uniformly continuous, we will use the definition, i.e., 
+<li>To prove that $g: \mathbb{R} \to \ell_1$ is uniformly continuous, we will use the definition, i.e., 
             $$\begin{align}
 
-                \forall \varepsilon>0, \exists \delta \ s.t. \ x,y\in S \text{ and } \left\vert x-y \right\vert <\delta \implies \left\vert f(x)-f(y) \right\vert <\varepsilon
+                \forall \varepsilon&gt;0, \exists \delta \ s.t. \ x,y\in S \text{ and } \left\vert x-y \right\vert &lt;\delta \implies \left\vert f(x)-f(y) \right\vert &lt;\varepsilon
             
 \end{align}$$ 
             We will determine $\delta$ by the following discussion:
@@ -196,22 +196,22 @@ d(a,b) = \sum_{i=1}^{\infty{}} |a_i - b_i|.
 
                 f(x)-f(y) = \left(\frac{x^{2}}{2^{n}}- \frac{y^{2}}{2^{n}}   \right) =\\[10pt] 
                 \left( \frac{x^{2}-y^{2}}{2^{n}} \right) = \left( \frac{(x+y)(x-y)}{2^{n}} \right)  \\[10pt] 
-                \left( \frac{(x+y)(x-y)}{2^{n}} \right) <\varepsilon \\[10pt] 
-                (x-y) < \frac{\varepsilon \cdot 2^{n}}{(x+y)} \\[10pt] 
+                \left( \frac{(x+y)(x-y)}{2^{n}} \right) &lt;\varepsilon \\[10pt] 
+                (x-y) &lt; \frac{\varepsilon \cdot 2^{n}}{(x+y)} \\[10pt] 
             
 \end{align}$$ 
-            Choose $\delta=\frac{\varepsilon \cdot 2^{n}}{(x+y)}$. Then, $\left\vert x-y \right\vert <\delta $ implies:
+            Choose $\delta=\frac{\varepsilon \cdot 2^{n}}{(x+y)}$. Then, $\left\vert x-y \right\vert &lt;\delta $ implies:
             $$\begin{align}
 
                 \left\vert f(x)-f(y) \right\vert = \left\vert \left(\frac{x^{2}}{2^{n}}- \frac{y^{2}}{2^{n}}   \right) \right\vert  =\\[10pt] 
-                \left( \frac{x^{2}-y^{2}}{2^{n}} \right) = \left( \frac{(x+y)(x-y)}{2^{n}} \right) < \left( \frac{(x+y)\delta}{2^{n}} \right) \\[10pt] 
+                \left( \frac{x^{2}-y^{2}}{2^{n}} \right) = \left( \frac{(x+y)(x-y)}{2^{n}} \right) &lt; \left( \frac{(x+y)\delta}{2^{n}} \right) \\[10pt] 
                 \frac{(x+y)\cdot \varepsilon \cdot 2^{n}}{(x+y)\cdot 2^{n}} = \varepsilon \\[10pt]  
             
 \end{align}$$ 
             Therefore, 
             $$\begin{align}
 
-                \left\vert x-y \right\vert < \delta \implies  \left\vert f(x)-f(y) \right\vert < \varepsilon
+                \left\vert x-y \right\vert &lt; \delta \implies  \left\vert f(x)-f(y) \right\vert &lt; \varepsilon
             
 \end{align}$$
             Then $g$ is uniformly continuous.</li>

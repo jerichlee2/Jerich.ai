@@ -67,30 +67,33 @@ Lines 8 and 9 can be shown in Homework 3 Problem 4.
 \end{problem}
 
 \begin{solution}
-    \item \begin{proof}
+    \begin{enumerate}
+        \item \begin{proof}
         Suppose we have a collection of open sets, $\left\{ U_k\right\} $. Then if $x\in \left\{ U_k\right\} $, then $x\in \cup_k \left\{ U_k \right\} $. Because $\left\{ U_k \right\} $ is a collection of open sets, $\cup_k \left\{ U_k \right\} $ is also itself an open set. 
     \end{proof}
-    \item \begin{proof}
+    \item
+    \begin{proof}
         Suppose we have a collection of finitely open sets, $\left\{ U_k \right\}$. Then, for each element $x$ in the intersection $\cap_k U_k$, there exists a neighborhood $N_k$ about the element $x$ for each open set $U_{ k=1,2, \ldots  k}  $ such that $N_k\subset U_k, k=1,2, \ldots  k $. For each $N_k$, there exists a radius $r_k$. We can choose the smallest radius out of all neighborhoods $N_k$ such that $r_{\mathop{\min}}=\mathop{\min} \left\{ N_1,N_{2}, \ldots  N_k   \right\} $. Then, this neighborhood is a subset of all open sets $U_k$, $N_{k_{\mathop{\min}(r) } }\subset \left\{U_k \right\} $.  Therefore, the intersection $\cap_k U_k$ is open for a finite collection of open sets.     
     \end{proof}
-\end{solution}
+    \end{enumerate}
+    \end{solution}
 
 \begin{problem}[13.10(a)]
 Show that the interior of each of the following sets is the empty set.
 \begin{enumerate}
-    \item $\left\{ \frac{1}{n}:n\in\mathbb{\MakeUppercase{n}}  \right\} $ 
+    \item $\left\{ \frac{1}{n}:n\in\mathbb{{N}}  \right\} $ 
 \end{enumerate}
 \end{problem}
 
 \begin{solution}
-   \item \begin{proof}
-    The definition of the interior point of a set $E$ is a point that contains at least one neighborhood such that $N\subset E$. The interior of a set $E$ is a set that contains only interior points. A set $E$ is called \emph{open} if the set $E$ is equal to its interior. Therefore, to show that the interior of the set $E=\left\{ \frac{1}{n}:n\in \mathbb{\MakeUppercase{n}}  \right\} $ is the empty set, we must show that there exists a point in $E$ such that its neighborhood
-    contains elements that are included in the set $\left\{ \frac{1}{n}:n\in\mathbb{\MakeUppercase{n}}  \right\}$. 
+   \begin{proof}
+    The definition of the interior point of a set $E$ is a point that contains at least one neighborhood such that $N\subset E$. The interior of a set $E$ is a set that contains only interior points. A set $E$ is called \emph{open} if the set $E$ is equal to its interior. Therefore, to show that the interior of the set $E=\left\{ \frac{1}{n}:n\in \mathbb{{N}}  \right\} $ is the empty set, we must show that there exists a point in $E$ such that its neighborhood
+    contains elements that are included in the set $\left\{ \frac{1}{n}:n\in\mathbb{{N}}  \right\}$. 
     We will show that for any point in $E$, there is no neighborhood of $s_{o} $ such that $B_{r}^{o}(s_{o} )\subset E $ for all $r$. We will first show that between any two rational numbers, there exists an irrational number.
     \begin{align}
         0<\frac{1}{\sqrt{2} }<1 \\[10pt] 
         r_{1} + 0 < r_{1} + \frac{1}{\sqrt{2} }(r_{1} -r_{2} )<r_{1} +(r_{2} -r_{1} )\\[10pt] 
-        r_{1} <r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )<r_{2} \\[10pt] 
+        r_{1} <r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )<r_{2}
     \end{align}
     Suppose that the radius of any neighborhood about any point in $E$ is a rational number. Then, by above, there exists members of $B_{r}^{o}(s_{o} )$ that are irrational, and $\notin E $, as $E$ contains only rational numbers. Now suppose that we set our radius $r$ to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let $A$  be a rational number, and $C$  to be an irrational number. Then, $B=\frac{A+C}{2}$ is irrational, and $A<B<C$. Therefore, we have shown that there is no value of radius $r$ that satisfies $B_{r}^{o}(s_{o} )\subset E$ for any rational point $s_{o} $ in $E$.  e
    \end{proof} 
@@ -177,10 +180,10 @@ Let $(S,d)$ be any metric space.
         \begin{align}
             d(\mathbf{x}, \mathbf{y})=\sup \left\{ \left\vert x_i - y_{i} \right\vert : i=1,2, \ldots n \right\} 
         \end{align} 
-        The idea is to treat the set $B$ of sequences as a set of infinite dimensional vectors in $\mathbb{\MakeUppercase{R}} $. 
+        The idea is to treat the set $B$ of sequences as a set of infinite dimensional vectors in $\mathbb{{R}} $. 
         We will utilize and prove the following lemma: 
         \begin{lemma}
-                Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{\MakeUppercase{r}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
+                Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{{R}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
             \begin{enumerate}
                 \item $(\textbf{x}^{(k)})_{k}$ is Cauchy iff $(\textbf{x}^{k})_{k}$  is Cauchy for $1 \leq i \leq n $
                 \item $(\textbf{x}^{(k)})_{k}$ converges to $\mathbf{x} = (x_{i})^{n}_{i=1}$ iff $\lim_{k \to \infty} x_{i}^{(k)}$ for $1 \leq i \leq n $ 
@@ -188,7 +191,7 @@ Let $(S,d)$ be any metric space.
         \end{lemma}
         \noindent
        $\implies :$  To prove part one of the lemma above, we will suppose that $(\textbf{x}^{k})_{k}$ is Cauchy. Fix $i$. Want: $(x_{i}^{(k)})_{k}$ is Cauchy. For $\varepsilon > 0$ we need to find $N\ s.t. \ \left\vert x_{i}^{(k)} - x_{i}^{(m)} \right\vert <\varepsilon $ for $k, m>N$. We need to find an $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})<\varepsilon$ for all $k,m>N$. $\varepsilon > d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup \left\{ \left\vert  x_{i}- y_{i}\right\vert : i= 1,2, \ldots , n   \right\} \geq \left\vert x_{i}-y_{i} \right\vert $. Therefore, this $N$ works in the forward direction.
-        $\impliedby :$ Suppose $(x_{i}^{(k)})_{k}$ is Cauchy $\forall \ i$. We want to find: $(\mathbf{x}^{(k)})_{k}$ is Cauchy. We fix $\varepsilon >0$. We need to find $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})<\varepsilon $ for $k, m>N$. For $1\leq i\leq n$ find $N_{i} \in \mathbb{\MakeUppercase{n}} \ s.t. \ \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert < \varepsilon$ for $k,m>N_{i} $. Then, we know that:
+        $\impliedby :$ Suppose $(x_{i}^{(k)})_{k}$ is Cauchy $\forall \ i$. We want to find: $(\mathbf{x}^{(k)})_{k}$ is Cauchy. We fix $\varepsilon >0$. We need to find $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})<\varepsilon $ for $k, m>N$. For $1\leq i\leq n$ find $N_{i} \in \mathbb{{N}} \ s.t. \ \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert < \varepsilon$ for $k,m>N_{i} $. Then, we know that:
         \begin{align}
             x_{i}^{(k)} <\varepsilon + x_{i}^{(m)} \\[10pt] 
             x_{i}^{(m)} < \varepsilon + x_{i}^{(k)} 
@@ -200,9 +203,9 @@ Let $(S,d)$ be any metric space.
         \end{align}
         We can prove a quick fact proposition about differences of supremums of sequences:
         \begin{proposition}
-       \[ 
+       $$
           \sup (s_{n} -t_{n} )\leq \sup s_{n} - t_{n} \\[10pt]  
-       \] 
+       $$
         \end{proposition}
         \begin{proof}
             \begin{align}

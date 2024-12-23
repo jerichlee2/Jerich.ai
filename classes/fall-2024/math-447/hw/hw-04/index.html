@@ -80,31 +80,33 @@ Lines 8 and 9 can be shown in Homework 3 Problem 4.
 </div>
 
 <div class='solution'><strong>Solution.</strong> 
-    \item{} <div class='proof'><strong>Proof.</strong> 
+    <ol>
+<li><div class='proof'><strong>Proof.</strong> 
         Suppose we have a collection of open sets, $\{ U_k\} $. Then if $x\in{} \{ U_k\} $, then $x\in{} \cup_k{} \{ U_k \} $. Because $\{ U_k \} $ is a collection of open sets, $\cup_k{} \{ U_k \} $ is also itself an open set. 
-    <div class='qed'>∎</div></div><br>
-    \item{} <div class='proof'><strong>Proof.</strong> 
+    <div class='qed'>∎</div></div><br></li>
+<li><div class='proof'><strong>Proof.</strong> 
         Suppose we have a collection of finitely open sets, $\{ U_k \}$. Then, for each element $x$ in the intersection $\cap_k{} U_k$, there exists a neighborhood $N_k$ about the element $x$ for each open set $U_{ k=1,2, \ldots{}  k}  $ such that $N_k\subset{} U_k, k=1,2, \ldots{}  k $. For each $N_k$, there exists a radius $r_k$. We can choose the smallest radius out of all neighborhoods $N_k$ such that $r_{\mathop{\min}}=\mathop{\min} \{ N_1,N_{2}, \ldots{}  N_k   \} $. Then, this neighborhood is a subset of all open sets $U_k$, $N_{k_{\mathop{\min}(r) } }\subset{} \{U_k \} $.  Therefore, the intersection $\cap_k{} U_k$ is open for a finite collection of open sets.     
-    <div class='qed'>∎</div></div><br>
-</div>
+    <div class='qed'>∎</div></div><br></li>
+</ol>
+    </div>
 
 <div class='problem'><strong>Problem.</strong><br> [13.10(a)]
 Show that the interior of each of the following sets is the empty set.
 <ol>
-<li>$\left\{ \frac{1}{n}:n\in\mathbb{\MakeUppercase{n}}  \right\} $</li>
+<li>$\left\{ \frac{1}{n}:n\in\mathbb{{N}}  \right\} $</li>
 </ol>
 </div>
 
 <div class='solution'><strong>Solution.</strong> 
-   \item{} <div class='proof'><strong>Proof.</strong> 
-    The definition of the interior point of a set $E$ is a point that contains at least one neighborhood such that $N\subset{} E$. The interior of a set $E$ is a set that contains only interior points. A set $E$ is called <em>open</em> if the set $E$ is equal to its interior. Therefore, to show that the interior of the set $E=\{ \frac{1}{n}:n\in{} \mathbb{\MakeUppercase{n}}  \} $ is the empty set, we must show that there exists a point in $E$ such that its neighborhood
-    contains elements that are included in the set $\{ \frac{1}{n}:n\in{}\mathbb{\MakeUppercase{n}}  \}$. 
+   <div class='proof'><strong>Proof.</strong> 
+    The definition of the interior point of a set $E$ is a point that contains at least one neighborhood such that $N\subset{} E$. The interior of a set $E$ is a set that contains only interior points. A set $E$ is called <em>open</em> if the set $E$ is equal to its interior. Therefore, to show that the interior of the set $E=\{ \frac{1}{n}:n\in{} \mathbb{{N}}  \} $ is the empty set, we must show that there exists a point in $E$ such that its neighborhood
+    contains elements that are included in the set $\{ \frac{1}{n}:n\in{}\mathbb{{N}}  \}$. 
     We will show that for any point in $E$, there is no neighborhood of $s_{o} $ such that $B_{r}^{o}(s_{o} )\subset{} E $ for all $r$. We will first show that between any two rational numbers, there exists an irrational number.
     $$\begin{align}
 
-        0<\frac{1}{\sqrt{2} }<1 \\[10pt] 
-        r_{1} + 0 < r_{1} + \frac{1}{\sqrt{2} }(r_{1} -r_{2} )<r_{1} +(r_{2} -r_{1} )\\[10pt] 
-        r_{1} <r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )<r_{2} \\[10pt] 
+        0&lt;\frac{1}{\sqrt{2} }&lt;1 \\[10pt] 
+        r_{1} + 0 &lt; r_{1} + \frac{1}{\sqrt{2} }(r_{1} -r_{2} )&lt;r_{1} +(r_{2} -r_{1} )\\[10pt] 
+        r_{1} &lt;r_{1} +\frac{1}{\sqrt{2} }(r_{2} -r_{1} )&lt;r_{2}
     
 \end{align}$$
     Suppose that the radius of any neighborhood about any point in $E$ is a rational number. Then, by above, there exists members of $B_{r}^{o}(s_{o} )$ that are irrational, and $\notin{} E $, as $E$ contains only rational numbers. Now suppose that we set our radius $r$ to be an irrational number. We know that between any rational and irrational number exists an irrational number. Let $A$  be a rational number, and $C$  to be an irrational number. Then, $B=\frac{A+C}{2}$ is irrational, and $A&lt;B&lt;C$. Therefore, we have shown that there is no value of radius $r$ that satisfies $B_{r}^{o}(s_{o} )\subset{} E$ for any rational point $s_{o} $ in $E$.  e
@@ -133,8 +135,8 @@ Let $(S,d)$ be any metric space.
    We will show that if a sequence $s_{n} $ converges to $L_{1} $ and $L_{2} $, $\forall{} \varepsilon{} &gt;0$, $\exists{} N_{1}\ s.t. \ m,n &gt;N \implies{} \vert s_{n} -L_{1}   \vert &lt;\frac{\varepsilon}{2}$ and $\exists{} N_{2} \ s.t. \ n&gt;N_{2} \implies{} \vert s_{n} -L_{2}  \vert &lt;\frac{\varepsilon}{2}$. Choose $N_{\text{max} }=\text{max}(N_{1},N_{2} )  $. Then, $n&gt;N_{\text{max} } \implies{} $
    $$\begin{align}
 
-    d\left( s_{n}  -L_{1}  + (L_{2}-s_{n}) \right)  <  d\left( \frac{\varepsilon}{2} \right)  +  d\left( \frac{\varepsilon}{2} \right)< \varepsilon \\[10pt] 
-   =  d\left( \frac{\varepsilon}{2} \right) <\varepsilon 
+    d\left( s_{n}  -L_{1}  + (L_{2}-s_{n}) \right)  &lt;  d\left( \frac{\varepsilon}{2} \right)  +  d\left( \frac{\varepsilon}{2} \right)&lt; \varepsilon \\[10pt] 
+   =  d\left( \frac{\varepsilon}{2} \right) &lt;\varepsilon 
    
 \end{align}$$
    This implies that $L_{1} =L_{2} $, so there cannot be more than one limit in $(S,d)$. 
@@ -171,7 +173,7 @@ Let $(S,d)$ be any metric space.
    We know that the following holds:
    $$\begin{align}
 
-    \forall \varepsilon >0, \exists N\ s.t. \ m,n>N\implies d(s_{m} -s_{n} )<\varepsilon 
+    \forall \varepsilon &gt;0, \exists N\ s.t. \ m,n&gt;N\implies d(s_{m} -s_{n} )&lt;\varepsilon 
    
 \end{align}$$ 
    Want: If $s_{n} $ has a convergent subsequence, then $L\in{} S$, $d(s_{n_{k} }-L )&lt;\varepsilon{}\implies{} d(s_{n} -L)&lt;\varepsilon{}  $.
@@ -180,8 +182,8 @@ Let $(S,d)$ be any metric space.
    Then we get:
    $$\begin{align}
 
-    d(s_{n_{k+1} }-s_{n_{k} }+s_{n_{k} }-L   )<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}<\varepsilon \\[10pt] 
-    d(s_{n_{k+1} }-L )<\varepsilon 
+    d(s_{n_{k+1} }-s_{n_{k} }+s_{n_{k} }-L   )&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}&lt;\varepsilon \\[10pt] 
+    d(s_{n_{k+1} }-L )&lt;\varepsilon 
    
 \end{align}$$
 </div>
@@ -202,22 +204,22 @@ Let $(S,d)$ be any metric space.
             d(\mathbf{x}, \mathbf{y})=\sup \left\{ \left\vert x_i - y_{i} \right\vert : i=1,2, \ldots n \right\} 
         
 \end{align}$$ 
-        The idea is to treat the set $B$ of sequences as a set of infinite dimensional vectors in $\mathbb{\MakeUppercase{R}} $. 
+        The idea is to treat the set $B$ of sequences as a set of infinite dimensional vectors in $\mathbb{{R}} $. 
         We will utilize and prove the following lemma: 
         
-                Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{\MakeUppercase{r}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
+                Consider a sequence $(\mathbf{x}^{k})_k$ in $\mathbb{{R}}^n$, with $\mathbf{x}^{k}=(x_i^{k})^{n}_{i=1}$   
             <ol>
 <li>$(\textbf{x}^{(k)})_{k}$ is Cauchy iff $(\textbf{x}^{k})_{k}$  is Cauchy for $1 \leq i \leq n $</li>
 <li>$(\textbf{x}^{(k)})_{k}$ converges to $\mathbf{x} = (x_{i})^{n}_{i=1}$ iff $\lim_{k \to \infty} x_{i}^{(k)}$ for $1 \leq i \leq n $</li>
 </ol> 
         
         
-       $\implies{} :$  To prove part one of the lemma above, we will suppose that $(<strong>x</strong>^{k})_{k}$ is Cauchy. Fix $i$. Want: $(x_{i}^{(k)})_{k}$ is Cauchy. For $\varepsilon{} &gt; 0$ we need to find $N\ s.t. \ \vert x_{i}^{(k)} - x_{i}^{(m)} \vert &lt;\varepsilon{} $ for $k, m&gt;N$. We need to find an $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{}$ for all $k,m&gt;N$. $\varepsilon{} &gt; d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup{} \{ \vert  x_{i}- y_{i}\vert : i= 1,2, \ldots{} , n   \} \geq{} \vert x_{i}-y_{i} \vert $. Therefore, this $N$ works in the forward direction.
-        $\impliedby{} :$ Suppose $(x_{i}^{(k)})_{k}$ is Cauchy $\forall{} \ i$. We want to find: $(\mathbf{x}^{(k)})_{k}$ is Cauchy. We fix $\varepsilon{} &gt;0$. We need to find $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{} $ for $k, m&gt;N$. For $1\leq{} i\leq{} n$ find $N_{i} \in{} \mathbb{\MakeUppercase{n}} \ s.t. \ \vert x_{i}^{(k)}- x_{i}^{(m)} \vert &lt; \varepsilon{}$ for $k,m&gt;N_{i} $. Then, we know that:
+       $\implies{} :$  To prove part one of the lemma above, we will suppose that $(&lt;strong&gt;x&lt;/strong&gt;^{k})_{k}$ is Cauchy. Fix $i$. Want: $(x_{i}^{(k)})_{k}$ is Cauchy. For $\varepsilon{} &gt; 0$ we need to find $N\ s.t. \ \vert x_{i}^{(k)} - x_{i}^{(m)} \vert &lt;\varepsilon{} $ for $k, m&gt;N$. We need to find an $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{}$ for all $k,m&gt;N$. $\varepsilon{} &gt; d(\mathbf{x}^{(k)}, \mathbf{x}^{(m)})=\sup{} \{ \vert  x_{i}- y_{i}\vert : i= 1,2, \ldots{} , n   \} \geq{} \vert x_{i}-y_{i} \vert $. Therefore, this $N$ works in the forward direction.
+        $\impliedby{} :$ Suppose $(x_{i}^{(k)})_{k}$ is Cauchy $\forall{} \ i$. We want to find: $(\mathbf{x}^{(k)})_{k}$ is Cauchy. We fix $\varepsilon{} &gt;0$. We need to find $N\ s.t. \ d(\mathbf{x}^{k}, \mathbf{x}^{m})&lt;\varepsilon{} $ for $k, m&gt;N$. For $1\leq{} i\leq{} n$ find $N_{i} \in{} \mathbb{{N}} \ s.t. \ \vert x_{i}^{(k)}- x_{i}^{(m)} \vert &lt; \varepsilon{}$ for $k,m&gt;N_{i} $. Then, we know that:
         $$\begin{align}
 
-            x_{i}^{(k)} <\varepsilon + x_{i}^{(m)} \\[10pt] 
-            x_{i}^{(m)} < \varepsilon + x_{i}^{(k)} 
+            x_{i}^{(k)} &lt;\varepsilon + x_{i}^{(m)} \\[10pt] 
+            x_{i}^{(m)} &lt; \varepsilon + x_{i}^{(k)} 
         
 \end{align}$$
         Therefore, by the properties of the least upper bound, we have the following:
@@ -229,9 +231,9 @@ Let $(S,d)$ be any metric space.
 \end{align}$$
         We can prove a quick fact proposition about differences of supremums of sequences:
         
-       \[ 
+       $$$$
           \sup{} (s_{n} -t_{n} )\leq{} \sup{} s_{n} - t_{n} \\[10pt]  
-       \] 
+       $$$$
         
         <div class='proof'><strong>Proof.</strong> 
             $$\begin{align}
@@ -253,14 +255,14 @@ Let $(S,d)$ be any metric space.
         We know from the implication that the following is true:
         $$\begin{align}
  
-            \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert< \varepsilon \\[10pt] 
-            \sup (x_{i}^{(k)}-x_{i}^{(m)}    )<\varepsilon 
+            \left\vert x_{i}^{(k)}- x_{i}^{(m)} \right\vert&lt; \varepsilon \\[10pt] 
+            \sup (x_{i}^{(k)}-x_{i}^{(m)}    )&lt;\varepsilon 
         
 \end{align}$$
         Therefore, we can say the following:
         $$\begin{align}
  
-            \sup \left(  \left\vert x_{i}^{(k)}-x_{i}^{(m)} \right\vert\right)      <\varepsilon 
+            \sup \left(  \left\vert x_{i}^{(k)}-x_{i}^{(m)} \right\vert\right)      &lt;\varepsilon 
         
 \end{align}$$
         To show the second part of Lemma 1, we can use similar reasoning as the first part of Lemma 1 to show that the limit exists $B$.  

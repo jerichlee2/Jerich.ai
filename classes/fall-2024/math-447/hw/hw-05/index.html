@@ -194,7 +194,7 @@ Since $ \frac{1}{3} &lt; 1 $, the series converges by the ratio test.
       
       $$\begin{align}
 
-      \frac{1}{\sqrt{n+1} + \sqrt{n}} < \frac{1}{2\sqrt{n}}
+      \frac{1}{\sqrt{n+1} + \sqrt{n}} &lt; \frac{1}{2\sqrt{n}}
       
 \end{align}$$
       
@@ -220,7 +220,7 @@ Since $ \frac{1}{3} &lt; 1 $, the series converges by the ratio test.
    Suppose $\sum_{n=1}^{\infty{}} a_{n} =A$ and $\sum_{n=1}^{\infty{}} b_{n} =B$, where $A$ and $B$ are real numbers. Use limit theorems from section $9$ to quickly prove the following.
    <ol>
 <li>$\sum_{n=1}^{\infty} (a_{n} +b_{n}  )=A+B$</li>
-<li>$\sum_{n=1}^{\infty} ka_{n} =kA$ for $k\in \mathbb{\MakeUppercase{r}} $</li>
+<li>$\sum_{n=1}^{\infty} ka_{n} =kA$ for $k\in \mathbb{{R}} $</li>
 <li>Is $\sum_{n=1}^{\infty} a_{n}b_{n} =AB$ a reasonable conjecture? Discuss.</li>
 </ol>  
 </div>
@@ -286,7 +286,7 @@ Since $ \frac{1}{3} &lt; 1 $, the series converges by the ratio test.
    $$\begin{align}
 
       \left\vert \sum_{n=1}^{\infty} a_{n} \right\vert = \lim_{n \to \infty} \left( \sum_{k=1}^{\infty} a_{k} \right) \\[10pt] 
-      \left\vert \sum_{k=1}^{\infty} a_{k}-S \right\vert <\frac{\varepsilon}{M}
+      \left\vert \sum_{k=1}^{\infty} a_{k}-S \right\vert &lt;\frac{\varepsilon}{M}
    
 \end{align}$$
 
@@ -326,20 +326,20 @@ the $\epsilon{}-\delta{}$ property of Theorem $17.2$ .
       $$\begin{align}
 
         f(x)=x\sin \left(  \frac{1}{x}\right)\\[10pt] 
-        x\sin \left( \frac{1}{x} \right) <\varepsilon
+        x\sin \left( \frac{1}{x} \right) &lt;\varepsilon
       
 \end{align}$$
       We know that the value of $f(x)$ will always be less than or equal to $x$, as the value of $\sin{}(x)$ is bounded from $[-1,1]$. Thus,
       $$\begin{align}
 
-         \left\vert f(x)-f(0) \right\vert =\left\vert f({x}) \right\vert \leq x<\varepsilon
+         \left\vert f(x)-f(0) \right\vert =\left\vert f({x}) \right\vert \leq x&lt;\varepsilon
       
 \end{align}$$
       Setting $\delta{} =\varepsilon{}$:
       $$\begin{align}
 
-         \left\vert x-0 \right\vert <\delta \implies \left\vert x- 0 \right\vert < \varepsilon \\[10pt] 
-         \implies \left\vert f(x)-f(0) \right\vert < \varepsilon
+         \left\vert x-0 \right\vert &lt;\delta \implies \left\vert x- 0 \right\vert &lt; \varepsilon \\[10pt] 
+         \implies \left\vert f(x)-f(0) \right\vert &lt; \varepsilon
       
 \end{align}$$
     <div class='qed'>∎</div></div><br></li>
@@ -347,23 +347,23 @@ the $\epsilon{}-\delta{}$ property of Theorem $17.2$ .
   For all $\varepsilon{}$, we want to find $\delta{}$ such that $\vert x-x_0 \vert &lt;\delta{} $ implies $\vert f(x)-f(x_0) \vert &lt;\epsilon{}$. We state: 
       $$\begin{align}
 
-        \left\vert x^{3}-x_0^{3} \right\vert =\left\vert x-x_0 \right\vert \left\vert x^{2}+x_{0}x+x_{0}^{2}  \right\vert <\varepsilon \\[10pt] 
-        \left\vert x \right\vert <\left\vert x_0 \right\vert +1 \\[10pt] 
+        \left\vert x^{3}-x_0^{3} \right\vert =\left\vert x-x_0 \right\vert \left\vert x^{2}+x_{0}x+x_{0}^{2}  \right\vert &lt;\varepsilon \\[10pt] 
+        \left\vert x \right\vert &lt;\left\vert x_0 \right\vert +1 \\[10pt] 
         \left\vert x^{2}+x_{0}x+x_{0}^{2}  \right\vert \leq \left\vert x^{2} \right\vert +\left\vert x_{0}x  \right\vert +\left\vert x_{0}^{2} \right\vert \\[10pt] 
-        < \left( \left\vert x_0 \right\vert  +1\right)^{2}+\left\vert x_{0}^{2} \right\vert +\left\vert x_0 (\left\vert x_0 \right\vert +1) \right\vert 
+        &lt; \left( \left\vert x_0 \right\vert  +1\right)^{2}+\left\vert x_{0}^{2} \right\vert +\left\vert x_0 (\left\vert x_0 \right\vert +1) \right\vert 
       
 \end{align}$$
       Solving for $\vert x-x_0 \vert $:
       $$\begin{align}
 
-         \left\vert x-x_0 \right\vert < \frac{\varepsilon}{\left( \left\vert x_0 \right\vert  +1\right)^{2}+\left\vert x_{0}^{2} \right\vert +\left\vert x_0 (\left\vert x_0 \right\vert +1) \right\vert}
+         \left\vert x-x_0 \right\vert &lt; \frac{\varepsilon}{\left( \left\vert x_0 \right\vert  +1\right)^{2}+\left\vert x_{0}^{2} \right\vert +\left\vert x_0 (\left\vert x_0 \right\vert +1) \right\vert}
       
 \end{align}$$
       Setting $\delta{}$ = $\mathop{\min}\{ 1, \frac{\varepsilon}{( \vert x_0 \vert  +1)^{2}+\vert x_{0}^{2} \vert +\vert x_0 (\vert x_0 \vert +1) \vert}
 \} $:
 $$\begin{align}
 
-   \left\vert x-x_0 \right\vert <\delta \implies \left\vert f(x)-f(0) \right\vert <\varepsilon
+   \left\vert x-x_0 \right\vert &lt;\delta \implies \left\vert f(x)-f(0) \right\vert &lt;\varepsilon
 
 \end{align}$$
   <div class='qed'>∎</div></div><br></li>

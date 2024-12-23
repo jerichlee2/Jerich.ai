@@ -36,7 +36,7 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
 
 <ol>
 <li>Show if $ f_1(x) \leq f_2(x) $ for all $ x $ in some interval $ (a, b) $, then $ L_1 \leq L_2 $.</li>
-<li>Suppose that, in fact, $ f_1(x) < f_2(x) $ for all $ x $ in some interval $ (a, b) $. Can you conclude $ L_1 < L_2 $?</li>
+<li>Suppose that, in fact, $ f_1(x) &lt; f_2(x) $ for all $ x $ in some interval $ (a, b) $. Can you conclude $ L_1 &lt; L_2 $?</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
@@ -45,10 +45,10 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     $\forall{} \varepsilon{}&gt;0, \exists{} \delta{} &gt;0 \ s.t. \ \vert f_1(x)-L_1 \vert &lt;\varepsilon_1{}$ whenever $x\in{} (a- \delta{}, a+\delta{})\cap{} S$. Let $S \text{be}  (a,b), b&gt;a$. $\forall{} \varepsilon{}&gt;0, \exists{} \delta_2{} &gt;0 \ s.t. \ \vert f_2(x)-L_2 \vert &lt;\varepsilon_2{}$. Choose $\delta{} = \text{min}\{ \delta_1{}, \delta_2{} \}$. Then,
     $$\begin{align}
 
-        L_2 - \varepsilon < f_2(x) < L_2 + \varepsilon \\[10pt] 
-        L_1 - \varepsilon < f_1(x) < L_1 + \varepsilon \\[10pt] 
-        L_1 - \frac{\varepsilon}{2} < f_1(x) \leq f_2(x) <L_2 +\frac{\varepsilon}{2} \\[10pt] 
-        \forall \varepsilon, L_1 < L_2 + \varepsilon \implies \\[10pt] 
+        L_2 - \varepsilon &lt; f_2(x) &lt; L_2 + \varepsilon \\[10pt] 
+        L_1 - \varepsilon &lt; f_1(x) &lt; L_1 + \varepsilon \\[10pt] 
+        L_1 - \frac{\varepsilon}{2} &lt; f_1(x) \leq f_2(x) &lt;L_2 +\frac{\varepsilon}{2} \\[10pt] 
+        \forall \varepsilon, L_1 &lt; L_2 + \varepsilon \implies \\[10pt] 
         L_1 \leq L_2
     
 \end{align}$$ 
@@ -65,12 +65,12 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     <div class='proof'><strong>Proof.</strong> 
         $\lim_{x \to n^{+}} f_1(x)=\lim_{x \to n^{+}}f_{3}(x)=L$, if $\forall{} x \in{} (a,b), f_1(x) \leq{} f_2(x) \leq{} f_3(x)\implies{} \lim_{x \to a^{+}} f_2(x)=L$. $$\begin{align}
 
-           \text{Let } x\in (a-\delta ,a+\delta )\cap S \text{, } S = (a,b) \ s.t. \ b>a. \\[10pt] 
-           \forall \varepsilon>0, \exists \delta >0 \ s.t. \ \left\vert f_1(x) - L \right\vert <\varepsilon \\[10pt] 
-           \left\vert f_{3}(x) - L  \right\vert < \varepsilon \\[10pt] 
-           L-\varepsilon<f_1(x) \leq f_2(x) \leq f_3(x) <\varepsilon+L \\[10pt] 
-           L-\varepsilon< f_2(x) < \varepsilon+L \\[10pt] 
-           \left\vert f_2(x)-L \right\vert <\varepsilon \implies \\[10pt] 
+           \text{Let } x\in (a-\delta ,a+\delta )\cap S \text{, } S = (a,b) \ s.t. \ b&gt;a. \\[10pt] 
+           \forall \varepsilon&gt;0, \exists \delta &gt;0 \ s.t. \ \left\vert f_1(x) - L \right\vert &lt;\varepsilon \\[10pt] 
+           \left\vert f_{3}(x) - L  \right\vert &lt; \varepsilon \\[10pt] 
+           L-\varepsilon&lt;f_1(x) \leq f_2(x) \leq f_3(x) &lt;\varepsilon+L \\[10pt] 
+           L-\varepsilon&lt; f_2(x) &lt; \varepsilon+L \\[10pt] 
+           \left\vert f_2(x)-L \right\vert &lt;\varepsilon \implies \\[10pt] 
            \lim_{x \to a^{+}}f_2(x)=L 
         
 \end{align}$$  
@@ -124,7 +124,7 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
     
 \end{align}$$</li>
 </ol></li>
-<li>These series do not converge; these do not pass the criteria of the Ratio and Root tests, i.e., either $\alpha = \limsup_{n \to \infty} \left\vert a_{n} \right\vert^{\frac{1}{n}}>1 $ or $\limsup_{n \to \infty} \left\vert \frac{a_{n+1}}{a_{n}}  \right\vert>1 $ imply that the series $\sum_{n=1}^{\infty} a_{n}$ does not converge.</li>
+<li>These series do not converge; these do not pass the criteria of the Ratio and Root tests, i.e., either $\alpha = \limsup_{n \to \infty} \left\vert a_{n} \right\vert^{\frac{1}{n}}&gt;1 $ or $\limsup_{n \to \infty} \left\vert \frac{a_{n+1}}{a_{n}}  \right\vert&gt;1 $ imply that the series $\sum_{n=1}^{\infty} a_{n}$ does not converge.</li>
 <li>$$\begin{align}
     
 \sum_{i=1}^{\infty} a_{n}x^{n} \\[10pt] 
@@ -132,7 +132,7 @@ Throughout this homework, we assume that (reverse) trigonometric and exponential
 R = \frac{1}{\beta}\\[10pt] 
 \beta = \frac{5}{6} \\[10pt] 
 R = \frac{5}{6} \\[10pt] 
-\left\vert x \right\vert < \frac{5}{6}
+\left\vert x \right\vert &lt; \frac{5}{6}
 
 \end{align}$$
 The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
@@ -141,7 +141,7 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
 <div class='problem'><strong>Problem.</strong><br> [23.5b]
     Consider a power series $ \sum{} a_n x^n $ with radius of convergence $ R $.
 <ol>
-<li>Prove that if $ \limsup |a_n| > 0 $, then $ R \leq 1 $.</li>
+<li>Prove that if $ \limsup |a_n| &gt; 0 $, then $ R \leq 1 $.</li>
 </ol>
 </div>
 <div class='solution'><strong>Solution.</strong> 
@@ -149,9 +149,9 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
     $$\begin{align}
 
     \beta = \limsup_{n \to \infty} \left\vert a_{n} \right\vert^{\frac{1}{n}}\\[10pt] 
-    c = \limsup_{n \to \infty} \left\vert a_{n} \right\vert>0\\[10pt] 
+    c = \limsup_{n \to \infty} \left\vert a_{n} \right\vert&gt;0\\[10pt] 
     \lim_{n \to \infty}c^{\frac{1}{n}} = 1, \text{ by Theorem 9.7 in Ross} \\[10pt] 
-    \left\vert \beta-1 \right\vert <\varepsilon= 1-\varepsilon < \beta <\varepsilon+1 \\[10pt] 
+    \left\vert \beta-1 \right\vert &lt;\varepsilon= 1-\varepsilon &lt; \beta &lt;\varepsilon+1 \\[10pt] 
     \implies \beta\geq 1\\[10pt] 
     1\geq \frac{1}{\beta}=R \\[10pt] 
     1\geq R
@@ -164,16 +164,16 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <div class='proof'><strong>Proof.</strong> 
-        $\forall{} \varepsilon{}&gt;0 \exists{} N_1 \ s.t. \ N_1(\varepsilon{})\in{} \mathbb{\MakeUppercase{n}} \ s.t. \ \vert f_n(x)-f(x) \vert&lt;\varepsilon{} $ for $n\geq{} N_1, \forall{} x\in{} S$, 
-    $\forall{} \varepsilon{}&gt;0 \exists{} N_2 \ s.t. \ N_2(\varepsilon{})\in{} \mathbb{\MakeUppercase{n}} \ s.t. \ \vert g_n(x)-g(x) \vert&lt;\varepsilon{} $ for $n\geq{} N_2, \forall{} x\in{} S$. Then,
+        $\forall{} \varepsilon{}&gt;0 \exists{} N_1 \ s.t. \ N_1(\varepsilon{})\in{} \mathbb{N} \ s.t. \ \vert f_n(x)-f(x) \vert&lt;\varepsilon{} $ for $n\geq{} N_1, \forall{} x\in{} S$, 
+    $\forall{} \varepsilon{}&gt;0 \exists{} N_2 \ s.t. \ N_2(\varepsilon{})\in{} \mathbb{N} \ s.t. \ \vert g_n(x)-g(x) \vert&lt;\varepsilon{} $ for $n\geq{} N_2, \forall{} x\in{} S$. Then,
     $$\begin{align}
 
-        f(x)-\varepsilon<f_{n}(x)<f(x)+\varepsilon \\[10pt] 
-        g(x)-\varepsilon<g_{n}(x)<g(x)+\varepsilon \\[10pt]
-        f_{n}(x)-f(x)+g_{n}(x)-g(x)<\varepsilon \\[10pt] 
-        -f_{n}(x)-g_{n}(x)<\varepsilon-g(x)-f(x) \\[10pt] 
-        f_{n}(x)+g_{n}(x)>-\varepsilon+g(x)+f(x) \\[10pt] 
-        \implies \left\vert f_{n}(x)+g_{n}(x) \right\vert <\varepsilon
+        f(x)-\varepsilon&lt;f_{n}(x)&lt;f(x)+\varepsilon \\[10pt] 
+        g(x)-\varepsilon&lt;g_{n}(x)&lt;g(x)+\varepsilon \\[10pt]
+        f_{n}(x)-f(x)+g_{n}(x)-g(x)&lt;\varepsilon \\[10pt] 
+        -f_{n}(x)-g_{n}(x)&lt;\varepsilon-g(x)-f(x) \\[10pt] 
+        f_{n}(x)+g_{n}(x)&gt;-\varepsilon+g(x)+f(x) \\[10pt] 
+        \implies \left\vert f_{n}(x)+g_{n}(x) \right\vert &lt;\varepsilon
     
 \end{align}$$
     <div class='qed'>∎</div></div><br>
@@ -192,9 +192,9 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
 <li>$f_{n}\to f$ is Lipschitz at $k=1$, $x-y\leq k\left\vert x-y \right\vert $, so $f_{n}\to f$ is uniformly continuous. We know that:</li>
 <li>$$\begin{align}
 
-            \lim_{n \to \infty}\sup_{x\in \mathbb{\MakeUppercase{r}}}\left\vert g_{n}(x)-g(x) \right\vert= 0\\[10pt] 
-            = \lim_{n \to \infty}\sup_{x\in \mathbb{\MakeUppercase{r}}} \left\vert \frac{1}{n}-0 \right\vert, \lim_{n \to \infty} \frac{1}{n}=0 \\[10pt] 
-            \implies \lim_{n \to \infty} \sup_{x\in \mathbb{\MakeUppercase{r}} } \frac{1}{n}=0
+            \lim_{n \to \infty}\sup_{x\in \mathbb{R}}\left\vert g_{n}(x)-g(x) \right\vert= 0\\[10pt] 
+            = \lim_{n \to \infty}\sup_{x\in \mathbb{R}} \left\vert \frac{1}{n}-0 \right\vert, \lim_{n \to \infty} \frac{1}{n}=0 \\[10pt] 
+            \implies \lim_{n \to \infty} \sup_{x\in \mathbb{R} } \frac{1}{n}=0
         
 \end{align}$$
         Therefore, $g_{n}\to g$ is uniformly convergent.</li>
@@ -226,28 +226,28 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
 </div>
 <div class='solution'><strong>Solution.</strong> 
     <ol>
-<li>Choose $N>n=\frac{1}{\varepsilon x}$. Then,
+<li>Choose $N&gt;n=\frac{1}{\varepsilon x}$. Then,
         $$\begin{align}
 
            \frac{1}{\varepsilon x} \\[10pt] 
-           \frac{1}{nx}<\varepsilon \\[10pt] 
-           \left\vert \frac{1}{nx}-0 \right\vert < \varepsilon \implies \forall x\in S, \lim_{n \to \infty} \frac{1}{nx}\\[10pt] 
-           \frac{nx}{1+n^{2}x^{2}}<\frac{nx}{n^{2}x^{2}}<\varepsilon \\[10pt] 
-           \frac{nx}{1+n^{2}x^{2}}<\varepsilon \\[10pt] 
-           \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert < \varepsilon
+           \frac{1}{nx}&lt;\varepsilon \\[10pt] 
+           \left\vert \frac{1}{nx}-0 \right\vert &lt; \varepsilon \implies \forall x\in S, \lim_{n \to \infty} \frac{1}{nx}\\[10pt] 
+           \frac{nx}{1+n^{2}x^{2}}&lt;\frac{nx}{n^{2}x^{2}}&lt;\varepsilon \\[10pt] 
+           \frac{nx}{1+n^{2}x^{2}}&lt;\varepsilon \\[10pt] 
+           \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert &lt; \varepsilon
         
 \end{align}$$</li>
-<li>We wish to find: $\lim_{n \to \infty} \sup_{x\in\mathbb{\MakeUppercase{R}}}\left\vert f_{n}-f \right\vert =0$:
+<li>We wish to find: $\lim_{n \to \infty} \sup_{x\in\mathbb{R}}\left\vert f_{n}-f \right\vert =0$:
         <div class='proof'><strong>Proof.</strong> 
             $$\begin{align}
 
-                \lim_{n \to \infty} \sup_{x\mathbb{\MakeUppercase{r}}}\left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0 \\[10pt] 
-                \sup_{x\in \mathbb{\MakeUppercase{r}}}\frac{nx}{1+n^{2}x^{2}} \\[10pt] 
-                \frac{nx}{1+n^{2}x^{2}}<\frac{nx}{n^{2}x^{2}} \\[10pt] 
+                \lim_{n \to \infty} \sup_{x\mathbb{R}}\left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0 \\[10pt] 
+                \sup_{x\in \mathbb{R}}\frac{nx}{1+n^{2}x^{2}} \\[10pt] 
+                \frac{nx}{1+n^{2}x^{2}}&lt;\frac{nx}{n^{2}x^{2}} \\[10pt] 
                 \sup \frac{nx}{1+n^{2}x^{2}}\leq \sup \frac{nx}{n^{2}x^{2}} = \sup \frac{1}{nx}=0\\[10pt] 
                 \sup \frac{nx}{1+n^{2}x^{2}} \leq 0 \\[10pt] 
                 \implies \sup \frac{nx}{1+n^{2}x^{2}}=0 \\[10pt] 
-                \lim_{n \to \infty} \sup_{x\in \mathbb{\MakeUppercase{r}} } \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0
+                \lim_{n \to \infty} \sup_{x\in \mathbb{R} } \left\vert \frac{nx}{1+n^{2}x^{2}}-0 \right\vert =0
             
 \end{align}$$ 
         <div class='qed'>∎</div></div><br></li>
@@ -263,8 +263,8 @@ The above converges for $(-\frac{5}{6}, \frac{5}{6})$.</li>
     $$\begin{align}
 
         \lim_{n \to \infty} \sup_{x\in S} \left\vert f_{n}(x) - g_{n}(x) \right\vert =0\\[10pt]
-        \left\vert f_{n}(x)-f(x) \right\vert < \frac{\varepsilon}{2}\\[10pt] 
-        \left\vert g_{n}(x)-g(x) \right\vert < \frac{\varepsilon}{2}\\[10pt] 
+        \left\vert f_{n}(x)-f(x) \right\vert &lt; \frac{\varepsilon}{2}\\[10pt] 
+        \left\vert g_{n}(x)-g(x) \right\vert &lt; \frac{\varepsilon}{2}\\[10pt] 
     
 \end{align}$$
     Eqn 68 implies that $f$ is bounded.

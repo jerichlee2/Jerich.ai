@@ -1,8 +1,8 @@
 import os
 import re
 import sys
-from datetime import datetime
 import html
+from datetime import datetime
 
 def latex_to_html(latex_file, output_html, css_path):
     html_template = """<!DOCTYPE html>
@@ -48,10 +48,10 @@ def latex_to_html(latex_file, output_html, css_path):
         author_match = re.search(r"\\author\{(.*?)\}", latex_content, re.DOTALL)
         date_match = re.search(r"\\date\{(.*?)\}", latex_content, re.DOTALL)
 
-        # Extract and format document title
+        # Document title (or fallback)
         document_title = title_match.group(1).strip() if title_match else "Converted Document"
 
-        # Create title block HTML
+        # Build a title block (HTML)
         title_block = ""
         if title_match:
             title_block += f"<h1>{html.escape(title_match.group(1).strip())}</h1>\n"
@@ -62,28 +62,35 @@ def latex_to_html(latex_file, output_html, css_path):
             date_text = date_match.group(1).replace("\\today", current_date).strip()
             title_block += f"<h4>{html.escape(date_text)}</h4>\n"
 
-        # Replace \maketitle with the title block placeholder
+        # Replace \maketitle with a placeholder we can inject later
         content = latex_content.replace("\\maketitle", "TITLE_PLACEHOLDER")
 
         # Extract body content between \begin{document} and \end{document}
         start = content.find("\\begin{document}")
         end = content.find("\\end{document}")
-
         if start == -1 or end == -1:
             raise ValueError("Could not find \\begin{document} or \\end{document} in the LaTeX file.")
 
         start += len("\\begin{document}")
         body_content = content[start:end].strip()
 
-        # Process the LaTeX content into HTML
+        # Convert LaTeX content to HTML
         html_content = process_latex_content(body_content)
 
-        # Insert title block and replace placeholders
+        # Insert the <h1>, <h3>, <h4> from \title / \author / \date
         html_content = html_content.replace("TITLE_PLACEHOLDER", title_block)
-        final_html = html_template.format(document_title=html.escape(document_title), css_path=css_path)
+
+        # Build the final HTML from template
+        final_html = html_template.format(
+            document_title=html.escape(document_title), 
+            css_path=css_path
+        )
         final_html = final_html.replace("CONTENT_PLACEHOLDER", html_content)
 
-        # Write the final HTML to the output file
+        # -- KEY STEP: Escape < and > inside math to avoid HTML confusion --
+        final_html = escape_angle_brackets_in_math(final_html)
+
+        # Write the final HTML
         os.makedirs(os.path.dirname(output_html), exist_ok=True)
         with open(output_html, 'w') as output_file:
             output_file.write(final_html)
@@ -94,21 +101,29 @@ def latex_to_html(latex_file, output_html, css_path):
         print(f"An error occurred while processing the file '{latex_file}': {e}")
         raise
 
+
 def process_latex_content(content, in_math_mode=False):
-    # Remove comments
+    """
+    Parse LaTeX text (content) recursively.
+    in_math_mode indicates whether we are inside a math block, so we handle escaping differently.
+    """
+    # Remove comments (that aren't escaped like \%)
     content = re.sub(r"(?<!\\)%.*", "", content)
+
     pos = 0
     length = len(content)
     html_output = ""
 
     while pos < length:
-        # Check for environment start first
+        # Check for environment start
         if content.startswith("\\begin{", pos):
             env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
             if env_match:
                 env_name = env_match.group(1)
                 env_content, new_pos = extract_environment(content, pos, env_name)
                 pos = new_pos
+
+                # Decide how to handle each environment
                 if env_name == "enumerate":
                     html_output += handle_enumerate(env_content)
                 elif env_name == "itemize":
@@ -119,32 +134,37 @@ def process_latex_content(content, in_math_mode=False):
                     html_output += handle_lstlisting(env_content)
                 elif env_name == "figure":
                     html_output += handle_figure(env_content)
-                elif env_name in ['align', 'align*', 'equation', 'equation*', 'gather', 'multline', 'split']:
-                    # Math environment
-                    html_output += f"$$\\begin{{{env_name}}}\n{env_content}\n\\end{{{env_name}}}$$"
+                elif env_name in [
+                    'align', 'align*', 'equation', 'equation*', 
+                    'gather', 'multline', 'split'
+                ]:
+                    # Math environment -> wrap with $$ ... $$
+                    safe_content = env_content  # We'll do final angle-bracket escaping later
+                    html_output += f"$$\\begin{{{env_name}}}\n{safe_content}\n\\end{{{env_name}}}$$"
                 elif env_name in ["problem", "solution", "proof"]:
+                    # Example custom environment
                     html_output += handle_custom_environment(env_name, env_content)
                 else:
-                    # Generic environment
+                    # Generic environment, just parse it recursively
                     html_output += process_latex_content(env_content, in_math_mode=in_math_mode)
             else:
-                # Not a recognized environment, move forward
+                # Not a recognized environment
                 pos += 1
         else:
-            # Check for \left( or \right) first to avoid treating them as commands with braces
-            special_delim_match = re.match(r"\\(left|right)(\(|\)|\[|\]|\{|\}|\\|\|)", content[pos:])
+            # Check for \left( or \right) to keep them as is in math
+            special_delim_match = re.match(r"\\(left|right)([\(\)\[\]\{\}\\\\\|])", content[pos:])
             if special_delim_match:
                 direction = special_delim_match.group(1)  # 'left' or 'right'
-                delimiter = special_delim_match.group(2)  # actual delimiter like ( or )
+                delimiter = special_delim_match.group(2)  # actual delimiter
                 pos += len(special_delim_match.group(0))
                 if in_math_mode:
                     # Keep them as \left( or \right)
                     html_output += f"\\{direction}{delimiter}"
                 else:
-                    # Outside math mode, just show the delimiter character
+                    # Outside math mode, just show the delimiter
                     html_output += delimiter
             else:
-                # Now try a generic command
+                # Possibly a LaTeX command
                 command_match = re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:])
                 if command_match:
                     command = command_match.group(1)
@@ -152,25 +172,31 @@ def process_latex_content(content, in_math_mode=False):
                     pos += len(command_match.group(0))
                     html_output += process_command(command, argument, in_math_mode=in_math_mode)
                 else:
-                    # No environment, no special delimiter, no command
-                    # Treat the next characters as text until something else occurs
+                    # No environment, no special delimiter, no recognized command
+                    # We'll treat next characters as text until something else occurs
                     text_start = pos
                     while pos < length \
                           and not content.startswith("\\begin{", pos) \
-                          and not re.match(r"\\(left|right)(\(|\)|\[|\]|\{|\}|\\|\|)", content[pos:]) \
+                          and not re.match(r"\\(left|right)([\(\)\[\]\{\}\\\\\|])", content[pos:]) \
                           and not re.match(r"\\(\w+)(\*?)(\{.*?\})?", content[pos:]):
                         pos += 1
                     text = content[text_start:pos]
-                    html_output += process_text_block(text)
+                    html_output += process_text_block(text, in_math_mode=in_math_mode)
 
     return html_output
 
+
 def extract_environment(content, pos, env_name):
+    """
+    Find matching \begin{env_name} ... \end{env_name}, 
+    supporting nested environments of the same name.
+    """
     start_tag = f"\\begin{{{env_name}}}"
     end_tag = f"\\end{{{env_name}}}"
     start_pos = pos + len(start_tag)
     depth = 1
     current_pos = start_pos
+
     while depth > 0 and current_pos < len(content):
         if content.startswith(start_tag, current_pos):
             depth += 1
@@ -179,19 +205,25 @@ def extract_environment(content, pos, env_name):
             depth -= 1
             current_pos += len(end_tag)
             if depth == 0:
+                # Return the environment content (minus the end tag), plus new position
                 return content[start_pos:current_pos - len(end_tag)], current_pos
         else:
             current_pos += 1
+
     raise ValueError(f"Environment '{env_name}' not closed properly")
 
+
 def handle_enumerate(content):
+    """
+    Convert \begin{enumerate} ... \end{enumerate} into <ol><li>...</li>...</ol>.
+    """
     items = []
     pos = 0
     length = len(content)
     while pos < length:
         if content.startswith("\\item", pos):
             pos += len("\\item")
-            # Skip optional argument
+            # Skip optional [label=...]
             if pos < length and content[pos] == '[':
                 bracket_count = 1
                 pos += 1
@@ -201,39 +233,107 @@ def handle_enumerate(content):
                     elif content[pos] == ']':
                         bracket_count -= 1
                     pos += 1
+
             item_content = ""
             while pos < length:
                 if content.startswith("\\item", pos) or content.startswith("\\end{", pos):
                     break
                 elif content.startswith("\\begin{enumerate}", pos):
-                    nested_env_content, pos = extract_environment(content, pos, "enumerate")
-                    nested_html = handle_enumerate(nested_env_content)
-                    item_content += nested_html
+                    nested_env_content, pos2 = extract_environment(content, pos, "enumerate")
+                    item_content += handle_enumerate(nested_env_content)
+                    pos = pos2
                 elif content.startswith("\\begin{itemize}", pos):
-                    nested_env_content, pos = extract_environment(content, pos, "itemize")
-                    nested_html = handle_itemize(nested_env_content)
-                    item_content += nested_html
+                    nested_env_content, pos2 = extract_environment(content, pos, "itemize")
+                    item_content += handle_itemize(nested_env_content)
+                    pos = pos2
                 else:
                     if content.startswith("\\begin{", pos):
+                        # Some other environment
                         env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
                         if env_match:
                             env_name = env_match.group(1)
-                            nested_env_content, pos = extract_environment(content, pos, env_name)
-                            nested_html = process_latex_content(f"\\begin{{{env_name}}}{nested_env_content}\\end{{{env_name}}}")
+                            nested_env_content, pos2 = extract_environment(content, pos, env_name)
+                            nested_html = process_latex_content(
+                                f"\\begin{{{env_name}}}{nested_env_content}\\end{{{env_name}}}"
+                            )
                             item_content += nested_html
+                            pos = pos2
                         else:
                             item_content += content[pos]
                             pos += 1
                     else:
                         item_content += content[pos]
                         pos += 1
-            items.append(f"<li>{(item_content.strip())}</li>")
+
+            items.append(f"<li>{item_content.strip()}</li>")
         else:
             pos += 1
+
     return "<ol>\n" + "\n".join(items) + "\n</ol>"
 
 
+def handle_itemize(content):
+    """
+    Convert \begin{itemize} ... \end{itemize} into <ul><li>...</li>...</ul>.
+    """
+    items = []
+    pos = 0
+    length = len(content)
+
+    while pos < length:
+        if content.startswith("\\item", pos):
+            pos += len("\\item")
+            # Skip optional [label=...]
+            if pos < length and content[pos] == '[':
+                bracket_count = 1
+                pos += 1
+                while pos < length and bracket_count > 0:
+                    if content[pos] == '[':
+                        bracket_count += 1
+                    elif content[pos] == ']':
+                        bracket_count -= 1
+                    pos += 1
+
+            item_content = ""
+            while pos < length:
+                if content.startswith("\\item", pos) or content.startswith("\\end{", pos):
+                    break
+                elif content.startswith("\\begin{itemize}", pos):
+                    nested_env_content, pos2 = extract_environment(content, pos, "itemize")
+                    item_content += handle_itemize(nested_env_content)
+                    pos = pos2
+                elif content.startswith("\\begin{enumerate}", pos):
+                    nested_env_content, pos2 = extract_environment(content, pos, "enumerate")
+                    item_content += handle_enumerate(nested_env_content)
+                    pos = pos2
+                else:
+                    if content.startswith("\\begin{", pos):
+                        env_match = re.match(r"\\begin\{(\w+\*?)\}", content[pos:])
+                        if env_match:
+                            env_name = env_match.group(1)
+                            nested_env_content, pos2 = extract_environment(content, pos, env_name)
+                            nested_html = process_latex_content(
+                                f"\\begin{{{env_name}}}{nested_env_content}\\end{{{env_name}}}"
+                            )
+                            item_content += nested_html
+                            pos = pos2
+                        else:
+                            item_content += content[pos]
+                            pos += 1
+                    else:
+                        item_content += content[pos]
+                        pos += 1
+            items.append(f"<li>{item_content.strip()}</li>")
+        else:
+            pos += 1
+
+    return "<ul>\n" + "\n".join(items) + "\n</ul>"
+
+
 def handle_verbatim(content):
+    """
+    For verbatim, we return everything as-is (with basic HTML escaping).
+    """
     escaped_content = (
         content
         .replace("&", "&amp;")
@@ -242,7 +342,11 @@ def handle_verbatim(content):
     )
     return f"<pre>{escaped_content}</pre>"
 
+
 def handle_lstlisting(content):
+    """
+    For lstlisting, do something similar to verbatim, but maybe add a class for styling.
+    """
     escaped_content = (
         content
         .replace("&", "&amp;")
@@ -255,22 +359,34 @@ def handle_lstlisting(content):
     )
     return f"<pre class='code-block'>{escaped_content}</pre>"
 
+
 def handle_figure(content):
+    """
+    Simple example for figure environment with \includegraphics and optional \caption.
+    """
     includegraphics_match = re.search(r"\\includegraphics\[.*?\]\{(.*?)\}", content, re.DOTALL)
     caption_match = re.search(r"\\caption\{(.*?)\}", content, re.DOTALL)
+
     image_path = includegraphics_match.group(1).strip() if includegraphics_match else ""
     caption = caption_match.group(1).strip() if caption_match else ""
-    caption_html = f"<figcaption>{caption}</figcaption>" if caption else ""
+    caption_html = f"<figcaption>{html.escape(caption)}</figcaption>" if caption else ""
+
     return f"""
-    <figure>
-        <img src="{image_path}" alt="{caption}" style="max-width:100%;height:auto;">
-        {caption_html}
-    </figure>
+<figure>
+  <img src="{html.escape(image_path)}" alt="{html.escape(caption)}" style="max-width:100%;height:auto;">
+  {caption_html}
+</figure>
     """
 
+
 def handle_custom_environment(env_name, content):
+    """
+    Example for 'problem', 'solution', 'proof', etc.
+    """
     env_map = {
         "problem": "<div class='problem'><strong>Problem.</strong><br> {}</div>",
+        "lemma": "<div class='lemma'><strong>Lemma.</strong><br> {}</div>",
+        "proposition": "<div class='proposition'><strong>Proposition.</strong><br> {}</div>",
         "solution": "<div class='solution'><strong>Solution.</strong> {}</div>",
         "proof": "<div class='proof'><strong>Proof.</strong> {}<div class='qed'>∎</div></div><br>",
     }
@@ -278,93 +394,116 @@ def handle_custom_environment(env_name, content):
     processed_content = process_latex_content(content)
     return template.format(processed_content)
 
+
 def process_command(command, argument, in_math_mode=False):
+    """
+    Handle one-off LaTeX commands like \section, \emph, etc.
+    """
+    # Strip surrounding braces if present
     arg_content = argument.strip()
     if arg_content.startswith('{') and arg_content.endswith('}'):
         arg_content = arg_content[1:-1].strip()
 
     if in_math_mode:
+        # For math mode, typically just return the command as is (but we could expand macros).
+        # Example: \mathbb, \mathcal, etc.
         if command == 'MakeUppercase':
             return arg_content.upper()
-        elif command == 'mathbb':
-            m = re.search(r'\\MakeUppercase\{([^}]*)\}', arg_content)
-            if m:
-                uppercase_text = m.group(1).upper()
-                arg_content = re.sub(r'\\MakeUppercase\{[^}]*\}', uppercase_text, arg_content)
-            return f"\\mathbb{{{arg_content}}}"
-        elif command == 'mathcal':
-            m = re.search(r'\\MakeUppercase\{([^}]*)\}', arg_content)
-            if m:
-                uppercase_text = m.group(1).upper()
-                arg_content = re.sub(r'\\MakeUppercase\{[^}]*\}', uppercase_text, arg_content)
-            return f"\\mathbb{{{arg_content}}}"
+        elif command in ['mathbb', 'mathcal']:
+            # e.g. \mathbb{R}
+            return f"\\{command}{{{arg_content}}}"
         else:
             return f"\\{command}{{{arg_content}}}"
     else:
+        # Outside math mode
         if command == 'MakeUppercase':
-            # Outside math mode, just uppercase the argument
             return arg_content.upper()
         elif command == 'section':
-            return f"<h2>{arg_content}</h2>"
+            return f"<h2>{html.escape(arg_content)}</h2>"
         elif command == 'subsection':
-            return f"<h3>{arg_content}</h3>"
+            return f"<h3>{html.escape(arg_content)}</h3>"
         elif command == 'subsubsection':
-            return f"<h4>{arg_content}</h4>"
+            return f"<h4>{html.escape(arg_content)}</h4>"
         elif command in ['emph', 'textit']:
-            return f"<em>{arg_content}</em>"
+            return f"<em>{html.escape(arg_content)}</em>"
         elif command == 'textbf':
-            return f"<strong>{arg_content}</strong>"
+            return f"<strong>{html.escape(arg_content)}</strong>"
         elif command == 'noindent':
             return ''
         else:
-            return f"\\{command}{{{arg_content}}}"
+            # Default: pass it through, or do nothing
+            return f"\\{command}{{{html.escape(arg_content)}}}"
 
-def process_text_block(text_block):
-    # Identify math segments
+
+def process_text_block(text_block, in_math_mode=False):
+    """
+    Splits text_block into segments of math vs. non-math and processes each.
+    """
     math_pattern = r'(\$\$.*?\$\$|\$.*?\$)'
     processed_parts = []
     last_end = 0
 
     for match in re.finditer(math_pattern, text_block, flags=re.DOTALL):
         start, end = match.span()
-        # Text before math mode
+        # Everything before the math environment
         if start > last_end:
             processed_parts.append(process_text(text_block[last_end:start], in_math_mode=False))
+
         math_segment = match.group(0)
         if math_segment.startswith('$$') and math_segment.endswith('$$'):
+            # Remove the surrounding $$ for internal processing
             inner = math_segment[2:-2]
+            # Recursively handle LaTeX inside math
             processed_math = process_latex_content(inner, in_math_mode=True)
             processed_parts.append(f"$${processed_math}$$")
         else:
+            # Single-dollar math
             inner = math_segment[1:-1]
             processed_math = process_latex_content(inner, in_math_mode=True)
             processed_parts.append(f"${processed_math}$")
+
         last_end = end
 
-    # Remaining text after last math block
+    # Handle any leftover text after the last math segment
     if last_end < len(text_block):
         processed_parts.append(process_text(text_block[last_end:], in_math_mode=False))
 
     return ''.join(processed_parts)
 
-def process_text(text_part, in_math_mode=False):
-    # In math mode, do not escape HTML or transform text
-    if not in_math_mode:
-        # Replace LaTeX markup with HTML tags (non-math text)
-        text_part = re.sub(r"\\section\{(.*?)\}", r"<h2>\1</h2>", text_part)
-        text_part = re.sub(r"\\subsection\{(.*?)\}", r"<h3>\1</h3>", text_part)
-        text_part = re.sub(r"\\subsubsection\{(.*?)\}", r"<h4>\1</h4>", text_part)
-        text_part = re.sub(r"\\emph\{(.*?)\}", r"<em>\1</em>", text_part)
-        text_part = re.sub(r"\\textbf\{(.*?)\}", r"<strong>\1</strong>", text_part)
-        text_part = re.sub(r"\\textit\{(.*?)\}", r"<em>\1</em>", text_part)
-        text_part = text_part.replace("\\noindent", "")
 
-        # Escape HTML for non-math text
+def process_text(text_part, in_math_mode=False):
+    """
+    If we're in math mode, we still want to ensure angle brackets get HTML-escaped.
+    MathJax interprets &lt; and &gt; as < and > anyway.
+    """
+    if in_math_mode:
+        # Only escape < and >
+        text_part = text_part.replace('<', '&lt;').replace('>', '&gt;')
+        return text_part
+    else:
+        # Outside math mode, do a full HTML escape
         text_part = text_part.replace('&', '&amp;')
         text_part = text_part.replace('<', '&lt;')
         text_part = text_part.replace('>', '&gt;')
+        return text_part
 
-    return text_part
+
+def escape_angle_brackets_in_math(html_text):
+    """
+    As a final step, find all $...$ or $$...$$ blocks
+    and replace <, > with &lt;, &gt; to avoid HTML tag confusion.
+    """
+    pattern = re.compile(r"(\${1,2})(.*?)(\1)", re.DOTALL)
+
+    def replacer(m):
+        delimiter = m.group(1)    # $ or $$
+        math_body = m.group(2)    # content inside
+        # Escape < and >
+        math_body = math_body.replace('<', '&lt;').replace('>', '&gt;')
+        return f"{delimiter}{math_body}{delimiter}"
+
+    return pattern.sub(replacer, html_text)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:

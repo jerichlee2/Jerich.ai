@@ -128,7 +128,7 @@ img {
 
 /* Add or update these styles in your CSS file */
 
-.problem, .solution {
+.problem, .solution, .lemma, .proposition {
     color: black;        /* Ensure text color is black */
     font-size: 1em;      /* Set a readable font size */
     display: block;      /* Ensure elements are displayed */

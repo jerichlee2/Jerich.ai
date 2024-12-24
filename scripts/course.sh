@@ -33,7 +33,7 @@ cat > "$INDEX_FILE" <<EOL
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$FOLDER_NAME</title>
-    <link rel="stylesheet" href="/Users/jerichlee/Documents/jerichlee.ai/style.css">
+    <link rel="stylesheet" href="https://jerichlee2.github.io/Jerich.ai/style.css">
 
     <script>
         MathJax = {

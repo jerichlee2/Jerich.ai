@@ -57,7 +57,7 @@ cat > "$INDEX_FILE" <<EOL
                 <h1>$FOLDER_NAME</h1>
                 <h2>University of Illinois at Urbana-Champaign</h2>
                 <nav>
-                    <a href="/Users/jerichlee/Documents/jerichlee.ai/index.html">Home</a>
+                    <a href="https://jerichlee2.github.io/Jerich.ai/index.html">Home</a>
                 </nav>
             </div>
         </div>

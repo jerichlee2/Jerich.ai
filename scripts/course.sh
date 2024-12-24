@@ -10,7 +10,7 @@ fi
 FOLDER_NAME="$1"
 
 # Base path where the folder will be created
-BASE_PATH="/Users/jerichlee/Documents/jerichlee.ai/classes"
+BASE_PATH="/Users/jerichlee/Documents/jerich/classes"
 
 # Full path to the new folder
 FULL_PATH="$BASE_PATH/$FOLDER_NAME"

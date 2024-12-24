@@ -14,7 +14,7 @@ BLOG_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/blog-latex-to-html
 DIARY_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/math-tex-to-html.py"
 
 # Path to the CSS file
-CSS_PATH="https://jerichlee2.github.io/Jerich.ai/blog/style.css"
+CSS_PATH="https://jerichlee2.github.io/Jerich.ai/style2.css"
 
 # Log file
 LOG_FILE="/Users/jerichlee/Documents/jerichlee.ai/script.log"

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equivalence relations; Cosets; Examples</title>
+    <link rel="stylesheet" href="https://jerichlee2.github.io/Jerich.ai/style2.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <a href="../../index.html" class="home-button">Back</a>
+    <div id="main">
+        <h1>Equivalence relations; Cosets; Examples</h1>
+<h3>Jerich Lee</h3>
+<h4>December 30, 2024</h4>
+
+<strong>1. Size of $\boldsymbol{S_n&lt;/strong&gt;$.} The group $S_n$ consists of all permutations of $\{1,2,\dots{},n\}$. Each permutation is determined by $n$ choices for the image of $1$, then $n-1$ choices for the image of $2$, etc. Hence
+$$\begin{align}
+
+|S_n| \;=\; n!.
+
+\end{align}$$
+
+<strong>2. The sign homomorphism.</strong> Define
+$$\begin{align}
+
+f \colon S_n \,\to\, \{\pm1\}
+
+\end{align}$$
+by 
+$$\begin{align}
+
+f(\sigma) \;=\; 
+\begin{cases}
++1, & \text{if $\sigma$ is an even permutation},\\
+-1, & \text{if $\sigma$ is an odd permutation}.
+\end{cases}
+
+\end{align}$$
+This is well-defined (the parity of transposition decompositions is invariant) and is easily checked to be a group homomorphism.
+
+<strong>3. Surjectivity.</strong> 
+- The identity permutation is even ($f(e)=+1$).  
+- Any transposition $(i\,j)$ is odd ($f((i\,j))=-1$).  
+Thus $f$ is onto $\{\pm1{}\}$.
+
+<strong>4. Kernel = $\boldsymbol{A_n&lt;/strong&gt;$.} By definition, 
+$$\begin{align}
+
+\ker(f) \;=\; \{\sigma \in S_n \,\mid\, f(\sigma)=+1\} 
+\;=\; \text{(even permutations)} 
+\;=\; A_n.
+
+\end{align}$$
+
+<strong>5. Size of $\boldsymbol{A_n&lt;/strong&gt;$.} Since $f$ is surjective,
+$$\begin{align}
+
+|S_n| \;=\; |\ker(f)| \times |f(S_n)|
+\;\;\Longrightarrow\;\;
+n! \;=\; |A_n| \times 2 
+\;\;\Longrightarrow\;\;
+|A_n| \;=\; \frac{n!}{2}.
+
+\end{align}$$ 
+
+$$\begin{align}
+
+\textbf{Cyclic Group}:
+
+\end{align}$$
+$$\begin{align}
+
+\text{A group } G \text{ is cyclic if there exists an element } g \in G 
+\text{ such that } G = \langle g\rangle = \{\, g^n : n \in \mathbb{Z}\}\!.
+
+\end{align}$$
+$$\begin{align}
+
+\text{Equivalently (in additive notation), } G = \langle a\rangle = \{\, na : n \in \mathbb{Z}\}\!.
+
+\end{align}$$
+$$\begin{align}
+
+\textbf{Examples:}
+
+\end{align}$$
+$$\begin{align}
+
+\mathbb{Z},\quad \mathbb{Z}_n,\quad \text{the }n\text{-th roots of unity in }\mathbb{C}.
+
+\end{align}$$
+$$\begin{align}
+
+\textbf{Properties:}\quad 
+\text{All cyclic groups are abelian, but not all abelian groups are cyclic.}
+
+\end{align}$$
+$$\begin{align}
+
+\textbf{The group } S_3 \text{ (Symmetric Group on 3 elements)}:
+
+\end{align}$$
+$$\begin{align}
+
+S_3 = \{\, \mathrm{id},\, (12),\, (13),\, (23),\, (123),\, (132)\}
+
+\end{align}$$
+$$\begin{align}
+
+\text{Order: } |S_3| = 3! = 6.
+
+\end{align}$$
+$$\begin{align}
+
+\text{Operation: composition of permutations.}
+
+\end{align}$$
+$$\begin{align}
+
+\text{Properties: non-abelian, no element of order }6\text{ (hence not cyclic).}
+
+\end{align}$$
+
+HW: 2.5.1, 2.5.6, 2.6.2, 2.6.4, 2.6.5
+
+Reading: \S{} 2.9
+
+<div class='problem'><strong>Problem.</strong><br> [2.5.1]
+    Prove that the nonempty fibres of a map form a partition of the domain.
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    
+</div>
+<div class='problem'><strong>Problem.</strong><br> [2.5.6]
+    
+   <ol>
+<li>Prove that the relation $x$ conjugate to $y$ in a group $G$ is an equivalence relation on $G$ .</li>
+<li>Describe the elements $a$ whose conjugacy class ($=$ equivalence class) consists of the element $a$ alone.</li>
+</ol> 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    
+</div>
+<div class='problem'><strong>Problem.</strong><br> [2.6.2]
+   Prove directly that distinct cosets do not overlap. 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    
+</div>
+<div class='problem'><strong>Problem.</strong><br> [2.6.4]
+   Give an example showing that left cosets and right cosets of $GL_2(\mathbb{{R}})$ in $GL_2(\mathbb{{C}})$ are not always equal.
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    
+</div>
+<div class='problem'><strong>Problem.</strong><br> [2.6.5]
+   Let $H,K$ be subgroups of a group $G$ of orders $3,5$ respectfully. Prove that $H \cap{} K=\{ 1 \} $  . 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+    
+</div>
+    </div>
+</body>
+</html>
+    

@@ -17,7 +17,7 @@ DIARY_PYTHON_SCRIPT="/Users/jerichlee/Documents/jerich/scripts/math-tex-to-html.
 CSS_PATH="https://jerichlee2.github.io/Jerich.ai/style2.css"
 
 # Log file
-LOG_FILE="/Users/jerichlee/Documents/jerichlee.ai/script.log"
+LOG_FILE="/Users/jerichlee/Documents/jerich/script.log"
 
 # === Functions ===
 

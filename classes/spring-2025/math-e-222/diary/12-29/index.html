@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 1—MATH E-222: Abstract Algebra I</title>
+    <link rel="stylesheet" href="https://jerichlee2.github.io/Jerich.ai/style2.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <a href="../../index.html" class="home-button">Back</a>
+    <div id="main">
+        <h1>HW 1—MATH E-222: Abstract Algebra I</h1>
+<h3>Jerich Lee</h3>
+<h4>December 30, 2024</h4>
+
+
+Read $\S{} 1.1$ and pages $38-42$ in Artin.  
+<div class='problem'><strong>Problem.</strong><br> [1.1.7]
+    Find a formula for 
+    $$\begin{align}
+
+        \begin{bmatrix}
+        1 & 1 &  1 \\
+        0 & 1 &  1 \\
+        0 & 0 &  1 \\
+    \end{bmatrix}^{n}
+    
+\end{align}$$, and prove it by induction. 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+
+    <div class='proof'><strong>Proof.</strong> 
+         I initially thought to use the following series:
+    $\sum_{k=1}^{n} (-1)^{k}k^{2}$. But I realized I was being silly and instead used the following:
+    $$\begin{align}
+
+     \begin{bmatrix}
+        1 & n &  \frac{n(n+1)}{2} \\
+         0 & 1 & n  \\
+         0& 0 & 1  \\
+    \end{bmatrix}+\begin{bmatrix}
+        0 & 1 &n+1   \\
+         0&0  &1  \\
+         0&0  &0   \\
+    \end{bmatrix}=\begin{bmatrix}
+        1 & n &  \frac{n(n+1)}{2} \\
+         0 & 1 & n  \\
+         0& 0 & 1  \\
+    \end{bmatrix}\cdot \begin{bmatrix}
+        1 & 1 &  1 \\
+        0 & 1 &  1 \\
+        0 & 0 &  1 \\
+    \end{bmatrix} 
+    
+\end{align}$$
+    <div class='qed'>∎</div></div><br>
+    </div>
+<div class='problem'><strong>Problem.</strong><br> [1.1.16]
+A square matrix $A$ is called <em>nilpotent</em> if $A^{k}=0$ for some $k&gt;0$. Prove that if $A$ is nilpotent, then $I+A$ is invertible.   
+</div>
+<div class='solution'><strong>Solution.</strong> 
+$$\begin{align}
+
+    \underbrace{\begin{bmatrix}
+    1 &  0 \\
+    0 &  1 \\
+   \end{bmatrix}}_{\mathbf{I} }+ \begin{bmatrix}
+    a &b   \\
+     c&d   \\
+   \end{bmatrix} = \begin{bmatrix}
+    a+1 &  b \\
+    c & d+1  \\
+   \end{bmatrix}
+
+\end{align}$$
+      $$\begin{align}
+
+    det(I+A)= (a+1)(b+1)-cb \\[10pt] 
+    =ad+a+d+1-cb = 0\\[10pt] 
+    ad-cb = -(a+d+1)\\[10pt] 
+    =det(A) \\[10pt] 
+    \neq 0 
+   
+\end{align}$$  
+   Need to show that if $A$ is nilpotent then $\det{}(A)=0$. 
+</div>
+<div class='problem'><strong>Problem.</strong><br> [1.1.17]
+   <ol>
+<li>Find infinitely many matrices $B$ such that $BA=I_2$ when 
+    $$\begin{align}
+
+        A= \begin{bmatrix}
+            2 &  3 \\
+            1 &  2 \\
+            2 &  5 \\
+        \end{bmatrix}
+    
+\end{align}$$</li>
+<li>Prove that there is no matrix $C$ such that $AC=I_3$.</li>
+</ol> 
+</div>
+<div class='solution'><strong>Solution.</strong> 
+
+</div>
+    </div>
+</body>
+</html>
+    

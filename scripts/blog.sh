@@ -69,10 +69,12 @@ cat <<EOL > "$FILE_PATH"
 }
 \theoremstyle{definition} % This style uses normal (non-italicized) text
 \newtheorem{solution}{Solution}
-\newtheorem*{proposition}{Proposition}
+\newtheorem{proposition}{Proposition}
 \newtheorem{problem}{Problem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+\newtheorem{note}{Note}
 \theoremstyle{plain} % Restore the default style for other theorem environments
 %
 

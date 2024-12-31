@@ -38,7 +38,7 @@ body {
     padding-left: 20px;
     grid-column: span 6;
 }
-@media (max-width: 1000px) {
+@media (max-width: 991px) {
     #dpic {
       grid-column: span 12;
       text-align: center;
@@ -50,10 +50,13 @@ body {
     }
 }
 h1 {
-    font-size: 34px;
-    font-weight: normal;
+    font-size: 34px; /* Keep your desired font size */
+    font-weight: normal; /* Maintain current styling */
     padding: 0;
     margin: 0;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Ensures content outside of the parent doesn't show */
+    text-overflow: ellipsis; /* Adds "..." if the text overflows */
 }
 h2 {
     font-weight: normal;

@@ -38,7 +38,7 @@ body {
     padding-left: 20px;
     grid-column: span 6;
 }
-@media (max-width: 991px) {
+@media (max-width: 1000px) {
     #dpic {
       grid-column: span 12;
       text-align: center;

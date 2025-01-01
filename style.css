@@ -37,6 +37,9 @@ body {
     padding-top: 40px;
     padding-left: 20px;
     grid-column: span 6;
+    overflow: visible !important;
+    width: auto !important;
+    display: block !important;
 }
 @media (max-width: 991px) {
     #dpic {
@@ -47,14 +50,22 @@ body {
       grid-column: span 12;
       padding-top: 20px;
       text-align: center;
+      overflow: visible !important;
+      width: auto !important;
+      display: block !important;
     }
 }
 h1 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     font-size: 34px;
-    font-weight: normal;
-    padding: 0;
-    margin: 0;
-}
+    margin: 0 !important;
+    padding: 0 !important;
+    /* if needed, force a width auto */
+    width: auto !important;
+    display: block !important; /* in case it was changed to inline or something else */
+  }
 h2 {
     font-weight: normal;
     font-style: italic;

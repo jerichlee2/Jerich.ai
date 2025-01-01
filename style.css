@@ -50,13 +50,10 @@ body {
     }
 }
 h1 {
-    font-size: 34px; /* Keep your desired font size */
-    font-weight: normal; /* Maintain current styling */
+    font-size: 34px;
+    font-weight: normal;
     padding: 0;
     margin: 0;
-    white-space: nowrap; /* Prevents text from wrapping to the next line */
-    overflow: hidden; /* Ensures content outside of the parent doesn't show */
-    text-overflow: ellipsis; /* Adds "..." if the text overflows */
 }
 h2 {
     font-weight: normal;

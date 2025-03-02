@@ -75,6 +75,8 @@ cat <<EOL > "$FILE_PATH"
 \newtheorem{theorem}{Theorem}
 \newtheorem{remark}{Remark}
 \newtheorem{note}{Note}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
 \theoremstyle{plain} % Restore the default style for other theorem environments
 %
 

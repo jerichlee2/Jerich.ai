@@ -3,9 +3,9 @@ body {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    background-color: #fff;
+    background-color: #eee;   /* was #fff — now matches the other sheet */
     padding-bottom: 400px;
-    text-align: justify; /* Justify text for the entire body */
+    text-align: justify;      /* Justify text for the entire body */
 }
 
 a {

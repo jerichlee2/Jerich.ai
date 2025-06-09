@@ -53,7 +53,16 @@ cat <<EOL > "$FILE_PATH"
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{listings}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{cancel}
+  \usetikzlibrary{calc,patterns,arrows.meta,decorations.markings}
 
+
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Arg}{Arg}
 
 \lstset{
     breaklines=true,         % Enable line wrapping
@@ -77,6 +86,7 @@ cat <<EOL > "$FILE_PATH"
 \newtheorem{note}{Note}
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
+\newtheorem{corollary}{Corollary}
 \theoremstyle{plain} % Restore the default style for other theorem environments
 %
 

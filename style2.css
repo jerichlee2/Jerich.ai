@@ -112,7 +112,7 @@ img {
 
 /* Styling for code blocks */
 .code-block {
-    background-color: #f9f9f9;  /* Light gray background for better readability */
+    background-color: #eee;  /* Light gray background for better readability */
     border: 1px solid #ddd;    /* Thin border to distinguish the code block */
     padding: 10px;             /* Add padding around the code content */
     overflow-x: auto;          /* Enable horizontal scrolling for long lines */

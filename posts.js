@@ -12,4 +12,5 @@ const posts = [
   { date:"2025-06-10", title:"Convergent series", category:"Mathematics", class:"MATH-447", tags:["Real Analysis"] },
   { date:"2025-06-10", title:"Continuity", category:"Mathematics", class:"MATH-447", tags:["Real Analysis","topology","set theory"] },
   { date:"2025-06-10", title:"Connectedness and Uniform Continuity", category:"Mathematics", class:"MATH-447", tags:["Real Analysis","topology"] },
+  { date:"2025-06-10", title:"Uniform Convergence", category:"Mathematics", class:"MATH-447", tags:["real analysis"] },
   ];

@@ -16,4 +16,5 @@ const posts = [
   { date:"2025-06-10", title:"Differentiation and Integration", category:"Mathematics", class:"MATH-447", folder:"06-10.8", tags:["real analysis","integration","differentiation"] },
   { date:"2025-06-10", title:"The Fundamental Theorem of Calculus", category:"Mathematics", class:"MATH-447", folder:"06-10.9", tags:["real analysis","ftc"] },
   { date:"2025-06-10", title:"Experimental Bone Mechanics", category:"Engineering", class:"TBL-25", folder:"06-10", tags:["Experiment","Bone Mechanics","Testing"] },
+  { date:"2025-06-10", title:"Learning Mathematical Finite Element Analysis", category:"Engineering", class:"TAM-574", folder:"06-10", tags:["Numerical Methods","Functional Analysis","Real Analysis","Measure Theory"] },
   ];

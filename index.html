@@ -35,7 +35,7 @@
         </div>
         <div id="ddesc">
           <h1>wastefulbedrock</h1>
-          <!-- <h2>Engineering and Mathematics :O</h2> -->
+          <h2>Interested in Mathematical Numerical Methods</h2>
           <div id="dico">
             <a href="https://www.youtube.com/@jerichlee"><img src="https://jerichlee2.github.io/Jerich.ai/assets/YouTube_social_dark_circle_(2017).svg.png" class="iico"/></a>
             <a href="https://www.linkedin.com/in/jerich-lee/"><img src="https://jerichlee2.github.io/Jerich.ai/assets/linkedin.svg" class="iico"/></a>
@@ -147,14 +147,13 @@
   /* ------------------------------------------------------------- */
   // Still useful for right‑click “copy link”, but JS intercepts clicks
   function postURL(p) {
-    const mmdd = p.date.slice(5, 7) + "-" + p.date.slice(8, 10);
-    return `classes/${p.class}/${mmdd}/index.html`;
-  }
+  const dir = p.folder || (p.date.slice(5,7) + "-" + p.date.slice(8,10));
+  return `classes/${p.class}/${dir}/index.html`;
+}
 
-  // Where the raw .tex lives
   function texPath(p) {
-    const mmdd = p.date.slice(5, 7) + "-" + p.date.slice(8, 10);
-    return `${p.class}/${mmdd}/${slug(p.title)}.tex`;
+    const dir = p.folder || (p.date.slice(5,7) + "-" + p.date.slice(8,10));
+    return `${p.class}/${dir}/${slug(p.title)}.tex`;
   }
 
   /* ------------------------------------------------------------- */

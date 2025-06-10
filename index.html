@@ -11,6 +11,7 @@
   <body>
 
     <div id="dhead" class="container">
+      <!-- This section is always constant -->
       <div class="row">
         <div id="dpic">
           <img src="https://jerichlee2.github.io/Jerich.ai/assets/jerich-25.JPG" class="ppic" />
@@ -19,76 +20,280 @@
           <h1>wastefulbedrock</h1>
           <!-- <h2>Engineering and Mathematics :O</h2> -->
           <div id="dico">
-
             <a href="https://www.youtube.com/@jerichlee"><img src="https://jerichlee2.github.io/Jerich.ai/assets/YouTube_social_dark_circle_(2017).svg.png" class="iico"/></a>
             <a href="https://www.linkedin.com/in/jerich-lee/"><img src="https://jerichlee2.github.io/Jerich.ai/assets/linkedin.svg" class="iico"/></a>
             <a href="https://x.com/JerichLee"><img src="https://jerichlee2.github.io/Jerich.ai/assets/x.svg" class="iico"/></a>
             <a href="https://mathstodon.xyz/@jerich"><img src="https://jerichlee2.github.io/Jerich.ai/assets/mastodon.svg" class="iico"/></a>
             <a href="https://github.com/jerichlee2"><img src="https://jerichlee2.github.io/Jerich.ai/assets/github-mark.svg" class="iico"/></a>
-
-            
           </div>
           <div id="demail"></div> <!-- will reveal email -->
         </div>
       </div>
     </div>
 
-
     <hr>
 
+<!-- MAIN BODY: dynamic + sections  ───────────────────────────── -->
+<div id="content-wrap">       <!--  <--  NEW FLEX WRAPPER  -->
+
+    <!-- ========================================================= -->
+    <!-- ARCHIVES & CATEGORIES SECTIONS -->
+    <!-- These sections are always constant -->
+    <!-- ========================================================= -->
+    <aside id="sections-module">
+      <section>
+        <div class="container">
+          <div class="ctitle">Archives</div>
+          <ul id="archives-list" class="nodot"></ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="ctitle">Categories</div>
+          <ul id="categories-list" class="nodot"></ul>
+        </div>
+      </section>
+
+      <!-- TAGS SECTION -->
+      <section>
+        <div class="container">
+          <div class="ctitle">Tags</div>
+          <ul id="tags-list" class="nodot"></ul>
+        </div>
+      </section>
+    </aside>
+
+    <!-- DYNAMIC MODULE (changes on click) ------------------------>
+    <section id="dynamic-section">
+      <div class="dyn-block">
+        <div class="ctitle" id="dynamic-title">Latest entries</div>
+        <ul id="dynamic-list" class="nodot"></ul>
       </div>
-    </div>
+    </section>
 
-    <div style="background-color: #eee; padding-top: 1px; margin-top: 50px;">
-      <div class="container">
+</div>   <!-- /#content-wrap -->
 
-        <li><a href="classes/fall-2024/math-447/index.html">Real Variables</a></li> 
-        <!-- <li><a href="classes/spring-2025/math-448/index.html">Complex Variables</a></li> 
-        <li><a href="classes/spring-2025/math-e-222/index.html">Abstract Algebra I</a></li> 
-        <li><a href="classes/spring-2025/math-432/index.html">Set Theory and Topology</a></li>  -->
-    </div>
+<!-- ============================ JS ============================ -->
+<!-- ============================================================= -->
+<!--  1. Load metadata for every post                              -->
+<!-- ============================================================= -->
+<script src="posts.js"></script>
 
+<!-- ============================================================= -->
+<!--  2. Everything‑else script: builds the sidebars, the dynamic  -->
+<!--     list, and fetches LaTeX‑to‑HTML from /api/tex2html        -->
+<!-- ============================================================= -->
+<script>
+(function () {
+  /* ------------------------------------------------------------- */
+  /* Helpers                                                       */
+  /* ------------------------------------------------------------- */
+  const API_BASE = 'https://tex2html-api.onrender.com';
+  const $ = sel => document.querySelector(sel);
 
-
-    <!-- <div style="background-color: #eee; padding-top: 1px; margin-top: 50px;">
-      <div class="container">
-        <div class="ctitle">art</div>
-
-    </div>
-    <div style="background-color: #eee; padding-top: 1px; margin-top: 50px;">
-      <div class="container">
-        <div class="ctitle">music</div>
-
-    </div>
-
-  </div>
-  <div style="background-color: #eee; padding-top: 1px; margin-top: 50px;">
-    <div class="container">
-      <div class="ctitle">projects</div>
-
-  </div> -->
-
-
-
-
-
-
-    <br><br><br><br><br><br><br><br><br><br><br>
-
-    <!-- attempt hiding from spambots :p -->
-    <script type="text/javascript">
-      const rot13 = (message) => {
-        const alpha = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
-        return message.replace(/[a-z]/gi, letter => alpha[alpha.indexOf(letter) + 13]);
+  async function fetchWithSpinner(url) {
+    document.body.classList.add('loading');          // CSS cursor/spinner
+    try {
+      let rsp = await fetch(url);                    // first attempt
+      if (rsp.status === 503) {                      // Render waking up
+        await new Promise(r => setTimeout(r, 4000)); // wait 4 s
+        rsp = await fetch(url);                      // second attempt
       }
-      var e_is_shown = false;
-      document.getElementById('iemail').addEventListener("click", function(){
-        let demail = document.getElementById('demail');
-        let msg = "naqerw.xnecngul" + "@" + "tznvy.pbz<oe>V'z fbeel ohg V trg jnl gbb zhpu rznvy naq vg vf birejuryzvat. V bayl znantr gb ercyl gb ~1% bs vg, naq vs jr qba'g xabj rnpu bgure crefbanyyl, vg vf n ybg pybfre gb 0%. Cyrnfr qba'g \"gnxr lbhe fubg\", naq fbeel :("
-        demail.innerHTML = rot13(msg);
-        demail.style.opacity = e_is_shown ? 0 : 1;
-        e_is_shown = !e_is_shown;
-      })
-    </script>
+      if (!rsp.ok) throw new Error(`${rsp.status} ${rsp.statusText}`);
+      return await rsp.text();
+    } finally {
+      document.body.classList.remove('loading');
+    }
+  }
+
+  // "2025‑06‑09"  →  "06‑2025"
+  function monthKey(dateStr) {
+    const d = new Date(dateStr);
+    return ("0" + (d.getMonth() + 1)).slice(-2) + "-" + d.getFullYear();
+  }
+
+  // Make a filesystem‑safe slug from a post title
+  function slug(s) {
+    return s.toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")   // spaces & punctuation → "-"
+            .replace(/(^-|-$)/g, "");      // trim leading/trailing "-"
+  }
+
+  /* ------------------------------------------------------------- */
+  /* Path helpers                                                  */
+  /* ------------------------------------------------------------- */
+  // Still useful for right‑click “copy link”, but JS intercepts clicks
+  function postURL(p) {
+    const mmdd = p.date.slice(5, 7) + "-" + p.date.slice(8, 10);
+    return `classes/${p.class}/${mmdd}/index.html`;
+  }
+
+  // Where the raw .tex lives
+  function texPath(p) {
+    const mmdd = p.date.slice(5, 7) + "-" + p.date.slice(8, 10);
+    return `classes/${p.class}/${mmdd}/${slug(p.title)}.tex`;
+  }
+
+  /* ------------------------------------------------------------- */
+  /* Build a tag → [posts] index once, for O(1) tag filtering      */
+  /* ------------------------------------------------------------- */
+  const postsByTag = {};
+  posts.forEach(p => (p.tags || []).forEach(t => {
+    (postsByTag[t] ||= []).push(p);
+  }));
+
+  /* ------------------------------------------------------------- */
+  /* Dynamic‑module renderer                                       */
+  /* ------------------------------------------------------------- */
+  function renderEntries(title, list) {
+    $("#dynamic-title").textContent = title;
+    const ul = $("#dynamic-list");
+    ul.innerHTML = "";
+    list.forEach(p => {
+      const li = document.createElement("li");
+      const a  = document.createElement("a");
+      a.href        = postURL(p);
+      a.textContent = p.title;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  }
+
+  /* ------------------------------------------------------------- */
+  /* Initial load: 10 newest                                       */
+  /* ------------------------------------------------------------- */
+  renderEntries("Latest entries",
+    posts.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10));
+
+  /* ------------------------------------------------------------- */
+  /* Archives sidebar                                              */
+  /* ------------------------------------------------------------- */
+  const archives = {};
+  posts.forEach(p => {
+    const k = monthKey(p.date);
+    archives[k] = (archives[k] || 0) + 1;
+  });
+
+  const archiveUL = $("#archives-list");
+  Object.keys(archives)
+    .sort((a, b) => {
+      // newest first: compare YYYYMM numerically
+      const [am, ay] = a.split("-");
+      const [bm, by] = b.split("-");
+      return (by * 100 + bm) - (ay * 100 + am);
+    })
+    .forEach(mmyyyy => {
+      const li = document.createElement("li");
+      const a  = document.createElement("a");
+      a.href = "#";
+      a.textContent = `${mmyyyy} (${archives[mmyyyy]})`;
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        renderEntries(`Archive: ${mmyyyy}`,
+          posts.filter(p => monthKey(p.date) === mmyyyy));
+      });
+      li.appendChild(a);
+      archiveUL.appendChild(li);
+    });
+
+  /* ------------------------------------------------------------- */
+  /* Categories → Classes sidebar                                  */
+  /* ------------------------------------------------------------- */
+  const cats = {};
+  posts.forEach(p => {
+    const c = cats[p.category] ||= { count: 0, classes: {} };
+    c.count++;
+    c.classes[p.class] = (c.classes[p.class] || 0) + 1;
+  });
+
+  const catUL = $("#categories-list");
+  Object.keys(cats).sort().forEach(cat => {
+    const catLI = document.createElement("li");
+    const catA  = document.createElement("a");
+    catA.href = "#";
+    catA.textContent = `${cat} (${cats[cat].count})`;
+    catA.addEventListener("click", e => {
+      e.preventDefault();
+      renderEntries(`Category: ${cat}`,
+        posts.filter(p => p.category === cat));
+    });
+    catLI.appendChild(catA);
+
+    const classUL = document.createElement("ul");
+    Object.keys(cats[cat].classes).sort().forEach(cls => {
+      const clsLI = document.createElement("li");
+      const clsA  = document.createElement("a");
+      clsA.href = "#";
+      clsA.textContent = `${cls} (${cats[cat].classes[cls]})`;
+      clsA.addEventListener("click", e => {
+        e.preventDefault();
+        renderEntries(`Class: ${cls}`,
+          posts.filter(p => p.class === cls));
+      });
+      clsLI.appendChild(clsA);
+      classUL.appendChild(clsLI);
+    });
+    catLI.appendChild(classUL);
+    catUL.appendChild(catLI);
+  });
+
+  /* ------------------------------------------------------------- */
+  /* Tags sidebar                                                  */
+  /* ------------------------------------------------------------- */
+  const tagCounts = {};
+  posts.forEach(p => (p.tags || []).forEach(t => {
+    tagCounts[t] = (tagCounts[t] || 0) + 1;
+  }));
+
+  const tagsUL = $("#tags-list");
+  Object.entries(tagCounts)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .forEach(([tag, count]) => {
+      const li = document.createElement("li");
+      const a  = document.createElement("a");
+      a.href = "#";
+      a.textContent = `${tag} (${count})`;
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        renderEntries(`Tag: ${tag}`, postsByTag[tag]);
+      });
+      li.appendChild(a);
+      tagsUL.appendChild(li);
+    });
+
+  /* ------------------------------------------------------------- */
+  /* Dynamic click‑through: fetch .tex → HTML via /api/tex2html    */
+  /* ------------------------------------------------------------- */
+  document.addEventListener("click", async e => {
+    const link = e.target.closest("#dynamic-list a");
+    if (!link) return;          // click outside list → ignore
+    e.preventDefault();
+
+    // Find the post object by its displayed title
+    const title = link.textContent.trim();
+    const post  = posts.find(p => p.title === title);
+    if (!post) {
+      alert("Post metadata not found.");  // should never happen
+      return;
+    }
+
+    const path = texPath(post);           // classes/.../<slug>.tex
+
+    try {
+      const url = `${API_BASE}/api/tex2html?file=${encodeURIComponent(path)}`;
+      const html = await fetchWithSpinner(url);
+      if (!rsp.ok) throw new Error(`${rsp.status} ${rsp.statusText}`);
+
+      const dynBlock = document.querySelector(".dyn-block");
+      dynBlock.innerHTML = html;
+      dynBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (err) {
+      console.error(err);
+      alert("Could not load or convert the LaTeX file.");
+    }
+  });
+})();
+</script>
   </body>
 </html>

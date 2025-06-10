@@ -109,6 +109,11 @@
   const API_BASE = 'https://tex2html-api.onrender.com';
   const $ = sel => document.querySelector(sel);
 
+  const normalize = s =>
+  s.trim()                 // remove leading / trailing spaces
+   .toLowerCase()          // ignore case
+   .replace(/[\s_]+/g, "-");  // spaces or underscores → hyphen
+
   async function fetchWithSpinner(url) {
     document.body.classList.add('loading');          // CSS cursor/spinner
     try {
@@ -155,10 +160,7 @@
   /* ------------------------------------------------------------- */
   /* Build a tag → [posts] index once, for O(1) tag filtering      */
   /* ------------------------------------------------------------- */
-  const postsByTag = {};
-  posts.forEach(p => (p.tags || []).forEach(t => {
-    (postsByTag[t] ||= []).push(p);
-  }));
+
 
   /* ------------------------------------------------------------- */
   /* Dynamic‑module renderer                                       */
@@ -260,31 +262,36 @@
     });
     catLI.appendChild(classUL);
     catUL.appendChild(catLI);
-  });
+    });
+  /* Build a tag → [posts] index once, case-insensitive */
+  const postsByTag = Object.create(null);
+  const tagCounts  = Object.create(null);
 
+  posts.forEach(p => (p.tags || []).forEach(raw => {
+    const key = normalize(raw);              // ← uses the helper you added
+    (postsByTag[key] ||= []).push(p);
+    tagCounts[key] = (tagCounts[key] || 0) + 1;
+  }));
   /* ------------------------------------------------------------- */
   /* Tags sidebar                                                  */
   /* ------------------------------------------------------------- */
-  const tagCounts = {};
-  posts.forEach(p => (p.tags || []).forEach(t => {
-    tagCounts[t] = (tagCounts[t] || 0) + 1;
-  }));
-
-  const tagsUL = $("#tags-list");
+  const tagsUL = $("#tags-list");          // ← put this back 
   Object.entries(tagCounts)
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .forEach(([tag, count]) => {
-      const li = document.createElement("li");
-      const a  = document.createElement("a");
-      a.href = "#";
-      a.textContent = `${tag} (${count})`;
-      a.addEventListener("click", e => {
-        e.preventDefault();
-        renderEntries(`Tag: ${tag}`, postsByTag[tag]);
-      });
-      li.appendChild(a);
-      tagsUL.appendChild(li);
+  .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
+  .forEach(([key,count]) => {
+    const pretty = key.replace(/-/g," ")
+                      .replace(/\b\w/g,ch => ch.toUpperCase()); // Title Case
+    const li = document.createElement("li");
+    const a  = document.createElement("a");
+    a.href = "#";
+    a.textContent = `${pretty} (${count})`;
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      renderEntries(`Tag: ${pretty}`, postsByTag[key]);
     });
+    li.appendChild(a);
+    tagsUL.appendChild(li);
+  });
 
   /* ------------------------------------------------------------- */
   /* Dynamic click‑through: fetch .tex → HTML via /api/tex2html    */

@@ -2,26 +2,80 @@
   GLOBAL RESET & BASE
   ─────────────────────────────────────────────────────────────*/
   body{
+    /* font family from sheet ①, fallback list kept intact */
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",
+                Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji",
+                "Segoe UI Emoji","Segoe UI Symbol","Microsoft YaHei Light",
+                sans-serif;
     margin:0;
     padding:0;
-    background:#eee;
-    font-family:sans-serif;
+    padding-bottom:400px;      /* only in sheet ① */
     font-size:16px;
-    line-height:1.4;
-    color:#333;
+    line-height:1.4;           /* only in sheet ② */
+    text-align:justify;        /* only in sheet ① */
+    background:#eee;           /* sheet ② - same as sheet ① change */
+    color:#333;                /* body text colour from sheet ② */
+}
+
+a{ color:#000; }
+
+p{
+    margin-block-start:0;
+    text-align:justify;
+}
+
+img{ max-width:100%; }
+
+hr{
+    height:1px;
+    margin:20px 0;
+    border:0;
+    padding:0;
+    background-image:linear-gradient(
+        to right,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.75),
+        rgba(0,0,0,0)
+    );
 }
 
 /*──────────────────────────────────────────────────────────────
-  GENERIC LAYOUT HELPERS
+  TYPOGRAPHY — HEADINGS
   ─────────────────────────────────────────────────────────────*/
-.container{
-    margin-left:auto;
-    margin-right:auto;
-    padding:0 15px;
+h1{
+    font-size:34px;      /* sheet ② (≈2.125 em) */
+    margin:0 0 0.3em 0;  /* use bottom margin similar to sheet ① */
+    text-align:left;
+    color:#000;
 }
-@media (min-width:992px){
-    .container{ width:970px; }
+
+h2{
+    font-size:18px;      /* sheet ② */
+    font-weight:normal;
+    font-style:italic;
+    color:#999;          /* sheet ② */
+    margin:5px 0 10px;
 }
+@media (min-width:992px){ h2{ max-width:300px; } }
+
+h3{
+    font-size:1em;       /* sheet ① */
+    margin:5px 0;
+    text-align:left;
+    color:#000;
+}
+h4{
+    font-size:.75em;     /* sheet ① */
+    margin:5px 0;
+    text-align:left;
+    color:#000;
+}
+
+/*──────────────────────────────────────────────────────────────
+  LAYOUT HELPERS
+  ─────────────────────────────────────────────────────────────*/
+.container{ margin-left:auto; margin-right:auto; padding:0 15px; }
+@media (min-width:992px){ .container{ width:970px; } }
 
 .row{
     display:grid;
@@ -34,82 +88,157 @@
 #dhead{ margin-top:20px; }
 
 #dpic{ grid-column:span 6; text-align:right; }
-#ddesc{
-    grid-column:span 6;
-    padding:40px 0 0 20px;
-}
+#ddesc{ grid-column:span 6; padding:40px 0 0 20px; }
+
 @media (max-width:991px){
-    #dpic{ grid-column:span 12; text-align:center; }
+    #dpic { grid-column:span 12; text-align:center; }
     #ddesc{ grid-column:span 12; padding-top:20px; text-align:center; }
 }
 
-h1{ font-size:34px; margin:0; }
-h2{ font-size:18px; font-weight:normal; font-style:italic; color:#999; margin:5px 0 10px; }
-@media (min-width:992px){ h2{ max-width:300px; } }
-
 #dpic img{ width:240px; height:240px; border-radius:120px; }
-.iico{ width:40px; height:40px; }
+.iico      { width:40px; height:40px; }
+.ppic      { width:150px; height:150px; border-radius:50%; object-fit:cover; }
 
-#demail{ margin-top:10px; color:#555; opacity:0; transition:.7s; }
-
-/*──────────────────────────────────────────────────────────────
-  RULE
-  ─────────────────────────────────────────────────────────────*/
-hr{
-    height:1px; margin:20px 0; border:0; padding:0;
-    background-image:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+#demail{
+    margin-top:10px;
+    color:#555;
+    opacity:0;
+    transition:.7s;
 }
 
 /*──────────────────────────────────────────────────────────────
-  SIDEBAR + DYNAMIC LAYOUT
+  NAVBAR (from sheet ①)
   ─────────────────────────────────────────────────────────────*/
+#nav{
+    height:20px;
+    padding:10px;
+    background:#000;
+}
+#nav a{
+    text-decoration:none;
+    color:#0F0;
+    font-family:'Courier New',Courier,monospace;
+}
+
 /*──────────────────────────────────────────────────────────────
-  TWO‑COLUMN GRID LAYOUT  (sidebar + dynamic)
+  MAIN CONTENT AREA
   ─────────────────────────────────────────────────────────────*/
-  #content-wrap{
+#main{
+    max-width:700px;
+    margin:4% auto;
+    line-height:1.5;  /* slightly larger than global 1.4 */
+    color:#222;
+    padding:0 10px;
+    text-align:justify;
+}
+
+/*──────────────────────────────────────────────────────────────
+  SIDEBAR + DYNAMIC GRID
+  ─────────────────────────────────────────────────────────────*/
+#content-wrap{
     display:grid;
-    grid-template-columns:230px 1fr;   /* 230‑px sidebar + remaining */
-    align-items:start;                 /* top‑align both cells       */
-    margin-top:20px;                   /* space below <hr>           */
+    grid-template-columns:230px 1fr;   /* sidebar + main */
+    align-items:start;
+    margin-top:20px;
 }
 
-/* sidebar stays narrow, no change needed */
 #sections-module .ctitle{ font-size:24px; margin-top:10px; }
 
-/* centre anything that sits in column 2 */
 #dynamic-section{
     display:grid;
-    justify-items:center;              /* <<<  the key line          */
+    justify-items:center;
 }
-
-/* the actual content block inside dynamic section */
 .dyn-block{
-    max-width:700px;                   /* readability cap            */
-    margin:0 auto;             /* extra safety for old browsers */
+    max-width:700px;
+    margin:0 auto;
     padding:0 15px;
 }
 
-
-
-
-
-/*──────────────────────────────────────────────────────────────
-  OTHER COMPONENT STYLES (unchanged from your original)
-  ─────────────────────────────────────────────────────────────*/
 .ctitle{ font-size:36px; margin:40px 0 20px; }
 
-.ppic{
-    width:150px; height:150px; border-radius:50%; object-fit:cover; overflow:hidden;
-}
+/*──────────────────────────────────────────────────────────────
+  POSTS / LIST ENTRIES
+  ─────────────────────────────────────────────────────────────*/
 .entry.row{
-    display:grid; grid-template-columns:100px 50px 1fr; align-items:center; column-gap:15px;
+    display:grid;
+    grid-template-columns:100px 50px 1fr;
+    align-items:center;
+    column-gap:15px;
 }
+.post           { margin-bottom:20px; }
+.post-date,
+.post-title     { display:inline; }
+.post-preview   { color:#555; font-size:14px; text-align:justify; }
+
 .timespan{ text-align:right; color:#bbb; font-size:14px; }
-.ico{ display:flex; align-items:center; justify-content:center; position:relative; }
-.ico::before{
-    content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:#cfcfcf; z-index:-1;
-}
-.description{ font-size:16px; color:#333; }
+
 .nodot{ list-style-type:none; padding-left:0; }
 
-/* additional card, project, publication styles … (kept intact) */
+/*──────────────────────────────────────────────────────────────
+  INLINE ICONS / CONNECTORS
+  ─────────────────────────────────────────────────────────────*/
+.ico{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.ico::before{
+    content:"";
+    position:absolute;
+    left:50%; top:0; bottom:0;
+    width:2px;
+    background:#cfcfcf;
+    z-index:-1;
+}
+
+/*──────────────────────────────────────────────────────────────
+  FIGURE & CAPTIONS
+  ─────────────────────────────────────────────────────────────*/
+.imgcap{
+    color:#555;
+    font-size:14px;
+    text-align:center;
+    margin:40px 0;
+}
+
+/*──────────────────────────────────────────────────────────────
+  QED BOX (proof end)
+  ─────────────────────────────────────────────────────────────*/
+.qed{
+    display:block;
+    text-align:right;
+    width:100%;
+    font-size:1.5em;
+    font-weight:bold;
+    margin-top:0.5em;
+}
+
+/*──────────────────────────────────────────────────────────────
+  CODE BLOCKS
+  ─────────────────────────────────────────────────────────────*/
+.code-block{
+    background:#eee;
+    border:1px solid #ddd;
+    padding:10px;
+    overflow-x:auto;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    font-family:monospace;
+    max-width:100%;
+    box-sizing:border-box;
+    line-height:1.4;
+}
+
+/*──────────────────────────────────────────────────────────────
+  MATH / PROBLEM ELEMENTS
+  ─────────────────────────────────────────────────────────────*/
+.problem,
+.solution,
+.lemma,
+.proposition{
+    color:#000;
+    font-size:1em;
+    display:block;
+    margin:1em 0;
+}

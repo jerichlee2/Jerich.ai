@@ -6,7 +6,24 @@
     <title>wastefulbedrock</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="https://jerichlee2.github.io/Jerich.ai/assets/wasteful.ico" type="image/x-icon">
-    <link rel="me" href="https://mathstodon.xyz/@jerich"> 
+    <link rel="me" href="https://mathstodon.xyz/@jerich">  
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$', '$$']],
+                packages: { '[+]': ['ams'] },
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
   </head>
   <body>
 
@@ -132,7 +149,7 @@
   // Where the raw .tex lives
   function texPath(p) {
     const mmdd = p.date.slice(5, 7) + "-" + p.date.slice(8, 10);
-    return `classes/${p.class}/${mmdd}/${slug(p.title)}.tex`;
+    return `${p.class}/${mmdd}/${slug(p.title)}.tex`;
   }
 
   /* ------------------------------------------------------------- */
@@ -147,18 +164,25 @@
   /* Dynamic‑module renderer                                       */
   /* ------------------------------------------------------------- */
   function renderEntries(title, list) {
-    $("#dynamic-title").textContent = title;
-    const ul = $("#dynamic-list");
-    ul.innerHTML = "";
-    list.forEach(p => {
-      const li = document.createElement("li");
-      const a  = document.createElement("a");
-      a.href        = postURL(p);
-      a.textContent = p.title;
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-  }
+  const dynBlock = document.querySelector(".dyn-block");
+
+  // 1. Re-create the standard markup every call
+  dynBlock.innerHTML = `
+      <div class="ctitle" id="dynamic-title"></div>
+      <ul id="dynamic-list" class="nodot"></ul>`;
+
+  // 2. Fill it
+  $("#dynamic-title").textContent = title;
+  const ul = $("#dynamic-list");
+  list.forEach(p => {
+    const li = document.createElement("li");
+    const a  = document.createElement("a");
+    a.href        = postURL(p);
+    a.textContent = p.title;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+}
 
   /* ------------------------------------------------------------- */
   /* Initial load: 10 newest                                       */
@@ -283,11 +307,12 @@
     try {
       const url = `${API_BASE}/api/tex2html?file=${encodeURIComponent(path)}`;
       const html = await fetchWithSpinner(url);
-      if (!rsp.ok) throw new Error(`${rsp.status} ${rsp.statusText}`);
 
       const dynBlock = document.querySelector(".dyn-block");
       dynBlock.innerHTML = html;
+      await MathJax.typesetPromise([dynBlock]);        // ← render LaTeX
       dynBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (window.MathJax) MathJax.typesetPromise([dynBlock]);
     } catch (err) {
       console.error(err);
       alert("Could not load or convert the LaTeX file.");

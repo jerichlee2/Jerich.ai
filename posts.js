@@ -14,4 +14,5 @@ const posts = [
   { date:"2025-06-10", title:"Connectedness and Uniform Continuity", category:"Mathematics", class:"MATH-447", tags:["Real Analysis","topology"] },
   { date:"2025-06-10", title:"Uniform Convergence", category:"Mathematics", class:"MATH-447", tags:["real analysis"] },
   { date:"2025-06-10", title:"Differentiation and Integration", category:"Mathematics", class:"MATH-447", tags:["real analysis","integration","differentiation"] },
+  { date:"2025-06-10", title:"The Fundamental Theorem of Calculus", category:"Mathematics", class:"MATH-447", tags:["real analysis","ftc"] },
   ];

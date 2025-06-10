@@ -10,4 +10,5 @@ const posts = [
   { date:"2025-06-10", title:"Limits and sequences continued", category:"Mathematics", class:"MATH-447", tags:["Real analysis"] },
   { date:"2025-06-10", title:"Metric spaces and topology", category:"Mathematics", class:"MATH-447", tags:["Real Analysis","topology","set theory"] },
   { date:"2025-06-10", title:"Convergent series", category:"Mathematics", class:"MATH-447", tags:["Real Analysis"] },
+  { date:"2025-06-10", title:"Continuity", category:"Mathematics", class:"MATH-447", tags:["Real Analysis","topology","set theory"] },
   ];

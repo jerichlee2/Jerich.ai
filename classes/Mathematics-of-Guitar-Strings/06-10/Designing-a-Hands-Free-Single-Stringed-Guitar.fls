@@ -1,8 +1,8 @@
-PWD /Users/jerichlee/Documents/jerich/classes/Mathematics of Guitar Strings/06-10
+PWD /Users/jerichlee/Documents/jerich/classes/Mathematics-of-Guitar-Strings/06-10
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jerichlee/Documents/jerich/classes/Mathematics of Guitar Strings/06-10/Designing-a-Hands-Free-Single-Stringed-Guitar.tex
+INPUT /Users/jerichlee/Documents/jerich/classes/Mathematics-of-Guitar-Strings/06-10/Designing-a-Hands-Free-Single-Stringed-Guitar.tex
 OUTPUT Designing-a-Hands-Free-Single-Stringed-Guitar.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls

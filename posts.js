@@ -20,5 +20,5 @@ const posts = [
   { date:"2025-06-10", title:"Mathematics of Machine Learning", category:"Engineering", class:"Mathematics-of-Machine-Learning", folder:"06-10", tags:["Machine Learning"] },
   { date:"2023-05-08", title:"Designing a Hands-Free Single-Stringed Guitar", category:"Engineering", class:"Mathematics-of-Guitar-Strings", folder:"06-10", tags:["Elasticity","Solid Mechanics","Statics","Music", "Design"] },
   { date:"2023-05-08", title:"Mathematics of Guitar Strings", category:"Engineering", class:"Mathematics-of-Guitar-Strings", folder:"06-10.2", tags:["Elasticity","Solid Mechanics","Music"] },
-  { date:"2025-06-10", title:"Discretizing the Heat Equation in 2D", category:"Engineering", class:"TAM-470", folder:"06-10", tags:["Numerical Methods"] },
+  { date:"2024-12-11", title:"Discretizing the Heat Equation in 2D", category:"Engineering", class:"TAM-470", folder:"06-10", tags:["Numerical Methods"] },
   ];
